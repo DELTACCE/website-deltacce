@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+# DELTA — Web Application
+### Data Oriented Thinkers' Association | Christ College of Engineering, Thrissur
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the official client application for the **DELTA** student association at Christ College of Engineering, Thrissur. The platform is designed under a data-oriented, technical blueprint style called *"The Intelligent Grid"*—featuring asymmetric layouts, connection nodes, and clean wireframe borders.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Tech Stack
 
-### `npm start`
+| Layer | Technology |
+|---|---|
+| **Framework** | React.js (v19.x) |
+| **Styling** | Tailwind CSS (v3.x) & CSS Custom Properties |
+| **Routing** | React Router (v7.x) |
+| **Animations** | Framer Motion (v12.x) & HTML5 Canvas |
+| **Icons** | Lucide React (stroke width: 1.5) |
+| **Integration** | Formspree / EmailJS hooks for contact dispatches |
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🎨 Design Metaphor: "The Intelligent Grid"
 
-### `npm test`
+- **Primary Canvas Background**: Paper Cream (`#f7f1e4`)
+- **Primary Text & Headers**: Deep Indigo (`#0e3061`)
+- **Accents & CTAs**: Signal Orange (`#fe572a`)
+- **Secondary Anchors**: Teal Green (`#065964`)
+- **Aesthetic Principles**: Asymmetrical placement, monospace technical indicators, line-connect animation vectors, and blueprint-style grid intersections (`+` marks).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 📂 Codebase Architecture
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+frontend/src/
+ ├─ components/
+ │   ├─ Button.jsx                  # Reusable action triggers (Primary & Secondary)
+ │   ├─ Card.jsx                    # Corner-anchored icon card structures
+ │   ├─ ColorSwatch.jsx             # Visual palette swatch with copy-to-clipboard handler
+ │   ├─ ContactForm.jsx             # Validation controls with submission states
+ │   ├─ Footer.jsx                  # Asymmetric footer containing location, quicklinks & tagline
+ │   ├─ Navbar.jsx                  # Sticky header with layout active morphs & mobile drawer
+ │   ├─ NodeCanvasBackground.jsx    # Custom HTML5 coordinate particle background
+ │   ├─ OrgChart.jsx                # Visual representation of the committee hierarchy
+ │   ├─ ScrollReveal.jsx            # Scroll reveal animation wrapper (motion-reduced safe)
+ │   └─ ScrollToTop.jsx             # Resets scroll scroll-y coordinates on path transitions
+ ├─ data/
+ │   └─ committee.js                # Database for faculty leads, core board, and department divisions
+ ├─ pages/
+ │   ├─ Home.jsx                    # Landing page containing Hero, core values, What We Do, and leader previews
+ │   ├─ About.jsx                   # Narrative detailing Origin timeline and fields focus grids
+ │   ├─ Committee.jsx               # Roster grids showing all active coordinators and org chart
+ │   ├─ Brand.jsx                   # Vector logo playgrounds, typography guides, and live color boards
+ │   └─ Contact.jsx                 # Interactive forms, direct dials, and greyscale coordinate maps
+ ├─ App.js                          # Client routing coordinates
+ ├─ index.js                        # Dom entry point
+ └─ index.css                       # Font loads, scroll overrides, and Tailwind binds
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🔧 Getting Started
 
-### `npm run eject`
+### 1. Install Dependencies
+Navigate to the `frontend` directory and install the node modules:
+```bash
+cd frontend
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 2. Run Local Development Server
+Launch the development engine:
+```bash
+npm start
+```
+The app will run locally at [http://localhost:3000](http://localhost:3000).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 3. Build for Production
+Compile optimized build files:
+```bash
+npm run build
+```
+The compiled files will compile inside the `/build` folder ready for deployment on static hosting CDN networks (Vercel, Netlify, Github Pages, etc.).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📨 Form Integration Config
+To activate the contact form, open the `.env` file in the `frontend` root directory and set the `REACT_APP_FORMSPREE_ENDPOINT` variable to your Formspree form URL:
+```env
+REACT_APP_FORMSPREE_ENDPOINT=https://formspree.io/f/your_form_id
+```
+If empty, the form will simulate validation checks and mock loading states locally in a sandbox mode.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

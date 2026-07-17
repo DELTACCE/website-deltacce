@@ -8,14 +8,13 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
 
-  // Configuration for direct integration (Developer endpoint hook)
-  // Formspree example: 'https://formspree.io/f/your_endpoint_id'
-  const FORMSPREE_ENDPOINT = ""; 
+  // Configuration for direct integration (Developer endpoint hook loaded from .env)
+  const FORMSPREE_ENDPOINT = process.env.REACT_APP_FORMSPREE_ENDPOINT || "";
 
   const validate = () => {
     const tempErrors = {};
     if (!formData.name.trim()) tempErrors.name = "Name is required.";
-    
+
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim()) {
       tempErrors.email = "Email is required.";
@@ -119,7 +118,7 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             className={`w-full bg-paper/50 border ${errors.name ? 'border-red-500' : 'border-indigo/10 focus:border-signal'} p-3 outline-none transition-colors font-body text-ink`}
-            placeholder="Tharun Krishna"
+            placeholder="Enter your name"
           />
           {errors.name && <p className="text-red-500 text-xs mt-1 font-heading">{errors.name}</p>}
         </div>
@@ -136,7 +135,7 @@ export default function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             className={`w-full bg-paper/50 border ${errors.email ? 'border-red-500' : 'border-indigo/10 focus:border-signal'} p-3 outline-none transition-colors font-body text-ink`}
-            placeholder="tharunkrishna@cce.edu.in"
+            placeholder="Enter your email address"
           />
           {errors.email && <p className="text-red-500 text-xs mt-1 font-heading">{errors.email}</p>}
         </div>
@@ -159,9 +158,9 @@ export default function ContactForm() {
         </div>
 
         {/* Submit Button */}
-        <Button 
-          type="submit" 
-          disabled={isSubmitting} 
+        <Button
+          type="submit"
+          disabled={isSubmitting}
           className="w-full flex items-center justify-center gap-2 border-signal bg-signal hover:bg-transparent hover:text-signal text-paper"
         >
           {isSubmitting ? (
