@@ -1,13 +1,40 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-indigo: #0e3061;
+    --color-signal: #fe572a;
+    --color-teal: #065964;
+    --color-ink: #2a2a28;
+    --color-paper: #f7f1e4;
+  }
+
+  body {
+    @apply bg-paper text-ink font-body antialiased;
+    margin: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-indigo tracking-tight;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Custom scrollbar matching the visual brand style */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f7f1e4; /* paper */
+}
+::-webkit-scrollbar-thumb {
+  background: #0e3061; /* indigo */
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #fe572a; /* signal */
 }
