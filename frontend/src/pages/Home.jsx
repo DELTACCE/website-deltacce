@@ -7,6 +7,7 @@ import Card from '../components/Card';
 import TeamCard from '../components/TeamCard';
 import Button from '../components/Button';
 import { committeeData } from '../data/committee';
+import ScrollReveal from '../components/ScrollReveal';
 
 export default function Home() {
   // Get featured members for preview (Faculty Coordinator + featured students)
@@ -67,7 +68,7 @@ export default function Home() {
         </div>
 
         <div className="relative max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 z-10">
-          <div className="lg:col-span-8 flex flex-col justify-center text-left">
+          <ScrollReveal className="lg:col-span-8 flex flex-col justify-center text-left" delay={0.1}>
             {/* Tagline Indicator */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-indigo/15 bg-paper/60 backdrop-blur-sm self-start mb-6 font-heading text-xs text-teal font-bold tracking-widest uppercase">
               <span className="w-2 h-2 bg-signal animate-ping rounded-full shrink-0"></span>
@@ -91,10 +92,10 @@ export default function Home() {
                 Explore DELTA
               </Button>
             </div>
-          </div>
+          </ScrollReveal>
           
           {/* Asymmetric blueprint box bleeding off */}
-          <div className="hidden lg:flex lg:col-span-4 justify-end items-center select-none">
+          <ScrollReveal className="hidden lg:flex lg:col-span-4 justify-end items-center select-none" delay={0.3} direction="left">
             <div className="relative w-80 h-80 border border-dashed border-indigo/20 flex items-center justify-center p-8 bg-paper/20 backdrop-blur-sm">
               <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-signal"></div>
               <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-signal"></div>
@@ -104,16 +105,16 @@ export default function Home() {
                 <span className="text-signal">DOT_COUNT: 60</span>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* 2. ABOUT PREVIEW SECTION */}
       <section className="py-24 px-6 border-b border-indigo/10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
-        <div className="lg:col-span-4">
+        <ScrollReveal className="lg:col-span-4">
           <SectionHeading eyebrow="01 / ORIGIN" heading="About DELTA" />
-        </div>
-        <div className="lg:col-span-8 flex flex-col justify-between">
+        </ScrollReveal>
+        <ScrollReveal className="lg:col-span-8 flex flex-col justify-between" delay={0.15}>
           <div>
             <h3 className="font-heading text-xl font-bold text-indigo uppercase mb-6 tracking-wide leading-snug">
               Bridging academic limits with active technical creation.
@@ -129,7 +130,7 @@ export default function Home() {
             LEARN MORE ABOUT DELTA 
             <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
           </Link>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* 3. MISSION, VISION & CORE VALUES */}
@@ -138,18 +139,24 @@ export default function Home() {
           <SectionHeading eyebrow="02 / BLUEPRINT" heading="Mission & Vision" />
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <Card
-              title="Our Mission"
-              description="To provide students with collaborative spaces, resources, and technical support to learn, build, and deploy data systems and Artificial Intelligence solutions."
-            />
-            <Card
-              title="Our Vision"
-              description="To construct a premier student research ecosystem at CCE recognized for computational excellence, creativity, and ethical design in emerging technology."
-            />
-            <Card
-              title="Core Values"
-              description="Built on three fundamental guidelines: Analytical Rigor in problem-solving, Creative Thinking in architectural design, and Collective Growth across our community."
-            />
+            <ScrollReveal delay={0.1}>
+              <Card
+                title="Our Mission"
+                description="To provide students with collaborative spaces, resources, and technical support to learn, build, and deploy data systems and Artificial Intelligence solutions."
+              />
+            </ScrollReveal>
+            <ScrollReveal delay={0.2}>
+              <Card
+                title="Our Vision"
+                description="To construct a premier student research ecosystem at CCE recognized for computational excellence, creativity, and ethical design in emerging technology."
+              />
+            </ScrollReveal>
+            <ScrollReveal delay={0.3}>
+              <Card
+                title="Core Values"
+                description="Built on three fundamental guidelines: Analytical Rigor in problem-solving, Creative Thinking in architectural design, and Collective Growth across our community."
+              />
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -166,13 +173,14 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
             {whatWeDoList.map((item, idx) => (
-              <Card
-                key={idx}
-                icon={item.icon}
-                title={item.title}
-                description={item.description}
-                iconPosition="top-right"
-              />
+              <ScrollReveal key={idx} delay={(idx % 3) * 0.1}>
+                <Card
+                  icon={item.icon}
+                  title={item.title}
+                  description={item.description}
+                  iconPosition="top-right"
+                />
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -190,13 +198,15 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
             {/* Featured Faculty */}
-            <div className="md:col-span-2">
+            <ScrollReveal className="md:col-span-2" delay={0.1}>
               <TeamCard member={facultyMember} featured={true} />
-            </div>
+            </ScrollReveal>
             
             {/* Featured Students */}
-            {featuredStudents.slice(0, 2).map((student) => (
-              <TeamCard key={student.id} member={student} />
+            {featuredStudents.slice(0, 2).map((student, idx) => (
+              <ScrollReveal key={student.id} delay={0.2 + idx * 0.1}>
+                <TeamCard member={student} />
+              </ScrollReveal>
             ))}
           </div>
         </div>

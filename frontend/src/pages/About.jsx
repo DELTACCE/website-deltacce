@@ -2,6 +2,7 @@ import React from 'react';
 import { Database, Cpu, Layers, BarChart3, Binary, Zap, BookOpen, Code, Users, Trophy, Compass, ArrowRight } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
 import Card from '../components/Card';
+import ScrollReveal from '../components/ScrollReveal';
 
 export default function About() {
   const focusAreas = [
@@ -47,7 +48,7 @@ export default function About() {
       {/* 1. HERO SECTION */}
       <section className="relative px-6 pb-20 border-b border-indigo/10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-8">
+          <ScrollReveal className="lg:col-span-8" delay={0.1}>
             <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
               {"// ABOUT US"}
             </span>
@@ -58,15 +59,15 @@ export default function About() {
             <p className="font-body text-lg text-ink/80 leading-relaxed max-w-3xl">
               DELTA (Data Oriented Thinkers' Association) is formed as a collaborative community within the Department of Computer Science & Engineering (Data Science) at Christ College of Engineering. We seek to cultivate analytical minds capable of decoding complex problems and building state-of-the-art intelligent systems.
             </p>
-          </div>
-          <div className="hidden lg:block lg:col-span-4 self-center select-none">
+          </ScrollReveal>
+          <ScrollReveal className="hidden lg:block lg:col-span-4 self-center select-none" delay={0.3} direction="left">
             <div className="relative p-6 border border-indigo/10 bg-paper/30 flex flex-col justify-between h-48 w-full">
               <div className="absolute top-0 right-0 w-2 h-2 bg-signal"></div>
               <div className="absolute bottom-0 left-0 w-2 h-2 bg-signal"></div>
               <span className="font-heading text-xs text-indigo/30 uppercase tracking-widest">{"// CCE_DS_DEPT"}</span>
               <span className="font-heading text-5xl font-extrabold text-indigo/10 align-bottom self-end">SYS_v1.0</span>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -132,15 +133,16 @@ export default function About() {
             {focusAreas.map((area, idx) => {
               const Icon = area.icon;
               return (
-                <div 
+                <ScrollReveal 
                   key={idx} 
+                  delay={idx * 0.08}
                   className="group flex flex-col items-center justify-center border border-indigo/10 p-6 bg-paper/50 hover:bg-paper/80 hover:border-signal/30 transition-all duration-300 select-none hover:-translate-y-1 hover:shadow-sm"
                 >
                   <Icon strokeWidth={1.5} className="w-10 h-10 text-indigo/60 group-hover:text-signal transition-colors duration-300 mb-4" />
                   <span className="font-heading text-xs text-indigo font-bold text-center uppercase tracking-wider group-hover:text-indigo transition-colors">
                     {area.label}
                   </span>
-                </div>
+                </ScrollReveal>
               );
             })}
           </div>
