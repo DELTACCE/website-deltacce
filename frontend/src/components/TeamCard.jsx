@@ -31,7 +31,7 @@ export default function TeamCard({ member, featured = false }) {
       <div className="flex-grow flex flex-col justify-between pt-1">
         <div>
           <span className="font-heading text-[10px] md:text-xs text-teal font-bold uppercase tracking-wider block mb-1">
-            {member.role}
+            {member.role} {member.batch && `// ${member.batch}`}
           </span>
           <h3 className="font-heading text-base md:text-lg font-extrabold text-indigo uppercase leading-tight tracking-wide mb-2">
             {member.name}

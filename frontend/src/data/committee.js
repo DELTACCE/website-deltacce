@@ -1,23 +1,34 @@
 export const committeeData = {
   faculty: {
-    id: "faculty-coord",
-    name: "Dr. Lijo Vincent",
-    role: "Faculty Coordinator",
+    id: "faculty-lead",
+    name: "Ms. Rinsu Aravind",
+    role: "Faculty Lead",
     department: "Data Science & Computer Engineering",
-    driveId: "1ZtQ2lJ5wVzS9B34Xn67Y89abcd_placeholder1", // Mock Google Drive File ID
-    bio: "Guiding the next generation of data specialists and computational researchers.",
+    driveId: "", // Google Drive File ID can be added here
+    bio: "Guiding DELTA's operations and bridging student innovations with department milestones.",
     socials: {
       linkedin: "https://linkedin.com",
-      email: "mailto:lijo.vincent@cce.edu.in"
+      email: "mailto:rinsu.aravind@cce.edu.in"
     }
   },
-  students: [
+  core: [
     {
-      id: "co-coo",
-      name: "Siddharth Menon",
-      role: "Co-Chief Operating Officer",
-      driveId: "1ZtQ2lJ5wVzS9B34Xn67Y89abcd_placeholder2",
-      featured: true,
+      id: "chairperson",
+      name: "Tharun Krishna C U",
+      role: "Chairperson",
+      batch: "S5 CSDS",
+      driveId: "",
+      socials: {
+        linkedin: "https://linkedin.com",
+        instagram: "https://instagram.com"
+      }
+    },
+    {
+      id: "vice-chairperson",
+      name: "Neharin Navas Elayadath",
+      role: "Vice Chairperson",
+      batch: "S5 CSDS",
+      driveId: "",
       socials: {
         linkedin: "https://linkedin.com",
         instagram: "https://instagram.com"
@@ -25,10 +36,10 @@ export const committeeData = {
     },
     {
       id: "secretary",
-      name: "Anjali Krishna",
+      name: "Nesla",
       role: "Secretary",
-      driveId: "1ZtQ2lJ5wVzS9B34Xn67Y89abcd_placeholder3",
-      featured: true,
+      batch: "S3 CSDS",
+      driveId: "",
       socials: {
         linkedin: "https://linkedin.com",
         instagram: "https://instagram.com"
@@ -36,67 +47,55 @@ export const committeeData = {
     },
     {
       id: "treasurer",
-      name: "Faris Rahman",
+      name: "George",
       role: "Treasurer",
-      driveId: "1ZtQ2lJ5wVzS9B34Xn67Y89abcd_placeholder4",
-      featured: false,
-      socials: {
-        linkedin: "https://linkedin.com",
-        instagram: "https://instagram.com"
-      }
-    },
-    {
-      id: "tech-lead",
-      name: "Devadathan K.",
-      role: "Technical Lead",
-      driveId: "1ZtQ2lJ5wVzS9B34Xn67Y89abcd_placeholder5",
-      featured: true,
-      socials: {
-        linkedin: "https://linkedin.com",
-        instagram: "https://instagram.com"
-      }
-    },
-    {
-      id: "design-lead",
-      name: "Aparna Nair",
-      role: "Design Lead",
-      driveId: "1ZtQ2lJ5wVzS9B34Xn67Y89abcd_placeholder6",
-      featured: false,
-      socials: {
-        linkedin: "https://linkedin.com",
-        instagram: "https://instagram.com"
-      }
-    },
-    {
-      id: "media-lead",
-      name: "Rohan Mathew",
-      role: "Media Lead",
-      driveId: "1ZtQ2lJ5wVzS9B34Xn67Y89abcd_placeholder7",
-      featured: true,
-      socials: {
-        linkedin: "https://linkedin.com",
-        instagram: "https://instagram.com"
-      }
-    },
-    {
-      id: "event-coord",
-      name: "Meenakshi S.",
-      role: "Event Coordinator",
-      driveId: "1ZtQ2lJ5wVzS9B34Xn67Y89abcd_placeholder8",
-      featured: false,
+      batch: "S3 CSDS",
+      driveId: "",
       socials: {
         linkedin: "https://linkedin.com",
         instagram: "https://instagram.com"
       }
     }
+  ],
+  technical: [
+    { id: "t1", name: "Hari Krishna", role: "Technical Lead", batch: "S5 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "t2", name: "Minhaj Noushad", role: "Technical Lead", batch: "S5 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "t3", name: "Alvi A V", role: "Technical Lead", batch: "S5 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "t4", name: "Jhon Antony", role: "Technical Lead", batch: "S5 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "t5", name: "Abel Babu", role: "Technical Lead", batch: "S3 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "t6", name: "Abel Bijoy", role: "Technical Lead", batch: "S3 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "t7", name: "Sreehari", role: "Technical Lead", batch: "S3 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "t8", name: "Sinan", role: "Technical Lead", batch: "S3 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } }
+  ],
+  media: [
+    { id: "m1", name: "Ruthurag Mohan", role: "Media Lead", batch: "S5 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "m2", name: "Harsha K P", role: "Media Lead", batch: "S5 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "m3", name: "Jessel", role: "Media Lead", batch: "S3 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "m4", name: "Anugrah", role: "Media Lead", batch: "S3 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } }
+  ],
+  content: [
+    { id: "c1", name: "Andria Ann Biju", role: "Content Lead", batch: "S5 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "c2", name: "Delna Mary Anto", role: "Content Lead", batch: "S5 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "c3", name: "Angel Maria", role: "Content Lead", batch: "S3 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "c4", name: "Nasarin", role: "Content Lead", batch: "S3 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } }
+  ],
+  events: [
+    { id: "e1", name: "Anoop Danimon", role: "Event Coordinator", batch: "S5 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "e2", name: "Aleena Sidhikh", role: "Event Coordinator", batch: "S5 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "e3", name: "H Athila", role: "Event Coordinator", batch: "S5 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "e4", name: "Sandesh E J", role: "Event Coordinator", batch: "S5 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "e5", name: "Alan Jaison", role: "Event Coordinator", batch: "S3 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "e6", name: "Sijil", role: "Event Coordinator", batch: "S3 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "e7", name: "Nizma", role: "Event Coordinator", batch: "S3 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "e8", name: "Henet", role: "Event Coordinator", batch: "S3 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } }
   ]
 };
 
-// Utility function to compile direct-embeddable Google Drive URL
+// Direct-embeddable Google Drive URL compiler
 export function getDriveImageUrl(fileId) {
-  // If the fileId is a placeholder or not set, return a high-quality UI placeholder avatar
-  if (!fileId || fileId.includes("placeholder")) {
-    return `https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300&h=300`;
+  // If the fileId is missing or empty, return the Dicebear initials avatar with DELTA color parameters
+  if (!fileId || fileId.trim() === "") {
+    return "";
   }
   return `https://drive.google.com/uc?export=view&id=${fileId}`;
 }

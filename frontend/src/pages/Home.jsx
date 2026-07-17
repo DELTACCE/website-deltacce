@@ -11,7 +11,7 @@ import { committeeData } from '../data/committee';
 export default function Home() {
   // Get featured members for preview (Faculty Coordinator + featured students)
   const facultyMember = committeeData.faculty;
-  const featuredStudents = committeeData.students.filter(m => m.featured).slice(0, 4);
+  const featuredStudents = committeeData.core || [];
 
   const whatWeDoList = [
     {
