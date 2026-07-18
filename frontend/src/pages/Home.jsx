@@ -70,7 +70,7 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 z-10">
           <ScrollReveal className="lg:col-span-8 flex flex-col justify-center text-left" delay={0.1}>
             {/* Tagline Indicator */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-indigo/15 bg-paper/60 backdrop-blur-sm self-start mb-6 font-heading text-xs text-teal font-bold tracking-widest uppercase">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-indigo/15 bg-paper/60 backdrop-blur-sm self-start mb-6 font-heading text-xs text-teal font-bold tracking-widest uppercase rounded-full">
               <span className="w-2 h-2 bg-signal animate-ping rounded-full shrink-0"></span>
               <span>CONNECTING THE DOTS. CREATING THE DELTA.</span>
             </div>
@@ -96,9 +96,9 @@ export default function Home() {
           
           {/* Asymmetric blueprint box bleeding off */}
           <ScrollReveal className="hidden lg:flex lg:col-span-4 justify-end items-center select-none" delay={0.3} direction="left">
-            <div className="relative w-80 h-80 border border-dashed border-indigo/20 flex items-center justify-center p-8 bg-paper/20 backdrop-blur-sm">
-              <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-signal"></div>
-              <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-signal"></div>
+            <div className="relative w-80 h-80 border border-dashed border-indigo/20 flex items-center justify-center p-8 bg-paper/20 backdrop-blur-sm rounded-3xl">
+              <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-signal rounded-tr-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-signal rounded-bl-3xl"></div>
               <span className="text-[12rem] font-bold font-heading text-indigo/10 select-none">δ</span>
               <div className="absolute bottom-6 right-6 font-heading text-xs text-indigo/40 leading-none text-right">
                 SYS_ACTIVE_2026<br />

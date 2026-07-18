@@ -76,31 +76,27 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="border border-indigo/10 p-8 bg-paper/40 relative select-none">
-      {/* Blueprint Corner Accents */}
-      <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-indigo/20"></div>
-      <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-indigo/20"></div>
-
-      <h3 className="font-heading text-lg font-extrabold text-indigo uppercase mb-6 tracking-wider">
+    <div className="border border-indigo/10 p-8 bg-paper/40 relative select-none rounded-3xl">
+      <h3 className="font-heading text-lg font-bold text-indigo uppercase mb-6 tracking-wider">
         Send a Message
       </h3>
 
       {submitStatus === 'success' && (
-        <div className="mb-6 p-4 border border-green-200 bg-green-50/50 text-green-800 flex items-start gap-3">
+        <div className="mb-6 p-4 border border-green-200 bg-green-50/50 text-green-800 flex items-start gap-3 rounded-2xl">
           <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
           <div className="font-body text-sm">
             <h4 className="font-heading text-xs font-bold uppercase mb-1">Transmission Successful</h4>
-            <p>Thank you. Your message has been routed to the DELTA registry. We will respond shortly.</p>
+            <p className="font-light">Thank you. Your message has been routed to the DELTA registry. We will respond shortly.</p>
           </div>
         </div>
       )}
 
       {submitStatus === 'error' && (
-        <div className="mb-6 p-4 border border-red-200 bg-red-50/50 text-red-800 flex items-start gap-3">
+        <div className="mb-6 p-4 border border-red-200 bg-red-50/50 text-red-800 flex items-start gap-3 rounded-2xl">
           <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
           <div className="font-body text-sm">
             <h4 className="font-heading text-xs font-bold uppercase mb-1">Transmission Error</h4>
-            <p>Could not dispatch message packet. Please verify your connection and try again.</p>
+            <p className="font-light">Could not dispatch message packet. Please verify your connection and try again.</p>
           </div>
         </div>
       )}
@@ -117,7 +113,7 @@ export default function ContactForm() {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className={`w-full bg-paper/50 border ${errors.name ? 'border-red-500' : 'border-indigo/10 focus:border-signal'} p-3 outline-none transition-colors font-body text-ink`}
+            className={`w-full bg-paper/50 border ${errors.name ? 'border-red-500 rounded-xl' : 'border-indigo/10 focus:border-signal rounded-xl'} p-3 outline-none transition-colors font-body text-ink font-light`}
             placeholder="Enter your name"
           />
           {errors.name && <p className="text-red-500 text-xs mt-1 font-heading">{errors.name}</p>}
@@ -134,7 +130,7 @@ export default function ContactForm() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className={`w-full bg-paper/50 border ${errors.email ? 'border-red-500' : 'border-indigo/10 focus:border-signal'} p-3 outline-none transition-colors font-body text-ink`}
+            className={`w-full bg-paper/50 border ${errors.email ? 'border-red-500 rounded-xl' : 'border-indigo/10 focus:border-signal rounded-xl'} p-3 outline-none transition-colors font-body text-ink font-light`}
             placeholder="Enter your email address"
           />
           {errors.email && <p className="text-red-500 text-xs mt-1 font-heading">{errors.email}</p>}
@@ -151,7 +147,7 @@ export default function ContactForm() {
             value={formData.message}
             onChange={handleChange}
             rows="5"
-            className={`w-full bg-paper/50 border ${errors.message ? 'border-red-500' : 'border-indigo/10 focus:border-signal'} p-3 outline-none transition-colors font-body text-ink resize-none`}
+            className={`w-full bg-paper/50 border ${errors.message ? 'border-red-500 rounded-xl' : 'border-indigo/10 focus:border-signal rounded-xl'} p-3 outline-none transition-colors font-body text-ink resize-none font-light`}
             placeholder="Enter your query or collaboration idea..."
           ></textarea>
           {errors.message && <p className="text-red-500 text-xs mt-1 font-heading">{errors.message}</p>}

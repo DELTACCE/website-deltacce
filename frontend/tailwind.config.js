@@ -13,8 +13,8 @@ module.exports = {
         paper: '#f7f1e4',  // Paper cream - primary background
       },
       fontFamily: {
-        heading: ['"JetBrains Mono"', 'monospace'],
-        body: ['Inter', 'sans-serif'],
+        heading: ['"BBH Bogle"', '"BBH Sans Bogle"', 'sans-serif'],
+        body: ['"Lexend Exa"', 'sans-serif'],
       },
     },
   },

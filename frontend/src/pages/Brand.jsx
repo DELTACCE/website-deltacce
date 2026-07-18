@@ -58,32 +58,32 @@ export default function Brand() {
             <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-6">
               
               {/* Primary Logo */}
-              <div className="border border-indigo/10 p-6 bg-paper/40 flex flex-col items-center justify-between min-h-[160px] text-center select-none group hover:border-signal/30 transition-all duration-300">
-                <div className="flex items-center gap-2 text-indigo font-heading font-extrabold text-xl py-6">
+              <div className="border border-indigo/10 p-6 bg-paper/40 flex flex-col items-center justify-between min-h-[160px] text-center select-none group hover:border-signal/30 transition-all duration-300 rounded-3xl">
+                <div className="flex items-center gap-2 text-indigo font-heading font-bold text-xl py-6">
                   <span className="text-2xl text-signal">δ</span> DELTA
                 </div>
                 <span className="font-heading text-[10px] text-teal font-bold tracking-wider uppercase">01 // PRIMARY</span>
               </div>
 
               {/* Accent Orange */}
-              <div className="border border-indigo/10 p-6 bg-paper/40 flex flex-col items-center justify-between min-h-[160px] text-center select-none group hover:border-signal/30 transition-all duration-300">
-                <div className="flex items-center gap-2 text-signal font-heading font-extrabold text-xl py-6">
+              <div className="border border-indigo/10 p-6 bg-paper/40 flex flex-col items-center justify-between min-h-[160px] text-center select-none group hover:border-signal/30 transition-all duration-300 rounded-3xl">
+                <div className="flex items-center gap-2 text-signal font-heading font-bold text-xl py-6">
                   <span className="text-2xl text-indigo">δ</span> DELTA
                 </div>
                 <span className="font-heading text-[10px] text-teal font-bold tracking-wider uppercase">02 // ACCENT</span>
               </div>
 
               {/* Monochrome */}
-              <div className="border border-indigo/10 p-6 bg-paper/40 flex flex-col items-center justify-between min-h-[160px] text-center select-none group hover:border-signal/30 transition-all duration-300">
-                <div className="flex items-center gap-2 text-indigo font-heading font-extrabold text-xl py-6">
+              <div className="border border-indigo/10 p-6 bg-paper/40 flex flex-col items-center justify-between min-h-[160px] text-center select-none group hover:border-signal/30 transition-all duration-300 rounded-3xl">
+                <div className="flex items-center gap-2 text-indigo font-heading font-bold text-xl py-6">
                   <span className="text-2xl text-indigo">δ</span> DELTA
                 </div>
                 <span className="font-heading text-[10px] text-teal font-bold tracking-wider uppercase">03 // MONOCHROME</span>
               </div>
 
               {/* Icon Only */}
-              <div className="border border-indigo/10 p-6 bg-paper/40 flex flex-col items-center justify-between min-h-[160px] text-center select-none group hover:border-signal/30 transition-all duration-300">
-                <div className="text-indigo font-heading font-extrabold text-4xl py-4 select-none">
+              <div className="border border-indigo/10 p-6 bg-paper/40 flex flex-col items-center justify-between min-h-[160px] text-center select-none group hover:border-signal/30 transition-all duration-300 rounded-3xl">
+                <div className="text-indigo font-heading font-bold text-4xl py-4 select-none">
                   <span className="text-signal">δ</span>
                 </div>
                 <span className="font-heading text-[10px] text-teal font-bold tracking-wider uppercase">04 // ICON MARK</span>
@@ -127,13 +127,13 @@ export default function Brand() {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-10">
             
-            {/* Heading Spec */}
-            <div className="border border-indigo/10 p-8 bg-paper/40">
+             {/* Heading Spec */}
+            <div className="border border-indigo/10 p-8 bg-paper/40 rounded-3xl">
               <span className="font-heading text-[10px] text-teal font-bold tracking-wider block mb-4 uppercase">
-                Primary Headings // JetBrains Mono
+                Primary Headings // BBH Bogle
               </span>
               <div className="font-heading">
-                <span className="text-4xl font-extrabold text-indigo block uppercase tracking-tight mb-2">
+                <span className="text-4xl font-normal text-indigo block uppercase tracking-tight mb-2">
                   Aa Bb Cc 123
                 </span>
                 <p className="text-xs text-ink/60 mb-6 leading-relaxed select-none">
@@ -143,25 +143,25 @@ export default function Brand() {
                 </p>
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between border-b border-indigo/5 pb-1">
-                    <span className="font-bold text-indigo">H1 HEADLINE LARGE</span>
-                    <span className="text-teal">Space/JetBrains Mono - 4xl</span>
+                    <span className="font-normal text-indigo">H1 HEADLINE LARGE</span>
+                    <span className="text-teal">BBH Bogle - 4xl</span>
                   </div>
                   <div className="flex justify-between border-b border-indigo/5 pb-1">
-                    <span className="font-semibold text-indigo">H2 Section Eyebrow</span>
-                    <span className="text-teal">Space/JetBrains Mono - 2xl</span>
+                    <span className="font-normal text-indigo">H2 Section Eyebrow</span>
+                    <span className="text-teal">BBH Bogle - 2xl</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-indigo">H3 Component Label</span>
-                    <span className="text-teal">Space/JetBrains Mono - lg</span>
+                    <span className="text-indigo font-normal">H3 Component Label</span>
+                    <span className="text-teal">BBH Bogle - lg</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Body Spec */}
-            <div className="border border-indigo/10 p-8 bg-paper/40">
+            <div className="border border-indigo/10 p-8 bg-paper/40 rounded-3xl">
               <span className="font-heading text-[10px] text-teal font-bold tracking-wider block mb-4 uppercase">
-                Body Copy // Inter
+                Body Copy // Lexend Exa
               </span>
               <div className="font-body">
                 <span className="text-4xl text-ink font-light block mb-2">
@@ -174,16 +174,16 @@ export default function Brand() {
                 </p>
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between border-b border-indigo/5 pb-1">
-                    <span className="font-medium text-ink">Body Lead Text</span>
-                    <span className="text-teal">Inter Medium - 16px</span>
+                    <span className="font-light text-ink">Body Lead Text</span>
+                    <span className="text-teal">Lexend Exa Light 300 - 16px</span>
                   </div>
                   <div className="flex justify-between border-b border-indigo/5 pb-1">
-                    <span className="text-ink">Paragraph Text Normal</span>
-                    <span className="text-teal">Inter Regular - 14px</span>
+                    <span className="text-ink font-light">Paragraph Text Normal</span>
+                    <span className="text-teal">Lexend Exa Light 300 - 14px</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-ink/60">Small Footer/Caption</span>
-                    <span className="text-teal">Inter Light - 12px</span>
+                    <span className="text-ink/60 font-light">Small Footer/Caption</span>
+                    <span className="text-teal">Lexend Exa Light 300 - 12px</span>
                   </div>
                 </div>
               </div>
@@ -208,9 +208,9 @@ export default function Brand() {
         </section>
 
         {/* 5. Downloads Placeholder */}
-        <section className="border border-indigo/10 bg-paper/20 p-8 md:p-12 text-center relative select-none">
-          <div className="absolute top-0 left-0 w-3.5 h-3.5 border-l border-t border-signal"></div>
-          <div className="absolute bottom-0 right-0 w-3.5 h-3.5 border-r border-b border-signal"></div>
+        <section className="border border-indigo/10 bg-paper/20 p-8 md:p-12 text-center relative select-none rounded-3xl">
+          <div className="absolute top-0 left-0 w-3.5 h-3.5 border-l border-t border-signal rounded-tl-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-3.5 h-3.5 border-r border-b border-signal rounded-br-3xl"></div>
           
           <div className="max-w-md mx-auto flex flex-col items-center">
             <Download strokeWidth={1.5} className="w-10 h-10 text-indigo/35 mb-4" />

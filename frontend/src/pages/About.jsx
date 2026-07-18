@@ -44,7 +44,7 @@ export default function About() {
 
   return (
     <div className="bg-paper py-16">
-      
+
       {/* 1. HERO SECTION */}
       <section className="relative px-6 pb-20 border-b border-indigo/10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -61,11 +61,11 @@ export default function About() {
             </p>
           </ScrollReveal>
           <ScrollReveal className="hidden lg:block lg:col-span-4 self-center select-none" delay={0.3} direction="left">
-            <div className="relative p-6 border border-indigo/10 bg-paper/30 flex flex-col justify-between h-48 w-full">
-              <div className="absolute top-0 right-0 w-2 h-2 bg-signal"></div>
-              <div className="absolute bottom-0 left-0 w-2 h-2 bg-signal"></div>
+            <div className="relative p-6 border border-indigo/10 bg-paper/30 flex flex-col justify-between h-48 w-full rounded-3xl">
+              <div className="absolute top-0 right-0 w-2.5 h-2.5 bg-signal rounded-tr-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-2.5 h-2.5 bg-signal rounded-bl-3xl"></div>
               <span className="font-heading text-xs text-indigo/30 uppercase tracking-widest">{"// CCE_DS_DEPT"}</span>
-              <span className="font-heading text-5xl font-extrabold text-indigo/10 align-bottom self-end">SYS_v1.0</span>
+              <span className="font-heading text-5xl font-bold text-indigo/10 align-bottom self-end">SYS_v1.0</span>
             </div>
           </ScrollReveal>
         </div>
@@ -85,16 +85,16 @@ export default function About() {
               Students and faculty coordinators in the Data Science department proposed a unified association to bridge the gap between textbook formulas and production-grade applications. DELTA was designed to serve as a launchpad where students learn, build, and deploy code together.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-6 select-none">
-              <div className="border border-indigo/10 p-4 bg-paper/50">
-                <span className="font-heading text-3xl font-extrabold text-signal block">2026</span>
+              <div className="border border-indigo/10 p-4 bg-paper/50 rounded-2xl">
+                <span className="font-heading text-3xl font-bold text-signal block">2026</span>
                 <span className="font-body text-xs text-indigo font-bold uppercase tracking-wider">Year Founded</span>
               </div>
-              <div className="border border-indigo/10 p-4 bg-paper/50">
-                <span className="font-heading text-3xl font-extrabold text-signal block">100+</span>
+              <div className="border border-indigo/10 p-4 bg-paper/50 rounded-2xl">
+                <span className="font-heading text-3xl font-bold text-signal block">100+</span>
                 <span className="font-body text-xs text-indigo font-bold uppercase tracking-wider">Active Members</span>
               </div>
-              <div className="border border-indigo/10 p-4 bg-paper/50 col-span-2 md:col-span-1">
-                <span className="font-heading text-3xl font-extrabold text-signal block">6+</span>
+              <div className="border border-indigo/10 p-4 bg-paper/50 col-span-2 md:col-span-1 rounded-2xl">
+                <span className="font-heading text-3xl font-bold text-signal block">6+</span>
                 <span className="font-body text-xs text-indigo font-bold uppercase tracking-wider">Focus Fields</span>
               </div>
             </div>
@@ -106,7 +106,7 @@ export default function About() {
       <section className="py-24 px-6 border-b border-indigo/10 bg-paper/30">
         <div className="max-w-7xl mx-auto">
           <SectionHeading eyebrow="02 / BLUEPRINT" heading="Values & Direction" />
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
             <Card
               title="Our Mission"
@@ -128,18 +128,18 @@ export default function About() {
       <section className="py-20 px-6 border-b border-indigo/10">
         <div className="max-w-7xl mx-auto">
           <SectionHeading eyebrow="03 / CORE DOMAINS" heading="Our Focus Areas" />
-          
+
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mt-12">
             {focusAreas.map((area, idx) => {
               const Icon = area.icon;
               return (
-                <ScrollReveal 
-                  key={idx} 
+                <ScrollReveal
+                  key={idx}
                   delay={idx * 0.08}
-                  className="group flex flex-col items-center justify-center border border-indigo/10 p-6 bg-paper/50 hover:bg-paper/80 hover:border-signal/30 transition-all duration-300 select-none hover:-translate-y-1 hover:shadow-sm"
+                  className="group flex flex-col items-center justify-center border border-indigo/10 p-6 bg-paper/50 hover:bg-paper/80 hover:border-signal/30 transition-all duration-300 select-none hover:-translate-y-1 hover:shadow-sm rounded-2xl"
                 >
                   <Icon strokeWidth={1.5} className="w-10 h-10 text-indigo/60 group-hover:text-signal transition-colors duration-300 mb-4" />
-                  <span className="font-heading text-xs text-indigo font-bold text-center uppercase tracking-wider group-hover:text-indigo transition-colors">
+                  <span className="font-heading text-xs text-indigo font-bold text-center uppercase tracking-wider group-hover:text-indigo transition-colors font-medium">
                     {area.label}
                   </span>
                 </ScrollReveal>
@@ -153,7 +153,7 @@ export default function About() {
       <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <SectionHeading eyebrow="04 / INVITATION" heading="Why Join DELTA?" />
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
             {whyJoinReasons.map((reason, idx) => (
               <Card
@@ -164,25 +164,21 @@ export default function About() {
                 iconPosition="top-right"
               />
             ))}
-            
+
             {/* Call to action card */}
-            <div className="group relative bg-indigo border border-indigo p-6 md:p-8 flex flex-col justify-between select-none">
-              {/* Corner markings */}
-              <div className="absolute top-0 right-0 w-3 h-3 border-r border-t border-signal"></div>
-              <div className="absolute bottom-0 left-0 w-3 h-3 border-l border-b border-signal"></div>
-              
+            <div className="group relative bg-signal border border-indigo/20 p-6 md:p-8 flex flex-col justify-between select-none rounded-3xl hover:border-indigo/40 hover:-translate-y-1.5 hover:shadow-[0_15px_35px_-10px_rgba(14,48,97,0.3)] transition-all duration-300">
               <div>
-                <h3 className="font-heading text-lg font-extrabold text-paper uppercase mb-4 tracking-wide">
+                <h3 className="font-heading text-lg font-bold text-paper uppercase mb-4 tracking-wide group-hover:text-indigo transition-colors">
                   Shape the future
                 </h3>
-                <p className="font-body text-sm leading-relaxed text-paper/70">
+                <p className="font-body text-sm leading-relaxed text-paper/75 font-light">
                   Ready to deploy algorithms, build networks, and grow alongside fellow creators? Connect the dots with us today.
                 </p>
               </div>
               <div className="mt-8">
-                <a 
-                  href="/contact" 
-                  className="inline-flex items-center gap-2 font-heading text-xs font-bold text-signal hover:text-paper transition-colors duration-300"
+                <a
+                  href="/contact"
+                  className="inline-flex items-center gap-2 font-heading text-xs font-bold text-indigo hover:text-paper transition-colors duration-300"
                 >
                   APPLICATION FORM <ArrowRight className="w-4 h-4" />
                 </a>

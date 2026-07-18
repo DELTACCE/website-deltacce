@@ -67,15 +67,14 @@ export default function Contact() {
               {contactDetails.map((detail, idx) => {
                 const Icon = detail.icon;
                 return (
-                  <div key={idx} className="group border border-indigo/10 bg-paper/40 p-6 relative hover:border-signal/30 transition-all duration-300">
-                    <div className="absolute top-0 right-0 w-2.5 h-2.5 border-r border-t border-indigo/20 group-hover:border-signal/40 transition-colors"></div>
+                  <div key={idx} className="group border border-indigo/10 bg-paper/40 p-6 relative hover:border-signal/30 transition-all duration-300 rounded-2xl">
                     <div className="flex gap-4">
                       <Icon strokeWidth={1.5} className="w-6 h-6 text-signal shrink-0 mt-1" />
                       <div>
-                        <h4 className="font-heading text-sm font-extrabold text-indigo uppercase tracking-wider mb-2">
+                        <h4 className="font-heading text-sm font-bold text-indigo uppercase tracking-wider mb-2">
                           {detail.title}
                         </h4>
-                        <div className="font-body text-sm text-ink/75 leading-relaxed mb-4">
+                        <div className="font-body text-sm text-ink/75 leading-relaxed mb-4 font-light">
                           {detail.content}
                         </div>
                         <a 
@@ -94,7 +93,7 @@ export default function Contact() {
             </div>
 
             {/* Social handles */}
-            <div className="border border-indigo/10 bg-paper/40 p-6 relative">
+            <div className="border border-indigo/10 bg-paper/40 p-6 relative rounded-2xl">
               <h4 className="font-heading text-xs text-signal font-bold uppercase tracking-wider mb-4">
                 {"// CHANNELS"}
               </h4>
@@ -107,7 +106,7 @@ export default function Contact() {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center gap-2 border border-indigo/10 px-4 py-2 hover:border-signal/30 bg-paper/30 hover:bg-paper transition-all duration-300"
+                      className="group flex items-center gap-2 border border-indigo/10 px-4 py-2 hover:border-signal/30 bg-paper/30 hover:bg-paper transition-all duration-300 rounded-full"
                     >
                       <Icon strokeWidth={1.5} className="w-4 h-4 text-indigo/60 group-hover:text-signal transition-colors" />
                       <span className="font-heading text-xs text-indigo font-bold tracking-wider group-hover:text-indigo">
@@ -126,13 +125,13 @@ export default function Contact() {
         <section className="mb-8">
           <SectionHeading eyebrow="01 / COORDINATES" heading="Location Map" />
           
-          <div className="border border-indigo/15 bg-paper/30 p-2 mt-10 relative overflow-hidden select-none">
+          <div className="border border-indigo/15 bg-paper/30 p-2 mt-10 relative overflow-hidden select-none rounded-3xl">
             {/* Blueprint Grid Lines on Overlay */}
-            <div className="absolute top-2 left-2 z-10 font-heading text-[10px] text-indigo/50 bg-paper/85 px-2 py-1 border border-indigo/10 pointer-events-none uppercase">
+            <div className="absolute top-4 left-4 z-10 font-heading text-[10px] text-indigo/50 bg-paper/85 px-2 py-1 border border-indigo/10 pointer-events-none uppercase rounded-md">
               GRID_COORD: 10.3601 N, 76.2163 E
             </div>
             
-            <div className="w-full h-96 overflow-hidden bg-indigo/5 filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500">
+            <div className="w-full h-96 overflow-hidden bg-indigo/5 filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 rounded-2xl">
               <iframe
                 title="Christ College of Engineering Irinjalakuda Map"
                 src="https://maps.google.com/maps?q=Christ%20College%20of%20Engineering%20Irinjalakuda&t=&z=15&ie=UTF8&iwloc=&output=embed"
@@ -142,6 +141,7 @@ export default function Contact() {
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                className="rounded-2xl"
               ></iframe>
             </div>
           </div>

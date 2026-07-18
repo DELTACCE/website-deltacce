@@ -11,22 +11,19 @@ export default function ColorSwatch({ name, hex, role }) {
   };
 
   return (
-    <div className="group border border-indigo/10 bg-paper/40 p-4 transition-all duration-300 hover:border-signal/30 hover:bg-paper/70 flex flex-col justify-between select-none relative">
-      {/* Blueprint Corner Accents */}
-      <div className="absolute top-0 right-0 w-2.5 h-2.5 border-r border-t border-indigo/20 group-hover:border-signal/30 transition-colors duration-300"></div>
-      
+    <div className="group border border-indigo/10 bg-paper/40 p-4 transition-all duration-300 hover:border-signal/30 hover:bg-paper/70 flex flex-col justify-between select-none relative rounded-2xl">
       <div>
         {/* Color Block */}
         <div 
-          className="w-full h-24 border border-indigo/10 mb-4 transition-transform duration-300 group-hover:scale-[1.01]"
+          className="w-full h-24 border border-indigo/10 mb-4 transition-transform duration-300 group-hover:scale-[1.01] rounded-xl"
           style={{ backgroundColor: hex }}
         ></div>
         
         {/* Label */}
-        <h4 className="font-heading text-sm font-extrabold text-indigo uppercase mb-1">
+        <h4 className="font-heading text-sm font-bold text-indigo uppercase mb-1">
           {name}
         </h4>
-        <p className="font-body text-xs text-ink/75 leading-relaxed mb-4">
+        <p className="font-body text-xs text-ink/75 leading-relaxed mb-4 font-light">
           {role}
         </p>
       </div>
