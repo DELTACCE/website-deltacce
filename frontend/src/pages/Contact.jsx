@@ -34,11 +34,11 @@ export default function Contact() {
   ];
 
   return (
-    <div className="bg-paper py-16 px-6">
-      <div className="max-w-7xl mx-auto">
-        
+    <div className="bg-paper px-6 pt-31">
+      <div className="max-w-5xl mx-auto">
+
         {/* Header Section */}
-        <section className="mb-20">
+        <section className="min-h-[110vh] flex flex-col justify-center border-b border-indigo/10 pb-20 mb-24">
           <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
             {"// LINK SYSTEMS"}
           </span>
@@ -53,7 +53,7 @@ export default function Contact() {
 
         {/* Form and Contact Detail Split */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-24">
-          
+
           {/* Left: Contact Form */}
           <div className="lg:col-span-7">
             <ContactForm />
@@ -61,7 +61,7 @@ export default function Contact() {
 
           {/* Right: Contact details */}
           <div className="lg:col-span-5 flex flex-col justify-between gap-12">
-            
+
             {/* Swatch-style details cards */}
             <div className="space-y-8">
               {contactDetails.map((detail, idx) => {
@@ -77,8 +77,8 @@ export default function Contact() {
                         <div className="font-body text-sm text-ink/75 leading-relaxed mb-4 font-light">
                           {detail.content}
                         </div>
-                        <a 
-                          href={detail.actionUrl} 
+                        <a
+                          href={detail.actionUrl}
                           target={detail.actionUrl.startsWith('mailto') ? '_self' : '_blank'}
                           rel="noopener noreferrer"
                           className="font-heading text-xs font-bold text-teal hover:text-signal transition-colors inline-flex items-center gap-1.5"
@@ -124,13 +124,13 @@ export default function Contact() {
         {/* Embedded Google Map Section */}
         <section className="mb-8">
           <SectionHeading eyebrow="01 / COORDINATES" heading="Location Map" />
-          
+
           <div className="border border-indigo/15 bg-paper/30 p-2 mt-10 relative overflow-hidden select-none rounded-3xl">
             {/* Blueprint Grid Lines on Overlay */}
             <div className="absolute top-4 left-4 z-10 font-heading text-[10px] text-indigo/50 bg-paper/85 px-2 py-1 border border-indigo/10 pointer-events-none uppercase rounded-md">
               GRID_COORD: 10.3601 N, 76.2163 E
             </div>
-            
+
             <div className="w-full h-96 overflow-hidden bg-indigo/5 filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 rounded-2xl">
               <iframe
                 title="Christ College of Engineering Irinjalakuda Map"

@@ -13,10 +13,8 @@ module.exports = {
         paper: '#f7f1e4',  // Paper cream - primary background
       },
       fontFamily: {
-        display: ['"Fredoka"', 'sans-serif'],
-        heading: ['"Fredoka"', 'sans-serif'],
-        body: ['"Inter"', 'sans-serif'],
-        accent: ['"Kalam"', 'cursive'],
+        heading: ['"BBH Bogle"', '"BBH Sans Bogle"', 'sans-serif'],
+        body: ['"Lexend Exa"', 'sans-serif'],
       },
     },
   },

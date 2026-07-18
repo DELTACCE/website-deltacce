@@ -43,11 +43,11 @@ export default function About() {
   ];
 
   return (
-    <div className="bg-paper py-16">
+    <div className="bg-paper px-6 pt-31">
 
       {/* 1. HERO SECTION */}
-      <section className="relative px-6 pb-20 border-b border-indigo/10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <section className="relative pb-20 border-b border-indigo/10 min-h-[110vh] flex flex-col justify-center">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
           <ScrollReveal className="lg:col-span-8" delay={0.1}>
             <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
               {"// ABOUT US"}
@@ -73,7 +73,7 @@ export default function About() {
 
       {/* 2. THE ORIGIN STORY */}
       <section className="py-24 px-6 border-b border-indigo/10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-4">
             <SectionHeading eyebrow="01 / TIMELINE" heading="Our Origin" />
           </div>
@@ -104,7 +104,7 @@ export default function About() {
 
       {/* 3. MISSION, VISION & VALUES */}
       <section className="py-24 px-6 border-b border-indigo/10 bg-paper/30">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <SectionHeading eyebrow="02 / BLUEPRINT" heading="Values & Direction" />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
@@ -126,7 +126,7 @@ export default function About() {
 
       {/* 4. FOCUS AREAS (ICON ROW) */}
       <section className="py-20 px-6 border-b border-indigo/10">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <SectionHeading eyebrow="03 / CORE DOMAINS" heading="Our Focus Areas" />
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mt-12">
@@ -151,7 +151,7 @@ export default function About() {
 
       {/* 5. WHY JOIN DELTA */}
       <section className="py-24 px-6">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <SectionHeading eyebrow="04 / INVITATION" heading="Why Join DELTA?" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">

@@ -8,11 +8,11 @@ export default function Committee() {
   const { faculty, core, technical, media, content, events } = committeeData;
 
   return (
-    <div className="bg-paper py-16 px-6">
-      <div className="max-w-7xl mx-auto">
-        
+    <div className="bg-paper px-6 pt-31">
+      <div className="max-w-5xl mx-auto">
+
         {/* Header Section */}
-        <section className="mb-20">
+        <section className="min-h-[110vh] flex flex-col justify-center border-b border-indigo/10 pb-20 mb-24">
           <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
             {"// TEAM NETWORK"}
           </span>
@@ -54,9 +54,9 @@ export default function Committee() {
         {/* 4. Leads & Coordinators Grids */}
         <section className="mb-24">
           <SectionHeading eyebrow="04 / DEPARTMENTS" heading="Leads & Coordinators" />
-          
+
           <div className="space-y-16 mt-12">
-            
+
             {/* Technical Leads */}
             <div>
               <h3 className="font-heading text-lg font-bold text-indigo uppercase border-b border-indigo/10 pb-2 mb-8 tracking-wider">

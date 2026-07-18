@@ -33,11 +33,11 @@ export default function Brand() {
   ];
 
   return (
-    <div className="bg-paper py-16 px-6">
-      <div className="max-w-7xl mx-auto">
-        
+    <div className="bg-paper px-6 pt-31">
+      <div className="max-w-5xl mx-auto">
+
         {/* Header Section */}
-        <section className="mb-20">
+        <section className="min-h-[110vh] flex flex-col justify-center border-b border-indigo/10 pb-20 mb-24">
           <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
             {"// VISUAL LANGUAGE"}
           </span>
@@ -53,10 +53,10 @@ export default function Brand() {
         {/* 1. Logo Configurations */}
         <section className="mb-24">
           <SectionHeading eyebrow="01 / MARKS" heading="Logo System" />
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-10">
             <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-6">
-              
+
               {/* Primary Logo */}
               <div className="border border-indigo/10 p-6 bg-paper/40 flex flex-col items-center justify-between min-h-[160px] text-center select-none group hover:border-signal/30 transition-all duration-300 rounded-3xl">
                 <div className="flex items-center gap-2 text-indigo font-heading font-bold text-xl py-6">
@@ -111,7 +111,7 @@ export default function Brand() {
           <SectionHeading eyebrow="02 / PALETTE" heading="Color System" />
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-10">
             {brandColors.map((color, idx) => (
-              <ColorSwatch 
+              <ColorSwatch
                 key={idx}
                 name={color.name}
                 hex={color.hex}
@@ -124,10 +124,10 @@ export default function Brand() {
         {/* 3. Typography System */}
         <section className="mb-24">
           <SectionHeading eyebrow="03 / GLYPHS" heading="Typography" />
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-10">
-            
-             {/* Heading Spec */}
+
+            {/* Heading Spec */}
             <div className="border border-indigo/10 p-8 bg-paper/40 rounded-3xl">
               <span className="font-heading text-[10px] text-teal font-bold tracking-wider block mb-4 uppercase">
                 Primary Headings // BBH Bogle
@@ -197,7 +197,7 @@ export default function Brand() {
           <SectionHeading eyebrow="04 / RULES" heading="Design Principles" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
             {designPrinciples.map((item, idx) => (
-              <Card 
+              <Card
                 key={idx}
                 title={item.title}
                 description={item.description}
@@ -211,7 +211,7 @@ export default function Brand() {
         <section className="border border-indigo/10 bg-paper/20 p-8 md:p-12 text-center relative select-none rounded-3xl">
           <div className="absolute top-0 left-0 w-3.5 h-3.5 border-l border-t border-signal rounded-tl-3xl"></div>
           <div className="absolute bottom-0 right-0 w-3.5 h-3.5 border-r border-b border-signal rounded-br-3xl"></div>
-          
+
           <div className="max-w-md mx-auto flex flex-col items-center">
             <Download strokeWidth={1.5} className="w-10 h-10 text-indigo/35 mb-4" />
             <h3 className="font-heading text-lg font-extrabold text-indigo uppercase mb-2 tracking-wide">
@@ -220,8 +220,8 @@ export default function Brand() {
             <p className="font-body text-sm text-ink/75 leading-relaxed mb-6">
               Download vectors of the logo mark, high-resolution headers, official typography kits, and styling stylesheets.
             </p>
-            <button 
-              disabled 
+            <button
+              disabled
               className="inline-flex items-center gap-2 border-2 border-indigo/20 text-indigo/40 px-6 py-3 font-heading text-xs font-bold tracking-wider uppercase cursor-not-allowed select-none bg-paper/10"
             >
               ASSETS PENDING RELEASE

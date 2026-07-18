@@ -4,15 +4,15 @@ import { Instagram, Linkedin, Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-indigo text-paper/80 pt-16 pb-8 px-6 border-t-[3px] border-ink">
+    <footer className="bg-indigo text-paper/80 pt-16 pb-8 px-6 border-t border-indigo/20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
         {/* Brand narrative block */}
         <div className="md:col-span-2 flex flex-col justify-between">
           <div>
-            <Link to="/" className="text-2xl font-semibold font-display text-paper flex items-center gap-2 mb-4 select-none">
-              <span className="text-3xl text-signal font-bold">δ</span> DELTA
+            <Link to="/" className="text-2xl font-bold font-heading text-paper flex items-center gap-2 mb-4 select-none">
+              <span className="text-3xl text-signal font-extrabold">δ</span> DELTA
             </Link>
-            <p className="font-body text-sm max-w-sm leading-relaxed text-paper/70 font-light">
+            <p className="font-body text-sm max-w-sm leading-relaxed text-paper/70">
               Data Oriented Thinkers' Association. Linking academic discovery with technological innovation in Data Science, AI, and emerging computer fields at Christ College of Engineering.
             </p>
           </div>
@@ -47,8 +47,8 @@ export default function Footer() {
 
         {/* Quick Links */}
         <div>
-          <h4 className="font-display text-sm font-semibold text-paper tracking-wider uppercase mb-6">Quick Links</h4>
-          <ul className="space-y-3 font-body text-sm font-light">
+          <h4 className="font-heading text-sm text-paper tracking-wider uppercase mb-6">Quick Links</h4>
+          <ul className="space-y-3 font-body text-sm">
             <li>
               <Link to="/about" className="hover:text-signal transition-colors duration-300">
                 About DELTA
@@ -74,8 +74,8 @@ export default function Footer() {
 
         {/* Address and Contact info */}
         <div>
-          <h4 className="font-display text-sm font-semibold text-paper tracking-wider uppercase mb-6">Contact</h4>
-          <ul className="space-y-4 font-body text-sm font-light">
+          <h4 className="font-heading text-sm text-paper tracking-wider uppercase mb-6">Contact</h4>
+          <ul className="space-y-4 font-body text-sm">
             <li className="flex items-start gap-3">
               <MapPin strokeWidth={1.5} className="w-5 h-5 text-signal shrink-0 mt-0.5" />
               <span>
