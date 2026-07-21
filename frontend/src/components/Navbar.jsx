@@ -28,6 +28,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Home', path: '/' },
+    { name: 'Events', path: '/events' },
     { name: 'About', path: '/about' },
     { name: 'Committee', path: '/committee' },
     { name: 'Brand', path: '/brand' },
@@ -35,7 +36,7 @@ export default function Navbar() {
   ];
 
   // Dynamic dropdown grouping: if we have more than 4 links, we group the remaining into a dropdown.
-  const LIMIT = 4;
+  const LIMIT = 5;
   const hasManyLinks = navLinks.length > LIMIT;
   const visibleLinks = hasManyLinks ? navLinks.slice(0, LIMIT - 1) : navLinks;
   const dropdownLinks = hasManyLinks ? navLinks.slice(LIMIT - 1) : [];
@@ -46,9 +47,11 @@ export default function Navbar() {
         <nav className="w-full max-w-5xl bg-paper/90 backdrop-blur-md border border-indigo/10 py-3 px-6 rounded-full shadow-lg flex items-center justify-between font-heading transition-all duration-300">
           {/* Logo */}
           <Link to="/" className="text-xl font-bold text-indigo flex items-center gap-2 group select-none">
-            <span className="text-2xl text-signal font-extrabold transition-transform duration-300 group-hover:rotate-12">
-              δ
-            </span>
+            <img
+              src={`${process.env.PUBLIC_URL}/assets/delta.png`}
+              alt="DELTA logo"
+              className="h-8 w-8 object-contain transition-transform duration-300 group-hover:rotate-12"
+            />
             <span className="tracking-widest text-indigo group-hover:text-signal transition-colors duration-300">DELTA</span>
           </Link>
 
