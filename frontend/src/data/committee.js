@@ -71,13 +71,13 @@ export const committeeData = {
     { id: "m1", name: "Ruthurag Mohan", role: "Media Lead", batch: "S5 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1784950199/xqjmkuqw88qoyfzhq6wl.jpg", socials: { linkedin: "https://linkedin.com" } },
     { id: "m2", name: "Harsha K P", role: "Media Lead", batch: "S5 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1784950201/am5dyv3vtrmktrpht7rd.png", socials: { linkedin: "https://linkedin.com" } },
     { id: "m3", name: "Jessel", role: "Media Lead", batch: "S3 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1784950205/elw7hpvgoo7qs4xrztzj.jpg", socials: { linkedin: "https://linkedin.com" } },
-    { id: "m4", name: "Anugrah", role: "Media Lead", batch: "S3 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1784951502/wpmmvunsgyryiotbcfov.heic", socials: { linkedin: "https://linkedin.com" } }
+    { id: "m4", name: "Anugrah", role: "Media Lead", batch: "S3 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1784951502/wpmmvunsgyryiotbcfov.jpg", socials: { linkedin: "https://linkedin.com" } }
   ],
   content: [
     { id: "c1", name: "Andria Ann Biju", role: "Content Lead", batch: "S5 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
     { id: "c2", name: "Delna Mary Anto", role: "Content Lead", batch: "S5 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
     { id: "c3", name: "Angel Maria", role: "Content Lead", batch: "S3 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
-    { id: "c4", name: "Nasarin", role: "Content Lead", batch: "S3 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1784951532/mwl7grvshb4c3ena9a5j.heic", socials: { linkedin: "https://linkedin.com" } }
+    { id: "c4", name: "Nasarin", role: "Content Lead", batch: "S3 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1784951532/mwl7grvshb4c3ena9a5j.jpg", socials: { linkedin: "https://linkedin.com" } }
   ],
   events: [
     { id: "e1", name: "Anoop Danimon", role: "Event Coordinator", batch: "S5 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1784950208/bell9wtmpoizuzt6bi9x.jpg", socials: { linkedin: "https://linkedin.com" } },
