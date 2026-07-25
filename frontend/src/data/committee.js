@@ -74,9 +74,9 @@ export const committeeData = {
     { id: "m4", name: "Anugrah", role: "Media Lead", batch: "S3 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1784984450/rn8qfsdi49mvkkxur2ev.jpg", socials: { linkedin: "https://linkedin.com" } }
   ],
   content: [
-    { id: "c1", name: "Andria Ann Biju", role: "Content Lead", batch: "S5 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "c1", name: "Andria Ann Biju", role: "Content Lead", batch: "S5 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1784950207/on7vakjj39u20hrhuzo9.jpg", socials: { linkedin: "https://linkedin.com" } },
     { id: "c2", name: "Delna Mary Anto", role: "Content Lead", batch: "S5 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
-    { id: "c3", name: "Angel Maria", role: "Content Lead", batch: "S3 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "c3", name: "Angel Maria", role: "Content Lead", batch: "S3 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1784950207/vgwgzbtsmkjqgmfch6zv.jpg", socials: { linkedin: "https://linkedin.com" } },
     { id: "c4", name: "Nasarin", role: "Content Lead", batch: "S3 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1784984559/uilfi5heumcmbfqbi1fu.jpg", socials: { linkedin: "https://linkedin.com" } }
   ],
   events: [
