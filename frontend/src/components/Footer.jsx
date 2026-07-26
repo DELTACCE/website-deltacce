@@ -101,9 +101,6 @@ export default function Footer() {
         <p className="font-heading text-paper/50">
           © 2026 DELTA — "Connecting the dots, driving the change."
         </p>
-        <p className="font-body text-paper/40">
-          Built with React & Tailwind CSS.
-        </p>
       </div>
     </footer>
   );
