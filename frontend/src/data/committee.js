@@ -58,12 +58,12 @@ export const committeeData = {
     }
   ],
   technical: [
-    { id: "t1", name: "Hari Krishna", role: "Technical Lead", batch: "S5 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "t1", name: "Hari Krishna", role: "Technical Lead", batch: "S5 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1785046449/mypjbc1hzlarklve0pmb.jpg", socials: { linkedin: "https://linkedin.com" } },
     { id: "t2", name: "Minhaj Noushad", role: "Technical Lead", batch: "S5 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1784950208/tkbyr0y9gasd4xaimq0o.jpg", socials: { linkedin: "https://linkedin.com" } },
     { id: "t3", name: "Alvi A V", role: "Technical Lead", batch: "S5 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1784950206/jjipi2uibh5ay5uihpcu.jpg", socials: { linkedin: "https://linkedin.com" } },
     { id: "t4", name: "John Antony", role: "Technical Lead", batch: "S5 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1784951052/w8h1vammfmekmhfrvim4.jpg", socials: { linkedin: "https://linkedin.com" } },
     { id: "t5", name: "Abel Babu", role: "Technical Lead", batch: "S3 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1784950202/sbcnsfrcxubs97021deu.png", socials: { linkedin: "https://linkedin.com" } },
-    { id: "t7", name: "Abel Xavi", role: "Technical Lead", batch: "S3 CSDS", driveId: "", socials: { linkedin: "https://linkedin.com" } },
+    { id: "t7", name: "Abel Xavi", role: "Technical Lead", batch: "S3 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1784950199/bp3jyzpla72c0rhieunj.jpg", socials: { linkedin: "https://linkedin.com" } },
     { id: "t6", name: "Abel Bijoy", role: "Technical Lead", batch: "S3 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1784950204/mwpkvwpg66gs6aq3ghcw.jpg", socials: { linkedin: "https://linkedin.com" } },
     { id: "t7", name: "Sreehari", role: "Technical Lead", batch: "S3 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1784950200/i6j3tl6slscntoihecss.png", socials: { linkedin: "https://linkedin.com" } },
     { id: "t8", name: "Sinan", role: "Technical Lead", batch: "S3 CSDS", driveId: "https://res.cloudinary.com/dt9kum1nb/image/upload/v1784950207/uwmxg7pgxkaif18bvvbi.jpg", socials: { linkedin: "https://linkedin.com" } }
