@@ -62,13 +62,35 @@ export default function Committee() {
               <h3 className="font-heading text-lg font-bold text-indigo uppercase border-b border-indigo/10 pb-2 mb-8 tracking-wider">
                 Technical Leads
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {technical.map((member) => (
-                  <TeamCard key={member.id} member={member} />
-                ))}
+                      
+              <div className="space-y-6">
+                      
+                {/* Row 1 - 4 */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {technical.slice(0, 4).map((member) => (
+                    <TeamCard key={member.id} member={member} />
+                  ))}
+                </div>
+                
+                {/* Row 2 - 3 */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+                  {technical.slice(4, 7).map((member) => (
+                    <div key={member.id} className="w-full">
+                      <TeamCard member={member} />
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Row 3 - 2 */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                  {technical.slice(7, 9).map((member) => (
+                    <TeamCard key={member.id} member={member} />
+                  ))}
+                </div>
+                
               </div>
             </div>
-
+                
             {/* Media Leads */}
             <div>
               <h3 className="font-heading text-lg font-bold text-indigo uppercase border-b border-indigo/10 pb-2 mb-8 tracking-wider">
