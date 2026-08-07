@@ -152,12 +152,15 @@ export default function BottomGlassNavbar() {
   const hoverSoundRef = useRef(null);
   const hoverSoundCooldownRef = useRef(0);
   const selectSoundRef = useRef(null);
+  const canHoverRef = useRef(false);
 
   const activeMainPath = useMemo(() => getActiveMainPath(pathname), [pathname]);
   const activeMorePath = useMemo(() => getActiveMorePath(pathname), [pathname]);
   const moreIsActive = activeMorePath !== null;
 
   useEffect(() => {
+    canHoverRef.current = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
     const hoverSound = new Audio('/assets/soundfx/hover.mp3');
     hoverSound.preload = 'auto';
     hoverSoundRef.current = hoverSound;
@@ -231,6 +234,12 @@ export default function BottomGlassNavbar() {
       // Ignore autoplay or decoding failures.
     }
   }, []);
+
+  const handleHoverEnter = useCallback((event) => {
+    if (!canHoverRef.current) return;
+    if (event.pointerType !== 'mouse') return;
+    playHoverSound();
+  }, [playHoverSound]);
 
   const playSelectSound = useCallback(() => {
     const sound = selectSoundRef.current;
@@ -322,7 +331,7 @@ export default function BottomGlassNavbar() {
                   to={item.path}
                   end={item.path === '/'}
                   className="block min-w-0"
-                  onMouseEnter={playHoverSound}
+                  onPointerEnter={handleHoverEnter}
                   onClick={playSelectSound}
                 >
                   <motion.div
@@ -349,7 +358,7 @@ export default function BottomGlassNavbar() {
                   playSelectSound();
                   toggleDropdown();
                 }}
-                onMouseEnter={playHoverSound}
+                onPointerEnter={handleHoverEnter}
                 className="block h-full w-full min-w-0 focus:outline-none"
               >
                 <motion.div
@@ -422,7 +431,6 @@ export default function BottomGlassNavbar() {
                                 fontWeight: isActive ? 600 : 400,
                               }}
                               onMouseEnter={(e) => {
-                                playHoverSound();
                                 if (!isActive) e.currentTarget.style.background = 'rgba(255,255,255,0.60)';
                               }}
                               onMouseLeave={(e) => {
