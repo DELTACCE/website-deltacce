@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import SectionHeading from '../components/SectionHeading';
 import TeamCard from '../components/TeamCard';
-import OrgChart from '../components/OrgChart';
 import { committeeData } from '../data/committee';
+
+const OrgChart = lazy(() => import('../components/OrgChart'));
+
+function OrgChartFallback() {
+  return (
+    <div className="relative font-heading border border-indigo/10 p-8 md:p-12 bg-paper/30 select-none overflow-hidden rounded-3xl">
+      <div className="animate-pulse space-y-6">
+        <div className="h-3 w-40 bg-indigo/10 rounded" />
+        <div className="h-20 w-full max-w-3xl mx-auto bg-indigo/5 rounded-2xl" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full pt-4">
+          <div className="h-20 bg-indigo/5 rounded-xl" />
+          <div className="h-20 bg-indigo/5 rounded-xl" />
+          <div className="h-20 bg-indigo/5 rounded-xl" />
+          <div className="h-20 bg-indigo/5 rounded-xl" />
+        </div>
+        <div className="h-20 w-56 mx-auto bg-indigo/5 rounded-2xl" />
+      </div>
+    </div>
+  );
+}
 
 export default function Committee() {
   const { faculty, core, technical, media, content, events } = committeeData;
@@ -47,7 +66,9 @@ export default function Committee() {
         <section className="mb-14 md:mb-24">
           <SectionHeading eyebrow="03 / TOPOLOGY" heading="Team Hierarchy" />
           <div className="mt-10">
-            <OrgChart />
+            <Suspense fallback={<OrgChartFallback />}>
+              <OrgChart />
+            </Suspense>
           </div>
         </section>
 
