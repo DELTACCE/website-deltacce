@@ -48,10 +48,10 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative overflow-hidden bg-paper px-6 pb-31">
+    <div className="relative overflow-hidden bg-paper px-6">
 
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[110vh] flex items-center justify-center border-b border-indigo/10 px-6 py-20">
+      <section className="relative min-h-[80vh] md:min-h-[110vh] flex items-center justify-center border-b border-indigo/10 px-6 py-16 md:py-20">
         <NodeCanvasBackground />
 
         {/* Asymmetrical grid background line indicators */}
@@ -110,7 +110,7 @@ export default function Home() {
       </section>
 
       {/* 2. ABOUT PREVIEW SECTION */}
-      <section className="py-24 px-6 border-b border-indigo/10 max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <section className="py-12 md:py-24 px-6 border-b border-indigo/10 max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
         <ScrollReveal className="lg:col-span-4">
           <SectionHeading eyebrow="01 / ORIGIN" heading="About DELTA" />
         </ScrollReveal>
@@ -134,7 +134,7 @@ export default function Home() {
       </section>
 
       {/* 3. MISSION, VISION & CORE VALUES */}
-      <section className="py-24 px-6 bg-paper/50 border-b border-indigo/10">
+      <section className="py-12 md:py-24 px-6 bg-paper/50 border-b border-indigo/10">
         <div className="max-w-5xl mx-auto">
           <SectionHeading eyebrow="02 / BLUEPRINT" heading="Mission & Vision" />
 
@@ -165,7 +165,7 @@ export default function Home() {
       </section>
 
       {/* 4. WHAT WE DO SECTION */}
-      <section className="py-24 px-6 border-b border-indigo/10">
+      <section className="py-12 md:py-24 px-6 border-b border-indigo/10">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
             <SectionHeading eyebrow="03 / FOCUS" heading="What We Do" className="mb-0" />
@@ -191,7 +191,7 @@ export default function Home() {
       </section>
 
       {/* 5. EXECUTIVE COMMITTEE PREVIEW */}
-      <section className="py-24 px-6 bg-paper/50 border-b border-indigo/10">
+      <section className="py-12 md:py-24 px-6 bg-paper/50 border-b border-indigo/10">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
             <SectionHeading eyebrow="04 / LEADERSHIP" heading="Our Leadership" className="mb-0" />
@@ -217,7 +217,7 @@ export default function Home() {
       </section>
 
       {/* 6. JOIN CTA SECTION */}
-      <section className="py-20 px-6 relative overflow-hidden bg-indigo text-paper rounded-3xl mb-16 md:mb-24">
+      <section className="py-12 md:py-20 px-6 relative overflow-hidden bg-indigo text-paper rounded-3xl mb-10 md:mb-24">
         {/* Asymmetrical Blueprint Crosshairs */}
         <div className="absolute inset-0 pointer-events-none opacity-10">
           <div className="absolute top-[20%] left-[10%]">+</div>

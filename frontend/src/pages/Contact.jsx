@@ -34,11 +34,11 @@ export default function Contact() {
   ];
 
   return (
-    <div className="bg-paper px-6 pt-31">
+    <div className="bg-paper px-6">
       <div className="max-w-5xl mx-auto">
 
         {/* Header Section */}
-        <section className="min-h-[110vh] flex flex-col justify-center border-b border-indigo/10 pb-20 mb-24">
+        <section className="min-h-[60vh] md:min-h-[110vh] flex flex-col justify-center border-b border-indigo/10 pt-10 pb-14 md:pb-20 mb-14 md:mb-24">
           <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
             {"// LINK SYSTEMS"}
           </span>
@@ -52,7 +52,7 @@ export default function Contact() {
         </section>
 
         {/* Form and Contact Detail Split */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-24">
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-14 md:mb-24">
 
           {/* Left: Contact Form */}
           <div className="lg:col-span-7">
@@ -122,7 +122,7 @@ export default function Contact() {
         </section>
 
         {/* Embedded Google Map Section */}
-        <section className="mb-8">
+        <section className="mb-8 md:mb-8">
           <SectionHeading eyebrow="01 / COORDINATES" heading="Location Map" />
 
           <div className="border border-indigo/15 bg-paper/30 p-2 mt-10 relative overflow-hidden select-none rounded-3xl">

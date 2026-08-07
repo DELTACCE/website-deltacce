@@ -43,10 +43,10 @@ export default function About() {
   ];
 
   return (
-    <div className="bg-paper px-6 pt-31">
+    <div className="bg-paper px-6">
 
       {/* 1. HERO SECTION */}
-      <section className="relative pb-20 border-b border-indigo/10 min-h-[110vh] flex flex-col justify-center">
+      <section className="relative pb-16 md:pb-20 pt-10 border-b border-indigo/10 min-h-[70vh] md:min-h-[110vh] flex flex-col justify-center">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
           <ScrollReveal className="lg:col-span-8" delay={0.1}>
             <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
@@ -72,7 +72,7 @@ export default function About() {
       </section>
 
       {/* 2. THE ORIGIN STORY */}
-      <section className="py-24 px-6 border-b border-indigo/10">
+      <section className="py-12 md:py-24 px-6 border-b border-indigo/10">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-4">
             <SectionHeading eyebrow="01 / TIMELINE" heading="Our Origin" />
@@ -103,7 +103,7 @@ export default function About() {
       </section>
 
       {/* 3. MISSION, VISION & VALUES */}
-      <section className="py-24 px-6 border-b border-indigo/10 bg-paper/30">
+      <section className="py-12 md:py-24 px-6 border-b border-indigo/10 bg-paper/30">
         <div className="max-w-5xl mx-auto">
           <SectionHeading eyebrow="02 / BLUEPRINT" heading="Values & Direction" />
 
@@ -125,7 +125,7 @@ export default function About() {
       </section>
 
       {/* 4. FOCUS AREAS (ICON ROW) */}
-      <section className="py-20 px-6 border-b border-indigo/10">
+      <section className="py-12 md:py-20 px-6 border-b border-indigo/10">
         <div className="max-w-5xl mx-auto">
           <SectionHeading eyebrow="03 / CORE DOMAINS" heading="Our Focus Areas" />
 
@@ -150,7 +150,7 @@ export default function About() {
       </section>
 
       {/* 5. WHY JOIN DELTA */}
-      <section className="py-24 px-6">
+      <section className="py-12 md:py-24 px-6">
         <div className="max-w-5xl mx-auto">
           <SectionHeading eyebrow="04 / INVITATION" heading="Why Join DELTA?" />
 

@@ -33,11 +33,11 @@ export default function Brand() {
   ];
 
   return (
-    <div className="bg-paper px-6 pt-31">
+    <div className="bg-paper px-6">
       <div className="max-w-5xl mx-auto">
 
         {/* Header Section */}
-        <section className="min-h-[110vh] flex flex-col justify-center border-b border-indigo/10 pb-20 mb-24">
+        <section className="min-h-[60vh] md:min-h-[110vh] flex flex-col justify-center border-b border-indigo/10 pt-10 pb-14 md:pb-20 mb-14 md:mb-24">
           <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
             {"// VISUAL LANGUAGE"}
           </span>
@@ -51,7 +51,7 @@ export default function Brand() {
         </section>
 
         {/* 1. Logo Configurations */}
-        <section className="mb-24">
+        <section className="mb-14 md:mb-24">
           <SectionHeading eyebrow="01 / MARKS" heading="Logo System" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-10">
@@ -107,7 +107,7 @@ export default function Brand() {
         </section>
 
         {/* 2. Color Palette */}
-        <section className="mb-24">
+        <section className="mb-14 md:mb-24">
           <SectionHeading eyebrow="02 / PALETTE" heading="Color System" />
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-10">
             {brandColors.map((color, idx) => (
@@ -122,7 +122,7 @@ export default function Brand() {
         </section>
 
         {/* 3. Typography System */}
-        <section className="mb-24">
+        <section className="mb-14 md:mb-24">
           <SectionHeading eyebrow="03 / GLYPHS" heading="Typography" />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-10">
@@ -193,7 +193,7 @@ export default function Brand() {
         </section>
 
         {/* 4. Design Principles */}
-        <section className="mb-24">
+        <section className="mb-14 md:mb-24">
           <SectionHeading eyebrow="04 / RULES" heading="Design Principles" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
             {designPrinciples.map((item, idx) => (

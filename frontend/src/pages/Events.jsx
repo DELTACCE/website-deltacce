@@ -6,9 +6,9 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Events() {
   return (
-    <div className="bg-paper px-6 pt-31">
+    <div className="bg-paper px-6">
       <div className="max-w-5xl mx-auto">
-        <section className="min-h-[90vh] flex flex-col justify-center border-b border-indigo/10 pb-20 mb-20">
+        <section className="min-h-[60vh] md:min-h-[90vh] flex flex-col justify-center border-b border-indigo/10 pt-10 pb-16 md:pb-20 mb-12 md:mb-20">
           <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
             {"// PROGRAMS & EXPERIENCES"}
           </span>
@@ -22,7 +22,7 @@ export default function Events() {
           </p>
         </section>
 
-        <section className="mb-20">
+        <section className="mb-12 md:mb-20">
           <SectionHeading eyebrow="01 / HIGHLIGHTS" heading="Featured Events" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
             {events.map((event) => (

@@ -8,11 +8,11 @@ export default function Committee() {
   const { faculty, core, technical, media, content, events } = committeeData;
 
   return (
-    <div className="bg-paper px-6 pt-31">
+    <div className="bg-paper px-6">
       <div className="max-w-5xl mx-auto">
 
         {/* Header Section */}
-        <section className="min-h-[110vh] flex flex-col justify-center border-b border-indigo/10 pb-20 mb-24">
+        <section className="min-h-[60vh] md:min-h-[110vh] flex flex-col justify-center border-b border-indigo/10 pt-10 pb-16 md:pb-20 mb-14 md:mb-24">
           <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
             {"// TEAM NETWORK"}
           </span>
@@ -26,7 +26,7 @@ export default function Committee() {
         </section>
 
         {/* 1. Faculty Coordinator Section */}
-        <section className="mb-24">
+        <section className="mb-14 md:mb-24">
           <SectionHeading eyebrow="01 / ADVISOR" heading="Faculty Lead" />
           <div className="max-w-3xl mt-10">
             <TeamCard member={faculty} featured={true} />
@@ -34,7 +34,7 @@ export default function Committee() {
         </section>
 
         {/* 2. Core Executive Board */}
-        <section className="mb-24">
+        <section className="mb-14 md:mb-24">
           <SectionHeading eyebrow="02 / EXECUTIVE" heading="Core Committee" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
             {core.map((member) => (
@@ -44,7 +44,7 @@ export default function Committee() {
         </section>
 
         {/* 3. Team Structure Topology (Org Chart) */}
-        <section className="mb-24">
+        <section className="mb-14 md:mb-24">
           <SectionHeading eyebrow="03 / TOPOLOGY" heading="Team Hierarchy" />
           <div className="mt-10">
             <OrgChart />
@@ -52,7 +52,7 @@ export default function Committee() {
         </section>
 
         {/* 4. Leads & Coordinators Grids */}
-        <section className="mb-24">
+        <section className="mb-14 md:mb-24">
           <SectionHeading eyebrow="04 / DEPARTMENTS" heading="Leads & Coordinators" />
 
           <div className="space-y-16 mt-12">
