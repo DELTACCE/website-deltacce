@@ -149,10 +149,32 @@ export default function BottomGlassNavbar() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const moreButtonRef = useRef(null);
+  const hoverSoundRef = useRef(null);
+  const hoverSoundCooldownRef = useRef(0);
+  const selectSoundRef = useRef(null);
 
   const activeMainPath = useMemo(() => getActiveMainPath(pathname), [pathname]);
   const activeMorePath = useMemo(() => getActiveMorePath(pathname), [pathname]);
   const moreIsActive = activeMorePath !== null;
+
+  useEffect(() => {
+    const hoverSound = new Audio('/assets/soundfx/hover.mp3');
+    hoverSound.preload = 'auto';
+    hoverSoundRef.current = hoverSound;
+
+    const selectSound = new Audio('/assets/soundfx/select.mp3');
+    selectSound.preload = 'auto';
+    selectSoundRef.current = selectSound;
+
+    return () => {
+      hoverSound.pause();
+      hoverSound.currentTime = 0;
+      selectSound.pause();
+      selectSound.currentTime = 0;
+      hoverSoundRef.current = null;
+      selectSoundRef.current = null;
+    };
+  }, []);
 
   // Close dropdown on route change
   useEffect(() => { setDropdownOpen(false); }, [pathname]);
@@ -190,10 +212,47 @@ export default function BottomGlassNavbar() {
   const toggleDropdown = useCallback(() => setDropdownOpen((v) => !v), []);
   const closeDropdown = useCallback(() => setDropdownOpen(false), []);
 
+  const playHoverSound = useCallback(() => {
+    const sound = hoverSoundRef.current;
+    if (!sound) return;
+
+    const now = Date.now();
+    if (now - hoverSoundCooldownRef.current < 120) return;
+    hoverSoundCooldownRef.current = now;
+
+    try {
+      sound.pause();
+      sound.currentTime = 0;
+      const playback = sound.play();
+      if (playback && typeof playback.catch === 'function') {
+        playback.catch(() => {});
+      }
+    } catch {
+      // Ignore autoplay or decoding failures.
+    }
+  }, []);
+
+  const playSelectSound = useCallback(() => {
+    const sound = selectSoundRef.current;
+    if (!sound) return;
+
+    try {
+      sound.pause();
+      sound.currentTime = 0;
+      const playback = sound.play();
+      if (playback && typeof playback.catch === 'function') {
+        playback.catch(() => {});
+      }
+    } catch {
+      // Ignore autoplay or decoding failures.
+    }
+  }, []);
+
   const handleMoreItemClick = useCallback((path) => {
+    playSelectSound();
     closeDropdown();
     navigate(path);
-  }, [closeDropdown, navigate]);
+  }, [closeDropdown, navigate, playSelectSound]);
 
   return (
     <>
@@ -263,6 +322,8 @@ export default function BottomGlassNavbar() {
                   to={item.path}
                   end={item.path === '/'}
                   className="block min-w-0"
+                  onMouseEnter={playHoverSound}
+                  onClick={playSelectSound}
                 >
                   <motion.div
                     whileHover={{ y: -1, scale: 1.02 }}
@@ -284,7 +345,11 @@ export default function BottomGlassNavbar() {
                 aria-expanded={dropdownOpen}
                 aria-haspopup="menu"
                 aria-controls="more-menu"
-                onClick={toggleDropdown}
+                onClick={() => {
+                  playSelectSound();
+                  toggleDropdown();
+                }}
+                onMouseEnter={playHoverSound}
                 className="block h-full w-full min-w-0 focus:outline-none"
               >
                 <motion.div
@@ -344,7 +409,9 @@ export default function BottomGlassNavbar() {
                               key={item.path}
                               type="button"
                               role="menuitem"
-                              onClick={() => handleMoreItemClick(item.path)}
+                              onClick={() => {
+                                handleMoreItemClick(item.path);
+                              }}
                               className="flex w-full items-center gap-2.5 rounded-[1.1rem] px-4 py-2.5 text-left text-sm tracking-tight transition-colors duration-200 focus:outline-none"
                               style={{
                                 color: isActive ? C.active : C.inactive,
@@ -355,6 +422,7 @@ export default function BottomGlassNavbar() {
                                 fontWeight: isActive ? 600 : 400,
                               }}
                               onMouseEnter={(e) => {
+                                playHoverSound();
                                 if (!isActive) e.currentTarget.style.background = 'rgba(255,255,255,0.60)';
                               }}
                               onMouseLeave={(e) => {
