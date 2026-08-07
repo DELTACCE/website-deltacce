@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
-import Navbar from './components/Navbar';
+import AppNavbar, { USE_BOTTOM_GLASS_NAVBAR } from './components/AppNavbar';
 import Footer from './components/Footer';
 
 import Home from './pages/Home';
@@ -18,8 +18,8 @@ function App() {
     <Router>
       <ScrollToTop />
       <div className="flex flex-col min-h-screen bg-paper text-ink selection:bg-signal selection:text-white">
-        <Navbar />
-        <main className="flex-grow">
+        <AppNavbar />
+        <main className={`flex-grow ${USE_BOTTOM_GLASS_NAVBAR ? 'pb-[calc(7.5rem+env(safe-area-inset-bottom))]' : ''}`}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

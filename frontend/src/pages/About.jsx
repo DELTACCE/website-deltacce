@@ -79,7 +79,7 @@ export default function About() {
           </div>
           <div className="lg:col-span-8 font-body text-base text-ink/80 leading-relaxed space-y-6">
             <p>
-              Founded in **2026**, DELTA emerged from a simple realization: while traditional academic curricula provide essential foundations, the fast-paced advancements in Data Science, Artificial Intelligence, and Big Data demand rapid, hands-on, and practical exploration.
+              Founded in 2026, DELTA emerged from a simple realization: while traditional academic curricula provide essential foundations, the fast-paced advancements in Data Science, Artificial Intelligence, and Big Data demand rapid, hands-on, and practical exploration.
             </p>
             <p>
               Students and faculty coordinators in the Data Science department proposed a unified association to bridge the gap between textbook formulas and production-grade applications. DELTA was designed to serve as a launchpad where students learn, build, and deploy code together.
