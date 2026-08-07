@@ -149,10 +149,13 @@ export default function BottomGlassNavbar() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const moreButtonRef = useRef(null);
-  const hoverSoundRef = useRef(null);
+  const hoverSoundPoolRef = useRef([]);
+  const hoverSoundIndexRef = useRef(0);
   const hoverSoundCooldownRef = useRef(0);
-  const selectSoundRef = useRef(null);
+  const selectSoundPoolRef = useRef([]);
+  const selectSoundIndexRef = useRef(0);
   const canHoverRef = useRef(false);
+  const audioEnabledRef = useRef(false);
 
   const activeMainPath = useMemo(() => getActiveMainPath(pathname), [pathname]);
   const activeMorePath = useMemo(() => getActiveMorePath(pathname), [pathname]);
@@ -160,22 +163,36 @@ export default function BottomGlassNavbar() {
 
   useEffect(() => {
     canHoverRef.current = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    audioEnabledRef.current = Boolean(navigator.userActivation?.hasBeenActive);
 
-    const hoverSound = new Audio('/assets/soundfx/hover.mp3');
-    hoverSound.preload = 'auto';
-    hoverSoundRef.current = hoverSound;
+    const buildPool = (src, size) => Array.from({ length: size }, () => {
+      const audio = new Audio(src);
+      audio.preload = 'auto';
+      return audio;
+    });
 
-    const selectSound = new Audio('/assets/soundfx/select.mp3');
-    selectSound.preload = 'auto';
-    selectSoundRef.current = selectSound;
+    hoverSoundPoolRef.current = buildPool('/assets/soundfx/hover.mp3', 3);
+    selectSoundPoolRef.current = buildPool('/assets/soundfx/select.mp3', 3);
+
+    const unlockAudio = () => {
+      audioEnabledRef.current = true;
+      window.removeEventListener('pointerdown', unlockAudio);
+    };
+
+    window.addEventListener('pointerdown', unlockAudio, { once: true });
 
     return () => {
-      hoverSound.pause();
-      hoverSound.currentTime = 0;
-      selectSound.pause();
-      selectSound.currentTime = 0;
-      hoverSoundRef.current = null;
-      selectSoundRef.current = null;
+      hoverSoundPoolRef.current.forEach((sound) => {
+        sound.pause();
+        sound.currentTime = 0;
+      });
+      selectSoundPoolRef.current.forEach((sound) => {
+        sound.pause();
+        sound.currentTime = 0;
+      });
+      hoverSoundPoolRef.current = [];
+      selectSoundPoolRef.current = [];
+      window.removeEventListener('pointerdown', unlockAudio);
     };
   }, []);
 
@@ -216,14 +233,17 @@ export default function BottomGlassNavbar() {
   const closeDropdown = useCallback(() => setDropdownOpen(false), []);
 
   const playHoverSound = useCallback(() => {
-    const sound = hoverSoundRef.current;
-    if (!sound) return;
+    const pool = hoverSoundPoolRef.current;
+    if (!pool.length) return;
+    if (!(audioEnabledRef.current || navigator.userActivation?.hasBeenActive)) return;
 
     const now = Date.now();
     if (now - hoverSoundCooldownRef.current < 120) return;
     hoverSoundCooldownRef.current = now;
 
     try {
+      const sound = pool[hoverSoundIndexRef.current];
+      hoverSoundIndexRef.current = (hoverSoundIndexRef.current + 1) % pool.length;
       sound.pause();
       sound.currentTime = 0;
       const playback = sound.play();
@@ -242,10 +262,13 @@ export default function BottomGlassNavbar() {
   }, [playHoverSound]);
 
   const playSelectSound = useCallback(() => {
-    const sound = selectSoundRef.current;
-    if (!sound) return;
+    const pool = selectSoundPoolRef.current;
+    if (!pool.length) return;
+    if (!(audioEnabledRef.current || navigator.userActivation?.hasBeenActive)) return;
 
     try {
+      const sound = pool[selectSoundIndexRef.current];
+      selectSoundIndexRef.current = (selectSoundIndexRef.current + 1) % pool.length;
       sound.pause();
       sound.currentTime = 0;
       const playback = sound.play();
