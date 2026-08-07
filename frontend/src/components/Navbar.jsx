@@ -50,7 +50,7 @@ export default function Navbar() {
             <img
               src={`${process.env.PUBLIC_URL}/assets/delta.png`}
               alt="DELTA logo"
-              className="h-8 w-8 object-contain transition-transform duration-300 group-hover:rotate-12"
+              className="h-8 w-8 object-contain transition-transform duration-500 group-hover:rotate-[30deg]"
             />
             <span className="tracking-widest text-indigo group-hover:text-signal transition-colors duration-300">DELTA</span>
           </Link>

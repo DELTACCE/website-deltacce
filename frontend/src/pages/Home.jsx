@@ -71,12 +71,12 @@ export default function Home() {
           <ScrollReveal className="flex flex-col items-center justify-center text-center" delay={0.1}>
             {/* Tagline Indicator */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-indigo/15 bg-paper/60 backdrop-blur-sm mb-8 font-heading text-xs text-teal font-bold tracking-widest uppercase rounded-full select-none">
-              <span className="w-2 h-2 bg-signal animate-ping rounded-full shrink-0"></span>
+              <span className="w-1.5 h-1.5 bg-signal animate-ping rounded-full shrink-0"></span>
               <span>CONNECTING THE DOTS. CREATING THE DELTA.</span>
             </div>
 
             {/* Custom DELTA Logo Typography Logo (▶ELT▲) */}
-            <h1 className="flex items-center justify-center gap-[0.08em] text-7xl md:text-[8rem] lg:text-[10rem] font-bold text-indigo leading-none tracking-tight mb-8 w-full select-none">
+            <h1 className="flex items-center justify-center gap-[0.05em] text-7xl md:text-[8rem] lg:text-[10rem] font-bold text-indigo leading-none tracking-tight mb-8 w-full select-none">
               <svg viewBox="0 0 100 100" className="h-[0.82em] w-auto text-indigo shrink-0" fill="currentColor">
                 <path fillRule="evenodd" d="M 20 10 L 80 45 C 85 48, 85 52, 80 55 L 20 90 C 15 93, 10 90, 10 83 L 10 17 C 10 10, 15 7, 20 10 Z M 32 37 L 58 50 L 32 63 Z" />
               </svg>
@@ -88,20 +88,20 @@ export default function Home() {
               </svg>
             </h1>
 
-            <p className="font-body text-base md:text-lg text-ink/80 max-w-3xl leading-relaxed mb-10 mx-auto">
+            <p className="font-body text-base md:text-lg text-ink/80 max-w-3xl leading-normal mb-10 mx-auto tracking-tight">
               DELTA (Data Oriented Thinkers' Association) is the student-led Data Science and Emerging Technology association at Christ College of Engineering, Thrissur. We bridge standard curriculum with dynamic industrial engineering to create real-world impact.
             </p>
 
             <div className="flex justify-center">
               <Link
                 to="/about"
-                className="group inline-flex items-center bg-indigo border border-indigo/20 pl-8 pr-2 py-2 rounded-lg hover:border-signal/45 hover:shadow-[0_15px_30px_rgba(14,48,97,0.22)] transition-all duration-300 select-none active:scale-[0.98]"
+                className="group inline-flex items-center bg-indigo border border-indigo/20 pl-8 pr-2 py-2 rounded-lg hover:shadow-[0_15px_30px_rgba(14,48,97,0.22)] transition-all duration-300 select-none active:scale-[0.98]"
               >
-                <span className="font-heading text-sm font-bold text-paper tracking-wider uppercase mr-6">
+                <span className="font-heading text-sm font-light text-paper tracking-normal uppercase mr-6">
                   Explore DELTA
                 </span>
-                <div className="flex items-center justify-center w-10 h-10 bg-signal text-paper rounded-r-xl rounded-l-md group-hover:bg-signal/90 transition-colors duration-300">
-                  <ArrowRight className="w-5 h-5 transform -rotate-45" />
+                <div className="flex items-center justify-center w-10 h-10 bg-signal text-paper rounded-lg group-hover:bg-/90 transition-colors duration-300">
+                  <ArrowRight className="w-5 h-5 transform -rotate-45 transition-transform duration-1000 group-hover:rotate-[315deg]" />
                 </div>
               </Link>
             </div>
@@ -119,10 +119,10 @@ export default function Home() {
             <h3 className="font-heading text-xl font-bold text-indigo uppercase mb-6 tracking-wide leading-snug">
               Bridging academic limits with active technical creation.
             </h3>
-            <p className="font-body text-base text-ink/85 leading-relaxed mb-6">
+            <p className="font-body text-base text-ink/85 leading-relaxed mb-6 tracking-tight">
               DELTA was formed in the Department of Computer Science & Engineering (Data Science) to foster a community of creators, analysts, and analytical thinkers. We emphasize research-informed coding and open collaboration.
             </p>
-            <p className="font-body text-base text-ink/70 leading-relaxed mb-8">
+            <p className="font-body text-base text-ink/70 leading-relaxed mb-8 tracking-tight">
               Through peer mentorship, workshops, hackathons, and research projects, we invite students to develop the critical capacities required to navigate the future data landscape.
             </p>
           </div>
@@ -138,23 +138,26 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <SectionHeading eyebrow="02 / BLUEPRINT" heading="Mission & Vision" />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <ScrollReveal delay={0.1}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 items-stretch">
+            <ScrollReveal delay={0.1} className="h-full">
               <Card
                 title="Our Mission"
                 description="To provide students with collaborative spaces, resources, and technical support to learn, build, and deploy data systems and Artificial Intelligence solutions."
+                className="min-h-[260px]"
               />
             </ScrollReveal>
-            <ScrollReveal delay={0.2}>
+            <ScrollReveal delay={0.2} className="h-full">
               <Card
                 title="Our Vision"
                 description="To construct a premier student research ecosystem at CCE recognized for computational excellence, creativity, and ethical design in emerging technology."
+                className="min-h-[260px]"
               />
             </ScrollReveal>
-            <ScrollReveal delay={0.3}>
+            <ScrollReveal delay={0.3} className="h-full">
               <Card
                 title="Core Values"
                 description="Built on three fundamental guidelines: Analytical Rigor in problem-solving, Creative Thinking in architectural design, and Collective Growth across our community."
+                className="min-h-[260px]"
               />
             </ScrollReveal>
           </div>
@@ -166,19 +169,20 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
             <SectionHeading eyebrow="03 / FOCUS" heading="What We Do" className="mb-0" />
-            <p className="font-body text-sm text-ink/75 max-w-md leading-relaxed">
+            <p className="font-body text-sm text-ink/75 max-w-md leading-relaxed tracking-tight">
               DELTA operates as an active hub, deploying programs that build technical competence and peer network resources.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 items-stretch">
             {whatWeDoList.map((item, idx) => (
-              <ScrollReveal key={idx} delay={(idx % 3) * 0.1}>
+              <ScrollReveal key={idx} delay={(idx % 3) * 0.1} className="h-full">
                 <Card
                   icon={item.icon}
                   title={item.title}
                   description={item.description}
                   iconPosition="top-right"
+                  className="min-h-[260px]"
                 />
               </ScrollReveal>
             ))}
@@ -213,7 +217,7 @@ export default function Home() {
       </section>
 
       {/* 6. JOIN CTA SECTION */}
-      <section className="py-20 px-6 relative overflow-hidden bg-indigo text-paper rounded-t-3xl">
+      <section className="py-20 px-6 relative overflow-hidden bg-indigo text-paper rounded-3xl mb-16 md:mb-24">
         {/* Asymmetrical Blueprint Crosshairs */}
         <div className="absolute inset-0 pointer-events-none opacity-10">
           <div className="absolute top-[20%] left-[10%]">+</div>
@@ -228,7 +232,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-5xl font-extrabold uppercase tracking-tight mb-6 font-heading text-paper max-w-2xl leading-none">
             Ready to shape the future of technology?
           </h2>
-          <p className="font-body text-base md:text-lg text-paper/80 leading-relaxed mb-10 max-w-xl">
+          <p className="font-body text-base md:text-lg text-paper/80 leading-relaxed mb-10 max-w-xl tracking-tight">
             Become part of a growing community of innovators, developers, analysts, and creators shaping the future through data.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">

@@ -9,7 +9,7 @@ export default function Card({
   className = '' 
 }) {
   const cardStyle = `
-    group relative bg-indigo border border-indigo/20 p-6 md:p-8 rounded-3xl transition-all duration-300 select-none
+    group relative bg-indigo border border-indigo/20 p-6 md:p-8 rounded-3xl transition-all duration-300 select-none h-full flex flex-col
     ${hoverEffect ? 'hover:border-signal/40 hover:-translate-y-1.5 hover:shadow-[0_15px_35px_-10px_rgba(14,48,97,0.3)]' : ''}
     ${className}
   `;
@@ -24,11 +24,11 @@ export default function Card({
       )}
 
       {/* Content */}
-      <div className={`${Icon && iconPosition === 'top-left' ? 'pt-8' : ''}`}>
+      <div className={`${Icon && iconPosition === 'top-left' ? 'pt-8' : ''} flex flex-col flex-1`}>
         <h3 className="font-heading text-lg font-bold text-paper group-hover:text-signal uppercase mb-3 pr-8 tracking-wide transition-colors duration-300">
           {title}
         </h3>
-        <p className="font-body text-sm leading-relaxed text-paper/80 font-light">
+        <p className="font-body text-sm leading-relaxed text-paper/80 font-light flex-1">
           {description}
         </p>
       </div>
