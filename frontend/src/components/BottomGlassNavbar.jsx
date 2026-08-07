@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
@@ -14,28 +15,28 @@ import {
 // ─── Route config ─────────────────────────────────────────────────────────────
 
 const NAV_ITEMS = [
-  { name: 'Home',      path: '/',          icon: Home },
-  { name: 'Events',   path: '/events',     icon: CalendarDays },
-  { name: 'About',    path: '/about',      icon: Info },
-  { name: 'Committee',path: '/committee',  icon: Users },
+  { name: 'Home', path: '/', icon: Home },
+  { name: 'Events', path: '/events', icon: CalendarDays },
+  { name: 'About', path: '/about', icon: Info },
+  { name: 'Committee', path: '/committee', icon: Users },
 ];
 
 const MORE_ITEMS = [
-  { name: 'Brand',   path: '/brand',   icon: BookOpen },
+  { name: 'Brand', path: '/brand', icon: BookOpen },
   { name: 'Contact', path: '/contact', icon: Mail },
 ];
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 
 const C = {
-  active:   '#FF5500',
+  active: '#FF5500',
   inactive: '#1E293B',
-  border:   'rgba(255,255,255,0.40)',
+  border: 'rgba(255,255,255,0.40)',
 };
 
 const MOTION = {
-  item:     { type: 'spring', stiffness: 420, damping: 34 },
-  dropdown: { duration: 0.18, ease: [0.22, 1, 0.36, 1] },
+  item: { type: 'spring', stiffness: 420, damping: 34 },
+  dropdown: { duration: 0.20, ease: [0.22, 1, 0.36, 1] },
 };
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -83,7 +84,7 @@ function IconPill({ active, children }) {
     <span
       className="relative flex items-center justify-center transition-all duration-300"
       style={{
-        width:  'clamp(38px, 5.8vw, 48px)',
+        width: 'clamp(38px, 5.8vw, 48px)',
         height: 'clamp(38px, 5.8vw, 48px)',
         borderRadius: 'clamp(17px, 2.4vw, 22px)',
         border: active ? '1px solid rgba(255,255,255,0.55)' : '1px solid transparent',
@@ -119,7 +120,7 @@ function NavCell({ icon: Icon, label, active, children }) {
         <Icon
           strokeWidth={2.1}
           style={{
-            width:  'clamp(22px, 3.6vw, 28px)',
+            width: 'clamp(22px, 3.6vw, 28px)',
             height: 'clamp(22px, 3.6vw, 28px)',
             flexShrink: 0,
           }}
@@ -144,13 +145,14 @@ function NavCell({ icon: Icon, label, active, children }) {
 
 export default function BottomGlassNavbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownPosition, setDropdownPosition] = useState(null);
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const moreButtonRef = useRef(null);
 
   const activeMainPath = useMemo(() => getActiveMainPath(pathname), [pathname]);
   const activeMorePath = useMemo(() => getActiveMorePath(pathname), [pathname]);
-  const moreIsActive   = activeMorePath !== null;
+  const moreIsActive = activeMorePath !== null;
 
   // Close dropdown on route change
   useEffect(() => { setDropdownOpen(false); }, [pathname]);
@@ -163,8 +165,30 @@ export default function BottomGlassNavbar() {
     return () => window.removeEventListener('keydown', handler);
   }, [dropdownOpen]);
 
+  useEffect(() => {
+    const updateDropdownPosition = () => {
+      const button = moreButtonRef.current;
+      if (!button) return;
+
+      const rect = button.getBoundingClientRect();
+      setDropdownPosition({
+        bottom: window.innerHeight - rect.top + 14,
+        right: window.innerWidth - rect.right,
+      });
+    };
+
+    updateDropdownPosition();
+    window.addEventListener('resize', updateDropdownPosition);
+    window.addEventListener('scroll', updateDropdownPosition, true);
+
+    return () => {
+      window.removeEventListener('resize', updateDropdownPosition);
+      window.removeEventListener('scroll', updateDropdownPosition, true);
+    };
+  }, [pathname]);
+
   const toggleDropdown = useCallback(() => setDropdownOpen((v) => !v), []);
-  const closeDropdown  = useCallback(() => setDropdownOpen(false), []);
+  const closeDropdown = useCallback(() => setDropdownOpen(false), []);
 
   const handleMoreItemClick = useCallback((path) => {
     closeDropdown();
@@ -181,7 +205,7 @@ export default function BottomGlassNavbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.12 }}
+            transition={{ duration: 0.20 }}
             className="fixed inset-0 z-[48]"
             aria-hidden
             onClick={closeDropdown}
@@ -274,79 +298,88 @@ export default function BottomGlassNavbar() {
               </button>
 
               {/* Dropdown — positioned ABOVE the navbar, outside overflow */}
-              <AnimatePresence>
-                {dropdownOpen && (
+              {dropdownOpen && dropdownPosition && createPortal(
+                <AnimatePresence>
                   <motion.div
                     id="more-menu"
                     role="menu"
                     aria-labelledby="more-menu-button"
-                    initial={{ opacity: 0, y: 12, scale: 0.96 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    initial={false}
+                    animate={{
+                      opacity: dropdownOpen ? 1 : 0,
+                      y: dropdownOpen ? 0 : 8,
+                      scale: dropdownOpen ? 1 : 0.98,
+                    }}
                     exit={{ opacity: 0, y: 12, scale: 0.96 }}
                     transition={MOTION.dropdown}
-                    className="absolute right-0 z-[50]"
+                    className="fixed z-[50]"
                     style={{
-                      bottom: 'calc(100% + clamp(8px, 1.6vw, 14px))',
+                      right: `${dropdownPosition.right}px`,
+                      bottom: `${dropdownPosition.bottom}px`,
                       minWidth: 'clamp(140px, 30vw, 176px)',
-                      borderRadius: '1.45rem',
-                      border: '1px solid rgba(255,255,255,0.45)',
-                      background:
-                        'linear-gradient(180deg, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.48) 100%)',
-                      backdropFilter: 'blur(28px) saturate(180%)',
-                      WebkitBackdropFilter: 'blur(28px) saturate(180%)',
-                      boxShadow:
-                        '0 26px 56px -24px rgba(15,23,42,0.46), inset 0 1px 0 rgba(255,255,255,0.86)',
+                      isolation: 'isolate',
+                      pointerEvents: dropdownOpen ? 'auto' : 'none',
                     }}
                   >
                     <div
-                      className="relative p-2 flex flex-col gap-1"
-                      role="none"
+                      className="overflow-hidden"
+                      style={{
+                        borderRadius: 'clamp(24px, 3.4vw, 30px)',
+                        padding: 'clamp(8px, 1.25vw, 12px) clamp(8px, 1.5vw, 14px)',
+                        background: 'rgba(255,255,255,0.14)',
+                        backdropFilter: 'blur(8px) saturate(100%)',
+                        WebkitBackdropFilter: 'blur(8px) saturate(100%)',
+                        border: `1px solid ${C.border}`,
+                        boxShadow:
+                          '0 24px 58px -28px rgba(15,23,42,0.42), 0 10px 26px -18px rgba(255,85,0,0.14), inset 0 1px 0 rgba(255,255,255,0.82)',
+                      }}
                     >
-                      {MORE_ITEMS.map((item) => {
-                        const ItemIcon = item.icon;
-                        const isActive = activeMorePath === item.path;
+                      <div className="relative flex flex-col gap-1" role="none">
+                        {MORE_ITEMS.map((item) => {
+                          const ItemIcon = item.icon;
+                          const isActive = activeMorePath === item.path;
 
-                        return (
-                          <button
-                            key={item.path}
-                            type="button"
-                            role="menuitem"
-                            onClick={() => handleMoreItemClick(item.path)}
-                            className="flex w-full items-center gap-2.5 rounded-[1.1rem] px-4 py-2.5 text-left text-sm tracking-tight transition-colors duration-200 focus:outline-none"
-                            style={{
-                              color: isActive ? C.active : C.inactive,
-                              background: isActive
-                                ? 'rgba(255,255,255,0.60)'
-                                : 'transparent',
-                              boxShadow: isActive
-                                ? 'inset 0 1px 0 rgba(255,255,255,0.78)'
-                                : 'none',
-                              fontWeight: isActive ? 600 : 400,
-                            }}
-                            onMouseEnter={(e) => {
-                              if (!isActive) e.currentTarget.style.background = 'rgba(255,255,255,0.38)';
-                            }}
-                            onMouseLeave={(e) => {
-                              if (!isActive) e.currentTarget.style.background = 'transparent';
-                            }}
-                          >
-                            <ItemIcon
-                              strokeWidth={2.1}
+                          return (
+                            <button
+                              key={item.path}
+                              type="button"
+                              role="menuitem"
+                              onClick={() => handleMoreItemClick(item.path)}
+                              className="flex w-full items-center gap-2.5 rounded-[1.1rem] px-4 py-2.5 text-left text-sm tracking-tight transition-colors duration-200 focus:outline-none"
                               style={{
-                                width: '16px',
-                                height: '16px',
-                                flexShrink: 0,
                                 color: isActive ? C.active : C.inactive,
+                                background: isActive ? 'rgba(255,255,255,0.60)' : 'transparent',
+                                boxShadow: isActive
+                                  ? 'inset 0 1px 0 rgba(255,255,255,0.78)'
+                                  : 'none',
+                                fontWeight: isActive ? 600 : 400,
                               }}
-                            />
-                            {item.name}
-                          </button>
-                        );
-                      })}
+                              onMouseEnter={(e) => {
+                                if (!isActive) e.currentTarget.style.background = 'rgba(255,255,255,0.60)';
+                              }}
+                              onMouseLeave={(e) => {
+                                if (!isActive) e.currentTarget.style.background = 'transparent';
+                              }}
+                            >
+                              <ItemIcon
+                                strokeWidth={2.1}
+                                style={{
+                                  width: '16px',
+                                  height: '16px',
+                                  flexShrink: 0,
+                                  color: isActive ? C.active : C.inactive,
+                                }}
+                              />
+                              {item.name}
+                            </button>
+                          );
+                        })}
+                      </div>
                     </div>
                   </motion.div>
-                )}
-              </AnimatePresence>
+                </AnimatePresence>,
+                document.body,
+              )}
             </div>
           </div>
         </nav>

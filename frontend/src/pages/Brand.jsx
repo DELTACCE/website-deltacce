@@ -97,7 +97,7 @@ export default function Brand() {
                 {"// EMBLEM CONCEPT"}
               </h4>
               <p className="mb-4">
-                The lowercase **δ (Delta)** symbol represents mathematical change and computational optimization. Formed from a single vector line, it suggests fluid logic, integration, and continuous evolution.
+                The lowercase δ (Delta) symbol represents mathematical change and computational optimization. Formed from a single vector line, it suggests fluid logic, integration, and continuous evolution.
               </p>
               <p>
                 The linear thickness mimics code outlines and structural architecture prints, mirroring DELTA's mission: connecting dots of potential to create a delta of progress.
