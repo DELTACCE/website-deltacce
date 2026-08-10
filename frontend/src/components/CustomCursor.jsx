@@ -207,7 +207,7 @@ export default function CustomCursor() {
   return (
     <div
       aria-hidden="true"
-      className="fixed left-0 top-0 z-[9999] pointer-events-none select-none"
+      className="fixed left-0 top-0 z-[999999] pointer-events-none select-none"
       style={{
         transform: `translate3d(${cursor.x}px, ${cursor.y}px, 0) translate(-50%, -50%) rotate(${cursor.rotate ? 180 : 0}deg) scale(${cursor.visible ? 1 : 0.65})`,
         opacity: cursor.visible ? 1 : 0,

@@ -19,9 +19,6 @@ import EventDay from './pages/EventDay';
 import Contact from './pages/Contact';
 
 function AppContent({ showIntro, setShowIntro }) {
-  const { pathname } = useLocation();
-  const isGalleryRoute = pathname === '/gallery';
-
   return (
     <>
       <ScrollToTop />
@@ -32,7 +29,7 @@ function AppContent({ showIntro, setShowIntro }) {
         <BlueprintGridOverlay />
         <CustomCursor />
         <Navbar />
-        <main className={`flex-grow min-h-0 relative z-10 ${isGalleryRoute ? 'overflow-hidden' : ''}`}>
+        <main className="flex-grow min-h-0 relative z-10">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

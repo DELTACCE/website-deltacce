@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { buildCloudinaryDeliveryUrl, buildCloudinaryImageSrcSet } from '../../utils/cloudinary';
 
 function GalleryMediaVideo({ media, label, scrollRootRef, canAutoplay }) {
@@ -91,38 +92,134 @@ function GalleryMediaVideo({ media, label, scrollRootRef, canAutoplay }) {
       onLoadedData={() => setIsLoaded(true)}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`block h-full w-full object-contain motion-safe:transition-opacity motion-safe:duration-500 motion-reduce:transition-none ${
+      className={`block h-full w-full object-contain motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-out motion-reduce:transition-none group-hover:scale-[1.03] ${
         isLoaded ? 'opacity-100' : 'opacity-0'
       }`}
     />
   );
 }
 
+/* ─── HD Image Modal (rendered via portal at document.body) ─── */
+function ImageModal({ src, alt, onClose }) {
+  // Close on Escape key
+  React.useEffect(() => {
+    const handleKey = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', handleKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.body.style.overflow = '';
+    };
+  }, [onClose]);
+
+  return ReactDOM.createPortal(
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Image viewer"
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 99999,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'rgba(10, 10, 10, 0.96)',
+      }}
+      onClick={onClose}
+    >
+      {/* Close button */}
+      <button
+        type="button"
+        aria-label="Close"
+        style={{
+          position: 'absolute',
+          top: '1.25rem',
+          right: '1.25rem',
+          background: 'rgba(255,255,255,0.08)',
+          border: '1px solid rgba(255,255,255,0.15)',
+          borderRadius: '50%',
+          width: '2.5rem',
+          height: '2.5rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer',
+          color: '#f4f0ea',
+          transition: 'background 0.2s',
+        }}
+        onClick={onClose}
+        onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(254,87,42,0.85)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; }}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      {/* Image — centred, constrained so it never bleeds into chrome */}
+      <div
+        style={{
+          maxWidth: 'min(92vw, 1100px)',
+          maxHeight: '88vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <img
+          src={src}
+          alt={alt}
+          style={{
+            display: 'block',
+            maxWidth: '100%',
+            maxHeight: '88vh',
+            width: 'auto',
+            height: 'auto',
+            objectFit: 'contain',
+            borderRadius: '0.5rem',
+            boxShadow: '0 32px 80px rgba(0,0,0,0.7)',
+          }}
+        />
+      </div>
+    </div>,
+    document.body
+  );
+}
+
 function GalleryMediaImage({ media, label }) {
   const [isLoaded, setIsLoaded] = React.useState(false);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
   const deliveryUrl = buildCloudinaryDeliveryUrl(media.url, 'f_auto,q_auto:eco');
+  const hdUrl = buildCloudinaryDeliveryUrl(media.url, 'f_auto,q_auto:best');
   const srcSet = buildCloudinaryImageSrcSet(media.url);
 
-  const handleImageClick = () => {
-    window.open(media.url, '_blank', 'noopener,noreferrer');
-  };
-
   return (
-    <img
-      src={deliveryUrl}
-      srcSet={srcSet}
-      sizes="(min-width: 1280px) 30vw, (min-width: 768px) 44vw, 100vw"
-      alt={media.alt || label}
-      width={media.width}
-      height={media.height}
-      loading="lazy"
-      decoding="async"
-      onClick={handleImageClick}
-      onLoad={() => setIsLoaded(true)}
-      className={`block h-full w-full object-contain cursor-pointer motion-safe:transition-opacity motion-safe:duration-500 motion-reduce:transition-none ${
-        isLoaded ? 'opacity-100' : 'opacity-0'
-      }`}
-    />
+    <>
+      <img
+        src={deliveryUrl}
+        srcSet={srcSet}
+        sizes="(min-width: 1280px) 30vw, (min-width: 768px) 44vw, 100vw"
+        alt={media.alt || label}
+        width={media.width}
+        height={media.height}
+        loading="lazy"
+        decoding="async"
+        onClick={() => setIsModalOpen(true)}
+        onLoad={() => setIsLoaded(true)}
+        className={`block h-full w-full object-contain cursor-zoom-in motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-out motion-reduce:transition-none group-hover:scale-[1.03] ${
+          isLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
+      />
+      {isModalOpen && (
+        <ImageModal
+          src={hdUrl}
+          alt={`HD — ${media.alt || label}`}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
+    </>
   );
 }
 
@@ -133,10 +230,10 @@ export default function GalleryMediaCard({
   canAutoplay,
 }) {
   return (
-    <article className="mb-4 inline-block w-full break-inside-avoid">
-      <figure className="overflow-hidden rounded-3xl border border-indigo/10 bg-paper shadow-[0_18px_42px_rgba(12,23,64,0.08)]">
+    <article className="mb-3 md:mb-10 inline-block w-full break-inside-avoid">
+      <figure className="group relative w-full overflow-hidden bg-indigo/5">
         <div
-          className="relative w-full overflow-hidden bg-indigo/5"
+          className="relative w-full overflow-hidden"
           style={{ aspectRatio: media.aspectRatio }}
         >
           {media.type === 'video' ? (
@@ -151,6 +248,11 @@ export default function GalleryMediaCard({
           )}
         </div>
       </figure>
+      <div className="mt-4 text-left">
+        <p className="font-heading text-[9px] font-bold uppercase tracking-[0.25em] text-indigo/60">
+          {label}
+        </p>
+      </div>
     </article>
   );
 }
