@@ -253,10 +253,39 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const headerRef = useRef(null);
   const moreButtonRef = useRef(null);
   const activeMainPath = useMemo(() => getActiveMainPath(pathname), [pathname]);
   const activeMorePath = useMemo(() => getActiveMorePath(pathname), [pathname]);
   const moreIsActive = activeMorePath !== null;
+
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return undefined;
+
+    const updateNavbarHeight = () => {
+      document.documentElement.style.setProperty('--navbar-height', `${header.offsetHeight}px`);
+    };
+
+    updateNavbarHeight();
+
+    if (typeof ResizeObserver === 'undefined') {
+      window.addEventListener('resize', updateNavbarHeight);
+      return () => {
+        window.removeEventListener('resize', updateNavbarHeight);
+      };
+    }
+
+    const observer = new ResizeObserver(updateNavbarHeight);
+    observer.observe(header);
+
+    window.addEventListener('resize', updateNavbarHeight);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', updateNavbarHeight);
+    };
+  }, []);
 
   useEffect(() => {
     setDesktopMoreOpen(false);
@@ -302,7 +331,7 @@ export default function Navbar() {
   }, [navigate]);
 
   return (
-    <header className="sticky top-0 z-50 bg-transparent">
+    <header ref={headerRef} className="sticky top-0 z-50 bg-transparent">
       <div className="relative mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-4 pt-3 sm:px-6 lg:px-8">
         <BrandLink />
 
@@ -596,4 +625,3 @@ export function BottomGlassNavbarLegacy() {
     </div>
   );
 }
-

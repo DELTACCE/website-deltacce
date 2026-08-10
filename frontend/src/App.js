@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';
@@ -16,17 +16,18 @@ import EventDetail from './pages/EventDetail';
 import EventDay from './pages/EventDay';
 import Contact from './pages/Contact';
 
-function App() {
-  const [showIntro, setShowIntro] = useState(true);
+function AppContent({ showIntro, setShowIntro }) {
+  const { pathname } = useLocation();
+  const isGalleryRoute = pathname === '/gallery';
 
   return (
-    <Router>
+    <>
       <ScrollToTop />
       {showIntro && <IntroScreen onComplete={() => setShowIntro(false)} />}
       <div className="flex flex-col min-h-screen bg-paper text-ink selection:bg-signal selection:text-white">
         <CustomCursor />
         <Navbar />
-        <main className="flex-grow">
+        <main className={`flex-grow min-h-0 ${isGalleryRoute ? 'overflow-hidden' : ''}`}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -41,6 +42,16 @@ function App() {
         </main>
         <Footer />
       </div>
+    </>
+  );
+}
+
+function App() {
+  const [showIntro, setShowIntro] = useState(true);
+
+  return (
+    <Router>
+      <AppContent showIntro={showIntro} setShowIntro={setShowIntro} />
     </Router>
   );
 }
