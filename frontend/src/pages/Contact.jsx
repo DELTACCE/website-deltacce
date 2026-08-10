@@ -70,14 +70,14 @@ export default function Contact() {
               {contactDetails.map((detail, idx) => {
                 const Icon = detail.icon;
                 return (
-                  <div key={idx} className="group border border-indigo/10 bg-paper/40 p-6 relative hover:border-signal/30 transition-all duration-300 rounded-2xl">
+                  <div key={idx} className="group border border-indigo/15 bg-paper/65 backdrop-blur-md backdrop-saturate-150 p-6 relative hover:border-signal/40 hover:-translate-y-1 hover:shadow-[0_16px_36px_-8px_rgba(254,87,42,0.15)] shadow-[0_12px_32px_rgba(14,48,97,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] transition-all duration-300 rounded-2xl">
                     <div className="flex gap-4">
                       <Icon strokeWidth={1.5} className="w-6 h-6 text-signal shrink-0 mt-1" />
                       <div>
                         <h4 className="font-heading text-sm font-bold text-indigo uppercase tracking-wider mb-2">
                           {detail.title}
                         </h4>
-                        <div className="font-body text-sm text-ink/75 leading-relaxed mb-4 font-light">
+                        <div className="font-body text-sm text-ink/80 leading-relaxed mb-4 font-light">
                           {detail.content}
                         </div>
                         <a
@@ -96,7 +96,7 @@ export default function Contact() {
             </div>
 
             {/* Social handles */}
-            <div className="border border-indigo/10 bg-paper/40 p-6 relative rounded-2xl">
+            <div className="border border-indigo/15 bg-paper/65 backdrop-blur-md backdrop-saturate-150 p-6 relative shadow-[0_12px_32px_rgba(14,48,97,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] rounded-2xl">
               <h4 className="font-heading text-xs text-signal font-bold uppercase tracking-wider mb-4">
                 {"// CHANNELS"}
               </h4>
@@ -109,7 +109,7 @@ export default function Contact() {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center gap-2 border border-indigo/10 px-4 py-2 hover:border-signal/30 bg-paper/30 hover:bg-paper transition-all duration-300 rounded-full"
+                      className="group flex items-center gap-2 border border-indigo/15 px-4 py-2 hover:border-signal/40 bg-paper/60 hover:bg-paper/85 backdrop-blur-xs transition-all duration-300 rounded-full"
                     >
                       <Icon strokeWidth={1.5} className="w-4 h-4 text-indigo/60 group-hover:text-signal transition-colors" />
                       <span className="font-heading text-xs text-indigo font-bold tracking-wider group-hover:text-indigo">

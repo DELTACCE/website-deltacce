@@ -32,7 +32,7 @@ export default function Events() {
               <Link
                 key={event.slug}
                 to={`/events/${event.slug}`}
-                className="group border border-indigo/10 bg-paper/40 rounded-3xl p-7 flex flex-col gap-4 hover:border-signal/30 hover:-translate-y-1.5 hover:shadow-[0_15px_35px_-10px_rgba(14,48,97,0.3)] transition-all duration-300"
+                className="group border border-indigo/15 bg-paper/65 backdrop-blur-md backdrop-saturate-150 rounded-3xl p-7 flex flex-col gap-4 hover:border-signal/40 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_-8px_rgba(254,87,42,0.18),inset_0_1px_0_rgba(255,255,255,1)] shadow-[0_12px_32px_rgba(14,48,97,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] transition-all duration-300"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-heading text-[10px] text-teal font-bold tracking-[0.25em] uppercase">

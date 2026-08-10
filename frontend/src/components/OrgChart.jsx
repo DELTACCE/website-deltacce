@@ -11,7 +11,7 @@ export default function OrgChart() {
       </h3>
 
       <div className="flex flex-col items-center max-w-3xl mx-auto text-center">
-        
+
         {/* Level 1: Faculty Coordinator */}
         <div className="relative z-10 border border-indigo/30 bg-paper px-6 py-3 min-w-[220px] shadow-sm rounded-2xl">
           <span className="text-[9px] text-teal font-bold uppercase tracking-wider block mb-0.5">Level 01</span>
@@ -40,7 +40,7 @@ export default function OrgChart() {
           <div className="hidden md:block w-[75%] mx-auto h-[2px] bg-indigo/30"></div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full pt-4 md:pt-0">
-            
+
             {/* Dept A */}
             <div className="flex flex-col items-center">
               <div className="hidden md:block w-[2px] h-5 bg-indigo/30"></div>

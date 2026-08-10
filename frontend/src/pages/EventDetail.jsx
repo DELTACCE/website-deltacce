@@ -32,7 +32,7 @@ export default function EventDetail() {
           Back to events
         </Link>
 
-        <section className="relative border border-indigo/10 bg-paper/40 rounded-[2rem] p-8 md:p-12 overflow-hidden">
+        <section className="relative border border-indigo/15 bg-paper/65 backdrop-blur-md backdrop-saturate-150 shadow-[0_12px_32px_rgba(14,48,97,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] rounded-[2rem] p-8 md:p-12 overflow-hidden">
 
           <div className="relative z-10">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">

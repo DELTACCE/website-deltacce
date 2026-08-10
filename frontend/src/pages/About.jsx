@@ -86,15 +86,15 @@ export default function About() {
               Students and faculty coordinators in the Data Science department proposed a unified association to bridge the gap between textbook formulas and production-grade applications. DELTA was designed to serve as a launchpad where students learn, build, and deploy code together.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-6 select-none">
-              <div className="border border-indigo/10 p-4 bg-paper/50 rounded-2xl">
+              <div className="border border-indigo/15 p-4 bg-paper/65 backdrop-blur-md backdrop-saturate-150 shadow-[0_12px_32px_rgba(14,48,97,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] rounded-2xl">
                 <span className="font-heading text-3xl font-bold text-signal block">2026</span>
                 <span className="font-body text-xs text-indigo font-bold uppercase tracking-wider">Year Founded</span>
               </div>
-              <div className="border border-indigo/10 p-4 bg-paper/50 rounded-2xl">
+              <div className="border border-indigo/15 p-4 bg-paper/65 backdrop-blur-md backdrop-saturate-150 shadow-[0_12px_32px_rgba(14,48,97,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] rounded-2xl">
                 <span className="font-heading text-3xl font-bold text-signal block">100+</span>
                 <span className="font-body text-xs text-indigo font-bold uppercase tracking-wider">Active Members</span>
               </div>
-              <div className="border border-indigo/10 p-4 bg-paper/50 col-span-2 md:col-span-1 rounded-2xl">
+              <div className="border border-indigo/15 p-4 bg-paper/65 backdrop-blur-md backdrop-saturate-150 shadow-[0_12px_32px_rgba(14,48,97,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] col-span-2 md:col-span-1 rounded-2xl">
                 <span className="font-heading text-3xl font-bold text-signal block">6+</span>
                 <span className="font-body text-xs text-indigo font-bold uppercase tracking-wider">Focus Fields</span>
               </div>
@@ -104,7 +104,7 @@ export default function About() {
       </section>
 
       {/* 3. MISSION, VISION & VALUES */}
-      <section className="py-12 md:py-24 px-6 border-b border-indigo/10 bg-paper/30">
+      <section className="py-12 md:py-24 px-6 border-b border-indigo/10">
         <div className="max-w-5xl mx-auto">
           <SectionHeading eyebrow="02 / BLUEPRINT" heading="Values & Direction" />
 
@@ -137,7 +137,7 @@ export default function About() {
                 <ScrollReveal
                   key={idx}
                   delay={idx * 0.08}
-                  className="group flex flex-col items-center justify-center border border-indigo/10 p-6 bg-paper/50 hover:bg-paper/80 hover:border-signal/30 transition-all duration-300 select-none hover:-translate-y-1 hover:shadow-sm rounded-2xl"
+                  className="group flex flex-col items-center justify-center border border-indigo/15 p-6 bg-paper/65 backdrop-blur-md backdrop-saturate-150 hover:bg-paper/85 hover:border-signal/40 hover:-translate-y-1 hover:shadow-[0_16px_36px_-8px_rgba(254,87,42,0.15)] shadow-[0_12px_32px_rgba(14,48,97,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] transition-all duration-300 select-none rounded-2xl"
                 >
                   <Icon strokeWidth={1.5} className="w-10 h-10 text-indigo/60 group-hover:text-signal transition-colors duration-300 mb-4" />
                   <span className="font-heading text-xs text-indigo font-bold text-center uppercase tracking-wider group-hover:text-indigo transition-colors font-medium">

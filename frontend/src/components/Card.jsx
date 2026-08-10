@@ -1,12 +1,12 @@
 import React from 'react';
 
-export default function Card({ 
-  icon: Icon, 
-  title, 
-  description, 
-  iconPosition = 'top-right', 
+export default function Card({
+  icon: Icon,
+  title,
+  description,
+  iconPosition = 'top-right',
   hoverEffect = true,
-  className = '' 
+  className = ''
 }) {
   const cardStyle = `
     group relative bg-indigo border border-indigo/20 p-6 md:p-8 rounded-3xl transition-all duration-300 select-none h-full flex flex-col
