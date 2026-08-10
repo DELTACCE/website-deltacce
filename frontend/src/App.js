@@ -9,6 +9,7 @@ import About from './pages/About';
 import Committee from './pages/Committee';
 import Brand from './pages/Brand';
 import Events from './pages/Events';
+import Gallery from './pages/gallery';
 import EventDetail from './pages/EventDetail';
 import EventDay from './pages/EventDay';
 import Contact from './pages/Contact';
@@ -26,6 +27,7 @@ function App() {
             <Route path="/committee" element={<Committee />} />
             <Route path="/brand" element={<Brand />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/gallery" element={<Gallery />} />
             <Route path="/events/:slug" element={<EventDetail />} />
             <Route path="/events/:slug/:daySlug" element={<EventDay />} />
             <Route path="/contact" element={<Contact />} />

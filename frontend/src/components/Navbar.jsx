@@ -12,6 +12,7 @@ import {
   Menu,
   Users,
   X,
+  Images,
 } from 'lucide-react';
 
 const NAV_ITEMS = [
@@ -24,6 +25,7 @@ const NAV_ITEMS = [
 const MORE_ITEMS = [
   { name: 'Brand', path: '/brand', icon: BookOpen },
   { name: 'Contact', path: '/contact', icon: Mail },
+  { name: 'Gallery', path: '/gallery', icon: Images }
 ];
 
 const COLORS = {
