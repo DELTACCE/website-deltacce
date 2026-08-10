@@ -107,7 +107,7 @@ export function buildCloudinaryImageSrcSet(url, widths = RESPONSIVE_IMAGE_WIDTHS
 
   return widths
     .map((width) => {
-      const transformedUrl = buildCloudinaryDeliveryUrl(url, `f_auto,q_auto,c_limit,w_${width}`);
+      const transformedUrl = buildCloudinaryDeliveryUrl(url, `f_auto,q_auto:eco,c_limit,w_${width}`);
       return `${transformedUrl} ${width}w`;
     })
     .join(', ');

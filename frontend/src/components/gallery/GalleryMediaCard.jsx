@@ -5,7 +5,7 @@ function GalleryMediaVideo({ media, label, scrollRootRef, canAutoplay }) {
   const videoRef = React.useRef(null);
   const isVisibleRef = React.useRef(false);
   const [isLoaded, setIsLoaded] = React.useState(false);
-  const videoUrl = buildCloudinaryDeliveryUrl(media.url, 'f_auto,q_auto');
+  const videoUrl = buildCloudinaryDeliveryUrl(media.url, 'f_auto,q_auto:eco');
 
   React.useEffect(() => {
     const video = videoRef.current;
@@ -35,7 +35,9 @@ function GalleryMediaVideo({ media, label, scrollRootRef, canAutoplay }) {
         isVisibleRef.current = shouldPlay;
 
         if (shouldPlay) {
-          video.play().catch(() => {});
+          if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            video.play().catch(() => {});
+          }
         } else {
           video.pause();
         }
@@ -51,7 +53,7 @@ function GalleryMediaVideo({ media, label, scrollRootRef, canAutoplay }) {
     const handleVisibilityChange = () => {
       if (document.hidden) {
         video.pause();
-      } else if (isVisibleRef.current) {
+      } else if (isVisibleRef.current && !window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
         video.play().catch(() => {});
       }
     };
@@ -65,6 +67,18 @@ function GalleryMediaVideo({ media, label, scrollRootRef, canAutoplay }) {
     };
   }, [canAutoplay, scrollRootRef]);
 
+  const handleMouseEnter = () => {
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      videoRef.current?.play().catch(() => {});
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      videoRef.current?.pause();
+    }
+  };
+
   return (
     <video
       ref={videoRef}
@@ -75,6 +89,8 @@ function GalleryMediaVideo({ media, label, scrollRootRef, canAutoplay }) {
       preload="metadata"
       aria-label={label}
       onLoadedData={() => setIsLoaded(true)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       className={`block h-full w-full object-contain motion-safe:transition-opacity motion-safe:duration-500 motion-reduce:transition-none ${
         isLoaded ? 'opacity-100' : 'opacity-0'
       }`}
@@ -84,8 +100,12 @@ function GalleryMediaVideo({ media, label, scrollRootRef, canAutoplay }) {
 
 function GalleryMediaImage({ media, label }) {
   const [isLoaded, setIsLoaded] = React.useState(false);
-  const deliveryUrl = buildCloudinaryDeliveryUrl(media.url, 'f_auto,q_auto');
+  const deliveryUrl = buildCloudinaryDeliveryUrl(media.url, 'f_auto,q_auto:eco');
   const srcSet = buildCloudinaryImageSrcSet(media.url);
+
+  const handleImageClick = () => {
+    window.open(media.url, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <img
@@ -97,8 +117,9 @@ function GalleryMediaImage({ media, label }) {
       height={media.height}
       loading="lazy"
       decoding="async"
+      onClick={handleImageClick}
       onLoad={() => setIsLoaded(true)}
-      className={`block h-full w-full object-contain motion-safe:transition-opacity motion-safe:duration-500 motion-reduce:transition-none ${
+      className={`block h-full w-full object-contain cursor-pointer motion-safe:transition-opacity motion-safe:duration-500 motion-reduce:transition-none ${
         isLoaded ? 'opacity-100' : 'opacity-0'
       }`}
     />

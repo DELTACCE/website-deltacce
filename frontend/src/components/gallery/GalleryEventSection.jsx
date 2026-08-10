@@ -22,10 +22,10 @@ export default function GalleryEventSection({
       <div className="flex min-w-0 items-start justify-between gap-4">
         <div>
           <div className="font-heading text-[10px] font-bold uppercase tracking-[0.28em] text-teal">
-            {item.name}
+            Event media
           </div>
           <h2 className="mt-2 font-heading text-xl font-extrabold uppercase tracking-tight text-indigo sm:text-2xl">
-            {isLoading ? 'Loading media' : 'Event media'}
+            {isLoading ? 'Loading media' : item.name}
           </h2>
         </div>
       </div>
