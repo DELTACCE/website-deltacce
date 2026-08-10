@@ -25,15 +25,17 @@ export default function EventDetail() {
   }
 
   return (
-    <div className="bg-paper px-6 pt-31 pb-20">
+    <div className="px-6 pt-31 pb-20">
       <div className="max-w-5xl mx-auto">
         <Link to="/events" className="inline-flex items-center gap-2 text-signal font-heading text-xs font-bold uppercase tracking-[0.2em] mb-8">
           <ArrowLeft className="w-4 h-4" />
           Back to events
         </Link>
 
-        <section className="border border-indigo/10 bg-paper/40 rounded-[2rem] p-8 md:p-12">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+        <section className="relative border border-indigo/10 bg-paper/40 rounded-[2rem] p-8 md:p-12 overflow-hidden">
+
+          <div className="relative z-10">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
             <div>
               <span className="font-heading text-[10px] text-teal font-bold tracking-[0.25em] uppercase block mb-3">
                 {"// EVENT DETAIL"}
@@ -123,6 +125,7 @@ export default function EventDetail() {
                 </Link>
               ))}
             </div>
+          </div>
           </div>
         </section>
       </div>

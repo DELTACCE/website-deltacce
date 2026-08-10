@@ -5,6 +5,8 @@ import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import IntroScreen from './components/IntroScreen';
+import NodeCanvasBackground from './components/NodeCanvasBackground';
+import BlueprintGridOverlay from './components/BlueprintGridOverlay';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -23,10 +25,13 @@ function App() {
     <Router>
       <ScrollToTop />
       {showIntro && <IntroScreen onComplete={() => setShowIntro(false)} />}
-      <div className="flex flex-col min-h-screen bg-paper text-ink selection:bg-signal selection:text-white">
+      <div className="flex flex-col min-h-screen bg-paper text-ink selection:bg-signal selection:text-white relative">
+        {/* Global animated node background & blueprint grid overlay */}
+        <NodeCanvasBackground />
+        <BlueprintGridOverlay />
         <CustomCursor />
         <Navbar />
-        <main className="flex-grow">
+        <main className="flex-grow relative z-10">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

@@ -33,21 +33,24 @@ export default function Brand() {
   ];
 
   return (
-    <div className="bg-paper px-6">
+    <div className="px-6">
       <div className="max-w-5xl mx-auto">
 
         {/* Header Section */}
-        <section className="min-h-[60vh] md:min-h-[110vh] flex flex-col justify-center border-b border-indigo/10 pt-10 pb-14 md:pb-20 mb-14 md:mb-24">
-          <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
-            {"// VISUAL LANGUAGE"}
-          </span>
-          <h1 className="text-4xl md:text-6xl font-extrabold text-indigo uppercase leading-none tracking-tight mb-6">
-            Connecting dots.<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo to-teal">Creating delta.</span>
-          </h1>
-          <p className="font-body text-base md:text-lg text-ink/80 max-w-2xl leading-relaxed">
-            The brand identity of the Data Oriented Thinkers' Association bridges technical rigor with modern geometric layouts. Here is our official design specification.
-          </p>
+        <section className="relative min-h-[60vh] md:min-h-[110vh] flex flex-col justify-center border-b border-indigo/10 pt-10 pb-14 md:pb-20 mb-14 md:mb-24 overflow-hidden">
+
+          <div className="relative z-10">
+            <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
+              {"// VISUAL LANGUAGE"}
+            </span>
+            <h1 className="text-4xl md:text-6xl font-extrabold text-indigo uppercase leading-none tracking-tight mb-6">
+              Connecting dots.<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo to-teal">Creating delta.</span>
+            </h1>
+            <p className="font-body text-base md:text-lg text-ink/80 max-w-2xl leading-relaxed">
+              The brand identity of the Data Oriented Thinkers' Association bridges technical rigor with modern geometric layouts. Here is our official design specification.
+            </p>
+          </div>
         </section>
 
         {/* 1. Logo Configurations */}

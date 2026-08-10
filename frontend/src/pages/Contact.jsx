@@ -34,21 +34,24 @@ export default function Contact() {
   ];
 
   return (
-    <div className="bg-paper px-6">
+    <div className="px-6">
       <div className="max-w-5xl mx-auto">
 
         {/* Header Section */}
-        <section className="min-h-[60vh] md:min-h-[110vh] flex flex-col justify-center border-b border-indigo/10 pt-10 pb-14 md:pb-20 mb-14 md:mb-24">
-          <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
-            {"// LINK SYSTEMS"}
-          </span>
-          <h1 className="text-4xl md:text-6xl font-extrabold text-indigo uppercase leading-none tracking-tight mb-6">
-            Get in touch.<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo to-teal">Connect the dots.</span>
-          </h1>
-          <p className="font-body text-base md:text-lg text-ink/80 max-w-2xl leading-relaxed">
-            Have questions, research collaborations, or want to join our network? Reach out to us through our direct lines or the contact form below.
-          </p>
+        <section className="relative min-h-[60vh] md:min-h-[110vh] flex flex-col justify-center border-b border-indigo/10 pt-10 pb-14 md:pb-20 mb-14 md:mb-24 overflow-hidden">
+
+          <div className="relative z-10">
+            <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
+              {"// LINK SYSTEMS"}
+            </span>
+            <h1 className="text-4xl md:text-6xl font-extrabold text-indigo uppercase leading-none tracking-tight mb-6">
+              Get in touch.<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo to-teal">Connect the dots.</span>
+            </h1>
+            <p className="font-body text-base md:text-lg text-ink/80 max-w-2xl leading-relaxed">
+              Have questions, research collaborations, or want to join our network? Reach out to us through our direct lines or the contact form below.
+            </p>
+          </div>
         </section>
 
         {/* Form and Contact Detail Split */}

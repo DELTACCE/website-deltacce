@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Terminal, Cpu, Trophy, Globe, Users, Lightbulb, ArrowRight } from 'lucide-react';
-import NodeCanvasBackground from '../components/NodeCanvasBackground';
 import SectionHeading from '../components/SectionHeading';
 import Card from '../components/Card';
 import TeamCard from '../components/TeamCard';
@@ -48,24 +47,10 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative overflow-hidden bg-paper px-6">
+    <div className="relative overflow-hidden px-6">
 
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[80vh] md:min-h-[110vh] flex items-center justify-center border-b border-indigo/10 px-6 py-16 md:py-20">
-        <NodeCanvasBackground />
-
-        {/* Asymmetrical grid background line indicators */}
-        <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
-          <div className="absolute left-[15%] top-0 bottom-0 w-[1px] bg-indigo/5 hidden md:block"></div>
-          <div className="absolute right-[25%] top-0 bottom-0 w-[1px] bg-indigo/5 hidden md:block"></div>
-          <div className="absolute left-0 right-0 top-[30%] h-[1px] bg-indigo/5"></div>
-          <div className="absolute left-[15%] top-[30%] text-indigo/25 text-xs font-heading translate-x-2 translate-y-2 hidden md:block">
-            LAT_00.26_N
-          </div>
-          <div className="absolute right-[25%] top-[30%] text-indigo/25 text-xs font-heading translate-x-2 -translate-y-4 hidden md:block">
-            + CORNER_GRID_REF
-          </div>
-        </div>
 
         <div className="relative max-w-4xl mx-auto w-full z-10 flex flex-col items-center justify-center text-center">
           <ScrollReveal className="flex flex-col items-center justify-center text-center" delay={0.1}>

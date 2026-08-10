@@ -81,38 +81,41 @@ export default function EventDay() {
   }
 
   return (
-    <div className="bg-paper px-6 pt-31 pb-20">
+    <div className="px-6 pt-31 pb-20">
       <div className="max-w-5xl mx-auto">
         <Link to={`/events/${event.slug}`} className="inline-flex items-center gap-2 text-signal font-heading text-xs font-bold uppercase tracking-[0.2em] mb-8">
           <ArrowLeft className="w-4 h-4" />
           Back to event overview
         </Link>
 
-        <section className="border border-indigo/10 bg-paper/40 rounded-[2rem] p-8 md:p-12">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
-            <div>
-              <span className="font-heading text-[10px] text-teal font-bold tracking-[0.25em] uppercase block mb-3">
-                {"// DAY RESOURCE"}
-              </span>
-              <h1 className="text-3xl md:text-4xl font-extrabold text-indigo uppercase leading-tight tracking-tight">
-                {day.title}
-              </h1>
-              <p className="font-heading text-sm text-signal uppercase tracking-[0.2em] mt-3">
-                {event.title}
-              </p>
-            </div>
-            <div className="inline-flex items-center gap-2 border border-signal/20 bg-signal/10 text-signal px-4 py-2 rounded-full text-sm font-semibold">
-              <Sparkles className="w-4 h-4" />
-              {day.label}
-            </div>
-          </div>
+        <section className="relative border border-indigo/10 bg-paper/40 rounded-[2rem] p-8 md:p-12 overflow-hidden">
 
-          <p className="font-body text-lg text-ink/80 leading-relaxed max-w-3xl mb-8">
-            {day.summary}
-          </p>
+          <div className="relative z-10">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
+              <div>
+                <span className="font-heading text-[10px] text-teal font-bold tracking-[0.25em] uppercase block mb-3">
+                  {"// DAY RESOURCE"}
+                </span>
+                <h1 className="text-3xl md:text-4xl font-extrabold text-indigo uppercase leading-tight tracking-tight">
+                  {day.title}
+                </h1>
+                <p className="font-heading text-sm text-signal uppercase tracking-[0.2em] mt-3">
+                  {event.title}
+                </p>
+              </div>
+              <div className="inline-flex items-center gap-2 border border-signal/20 bg-signal/10 text-signal px-4 py-2 rounded-full text-sm font-semibold">
+                <Sparkles className="w-4 h-4" />
+                {day.label}
+              </div>
+            </div>
 
-          <div className="space-y-6">
-            {day.sections?.map((section, index) => renderSection(section, index))}
+            <p className="font-body text-lg text-ink/80 leading-relaxed max-w-3xl mb-8">
+              {day.summary}
+            </p>
+
+            <div className="space-y-6">
+              {day.sections?.map((section, index) => renderSection(section, index))}
+            </div>
           </div>
         </section>
       </div>

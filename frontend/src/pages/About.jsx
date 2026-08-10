@@ -43,11 +43,12 @@ export default function About() {
   ];
 
   return (
-    <div className="bg-paper px-6">
+    <div className="px-6">
 
       {/* 1. HERO SECTION */}
-      <section className="relative pb-16 md:pb-20 pt-10 border-b border-indigo/10 min-h-[70vh] md:min-h-[110vh] flex flex-col justify-center">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <section className="relative pb-16 md:pb-20 pt-10 border-b border-indigo/10 min-h-[70vh] md:min-h-[110vh] flex flex-col justify-center overflow-hidden">
+
+        <div className="max-w-5xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
           <ScrollReveal className="lg:col-span-8" delay={0.1}>
             <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
               {"// ABOUT US"}

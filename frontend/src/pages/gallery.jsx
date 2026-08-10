@@ -1,11 +1,12 @@
 import React from 'react';
-import { Image, LayoutGrid} from 'lucide-react';
+import { Image, LayoutGrid } from 'lucide-react';
 
 export default function Gallery() {
   return (
-    <div className="bg-paper px-6">
-      <section className="min-h-[70vh] md:min-h-[85vh] flex items-center py-16 md:py-24">
-        <div className="max-w-5xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+    <div className="px-6">
+      <section className="relative min-h-[70vh] md:min-h-[85vh] flex items-center py-16 md:py-24 border-b border-indigo/10 overflow-hidden">
+
+        <div className="max-w-5xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
           <div className="lg:col-span-7">
             <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
               {"// GALLERY"}

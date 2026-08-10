@@ -6,20 +6,23 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Events() {
   return (
-    <div className="bg-paper px-6">
+    <div className="px-6">
       <div className="max-w-5xl mx-auto">
-        <section className="min-h-[60vh] md:min-h-[90vh] flex flex-col justify-center border-b border-indigo/10 pt-10 pb-16 md:pb-20 mb-12 md:mb-20">
-          <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
-            {"// PROGRAMS & EXPERIENCES"}
-          </span>
-          <h1 className="text-4xl md:text-6xl font-extrabold text-indigo uppercase leading-none tracking-tight mb-6">
-            Moments that move
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo to-teal">the community forward.</span>
-          </h1>
-          <p className="font-body text-base md:text-lg text-ink/80 max-w-2xl leading-relaxed">
-            From launch events to hands-on sprints, every DELTA gathering is built to connect ideas, people, and opportunities.
-          </p>
+        <section className="relative min-h-[60vh] md:min-h-[90vh] flex flex-col justify-center border-b border-indigo/10 pt-10 pb-16 md:pb-20 mb-12 md:mb-20 overflow-hidden">
+
+          <div className="relative z-10">
+            <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
+              {"// PROGRAMS & EXPERIENCES"}
+            </span>
+            <h1 className="text-4xl md:text-6xl font-extrabold text-indigo uppercase leading-none tracking-tight mb-6">
+              Moments that move
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo to-teal">the community forward.</span>
+            </h1>
+            <p className="font-body text-base md:text-lg text-ink/80 max-w-2xl leading-relaxed">
+              From launch events to hands-on sprints, every DELTA gathering is built to connect ideas, people, and opportunities.
+            </p>
+          </div>
         </section>
 
         <section className="mb-12 md:mb-20">
