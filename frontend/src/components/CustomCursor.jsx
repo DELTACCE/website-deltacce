@@ -15,6 +15,88 @@ const INTERACTIVE_SELECTOR = [
   '[contenteditable="true"]',
 ].join(', ');
 
+function isOrangeColor(colorStr) {
+  if (!colorStr || colorStr === 'transparent' || colorStr === 'rgba(0, 0, 0, 0)') {
+    return false;
+  }
+  const match = colorStr.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+  if (match) {
+    const r = parseInt(match[1], 10);
+    const g = parseInt(match[2], 10);
+    const b = parseInt(match[3], 10);
+    const a = match[4] !== undefined ? parseFloat(match[4]) : 1;
+
+    if (a < 0.1) return false;
+
+    // Detect signal orange hues (#fe572a is rgb(254, 87, 42))
+    if (r > 200 && g >= 20 && g <= 140 && b < 100 && (r - g > 70)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function hasOrangeBgClass(node) {
+  if (!node || !(node instanceof Element)) return false;
+
+  let classString = '';
+  if (typeof node.className === 'string') {
+    classString = node.className;
+  } else if (node.className && typeof node.className.baseVal === 'string') {
+    classString = node.className.baseVal;
+  }
+
+  if (!classString) return false;
+
+  const classes = classString.split(/\s+/);
+  return classes.some((cls) => {
+    // Ignore selection:, hover:, focus:, active:, group-hover:, etc.
+    if (cls.includes(':') && !cls.startsWith('sm:') && !cls.startsWith('md:') && !cls.startsWith('lg:')) {
+      return false;
+    }
+    if (cls === 'bg-signal' || cls.endsWith(':bg-signal') || cls === 'bg-[#fe572a]' || cls === 'bg-[#FE572A]') {
+      return true;
+    }
+    return false;
+  });
+}
+
+function isNodeOrange(node) {
+  if (!node || !(node instanceof Element)) return false;
+
+  if (hasOrangeBgClass(node) || node.getAttribute('data-cursor-color') === 'blue') {
+    return true;
+  }
+
+  try {
+    const style = window.getComputedStyle(node);
+    if (isOrangeColor(style.backgroundColor)) {
+      return true;
+    }
+  } catch (e) {
+    // Ignore detached elements
+  }
+
+  return false;
+}
+
+function resolveCursorColor(eventTarget, x, y) {
+  let node = eventTarget instanceof Element ? eventTarget : null;
+
+  if (!node && typeof document.elementFromPoint === 'function' && x !== undefined && y !== undefined) {
+    node = document.elementFromPoint(x, y);
+  }
+
+  while (node && node !== document.body && node !== document.documentElement) {
+    if (isNodeOrange(node)) {
+      return 'var(--color-indigo)'; // Switch to Blue when over orange section/element
+    }
+    node = node.parentElement;
+  }
+
+  return 'var(--color-signal)'; // Default to Orange
+}
+
 function resolveCursorMode(eventTarget) {
   let node = eventTarget instanceof Element ? eventTarget : null;
 
@@ -38,6 +120,7 @@ function getNextCursorState(event) {
     x: event.clientX,
     y: event.clientY,
     visible: true,
+    color: resolveCursorColor(event.target, event.clientX, event.clientY),
     ...resolveCursorMode(event.target),
   };
 }
@@ -49,6 +132,7 @@ export default function CustomCursor() {
     y: 0,
     visible: false,
     rotate: false,
+    color: 'var(--color-signal)',
   });
   const latestStateRef = useRef(cursor);
   const frameRef = useRef(null);
@@ -127,9 +211,9 @@ export default function CustomCursor() {
       style={{
         transform: `translate3d(${cursor.x}px, ${cursor.y}px, 0) translate(-50%, -50%) rotate(${cursor.rotate ? 180 : 0}deg) scale(${cursor.visible ? 1 : 0.65})`,
         opacity: cursor.visible ? 1 : 0,
-        transition: 'opacity 120ms ease, transform 120ms ease-out',
+        transition: 'opacity 120ms ease, transform 120ms ease-out, color 150ms ease',
         willChange: 'transform, opacity',
-        color: 'var(--color-signal)',
+        color: cursor.color || 'var(--color-signal)',
         fontFamily: 'inherit',
         fontSize: '1.15rem',
         fontWeight: 700,
