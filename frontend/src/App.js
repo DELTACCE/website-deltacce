@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import IntroScreen from './components/IntroScreen';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -16,9 +17,12 @@ import EventDay from './pages/EventDay';
 import Contact from './pages/Contact';
 
 function App() {
+  const [showIntro, setShowIntro] = useState(true);
+
   return (
     <Router>
       <ScrollToTop />
+      {showIntro && <IntroScreen onComplete={() => setShowIntro(false)} />}
       <div className="flex flex-col min-h-screen bg-paper text-ink selection:bg-signal selection:text-white">
         <CustomCursor />
         <Navbar />
