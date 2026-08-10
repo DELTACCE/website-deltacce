@@ -57,8 +57,9 @@ export default function IntroScreen({ onComplete }) {
 
           {/* Main Animated Branding */}
           <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 select-none px-4">
-            {/* Rotating 'δ' Logo */}
+            {/* Rotating 'δ' Logo moving to the left */}
             <motion.span
+              layout
               initial={{ scale: 0.2, opacity: 0, rotate: -180 }}
               animate={{
                 scale: 1,
@@ -66,9 +67,10 @@ export default function IntroScreen({ onComplete }) {
                 rotate: 360,
               }}
               transition={{
-                duration: 0.9,
-                delay: 0.2,
-                ease: [0.34, 1.56, 0.64, 1], // Spring bounce effect
+                rotate: { duration: 0.9, delay: 0.2, ease: [0.34, 1.56, 0.64, 1] },
+                scale: { duration: 0.9, delay: 0.2, ease: [0.34, 1.56, 0.64, 1] },
+                opacity: { duration: 0.7, delay: 0.2 },
+                layout: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
               }}
               className="inline-flex origin-center text-6xl sm:text-7xl md:text-8xl font-extrabold leading-none text-signal shrink-0"
               style={{ color: '#fe572a' }}
@@ -76,13 +78,14 @@ export default function IntroScreen({ onComplete }) {
               {"\u03B4"}
             </motion.span>
 
-            {/* Custom DELTA Logo (▶ELT▲) with Delayed Fade-In Animation */}
+            {/* Custom DELTA Logo (▶ELT▲) Appearing from the Right with Fade-In Animation */}
             <AnimatePresence>
               {(stage === 'text' || stage === 'done') && (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9, y: 12, filter: 'blur(8px)' }}
-                  animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
-                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                  initial={{ opacity: 0, x: 60, scale: 0.95, filter: 'blur(8px)' }}
+                  animate={{ opacity: 1, x: 0, scale: 1, filter: 'blur(0px)' }}
+                  exit={{ opacity: 0, x: -20, filter: 'blur(4px)' }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                   className="flex items-center justify-center gap-[0.05em] text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-indigo leading-none tracking-tight"
                   style={{ color: '#0e3061' }}
                 >
@@ -102,9 +105,9 @@ export default function IntroScreen({ onComplete }) {
 
           {/* Subtitle / System Status indicator */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: stage === 'text' ? 0.7 : 0, y: stage === 'text' ? 0 : 10 }}
-            transition={{ duration: 0.4, delay: 0.3 }}
+            initial={{ opacity: 0, y: 15, filter: 'blur(4px)' }}
+            animate={{ opacity: stage === 'text' ? 0.8 : 0, y: stage === 'text' ? 0 : 15, filter: stage === 'text' ? 'blur(0px)' : 'blur(4px)' }}
+            transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="absolute bottom-12 font-heading text-xs uppercase tracking-[0.25em] text-teal font-bold"
           >
             DATA ORIENTED THINKERS' ASSOCIATION
