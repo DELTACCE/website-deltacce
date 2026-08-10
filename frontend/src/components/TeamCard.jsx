@@ -110,15 +110,13 @@ export default function TeamCard({ member, featured = false }) {
   return (
     <div
       ref={containerRef}
-      className={`group relative h-full bg-indigo border border-indigo/20 rounded-3xl transition-all duration-300 hover:border-signal/40 hover:-translate-y-1.5 hover:shadow-[0_15px_35px_-10px_rgba(14,48,97,0.3)] select-none ${
-        featured ? 'p-4 sm:p-5 md:flex md:gap-6 md:items-center md:col-span-2' : 'p-4 sm:p-5 md:p-5'
-      } flex flex-row md:flex-col md:justify-start gap-4 md:gap-0`}
+      className={`group relative h-full bg-indigo border border-indigo/20 rounded-3xl transition-all duration-300 hover:border-signal/40 hover:-translate-y-1.5 hover:shadow-[0_15px_35px_-10px_rgba(14,48,97,0.3)] select-none ${featured ? 'p-4 sm:p-5 md:flex md:gap-6 md:items-center md:col-span-2' : 'p-4 sm:p-5 md:p-5'
+        } flex flex-row md:flex-col md:justify-start gap-4 md:gap-0`}
     >
       {/* Image container */}
       <div
-        className={`relative overflow-hidden bg-indigo/5 rounded-2xl shrink-0 ${
-          featured ? 'w-24 h-32 sm:w-28 sm:h-36 md:w-full md:h-36' : 'w-24 h-32 sm:w-28 sm:h-36 md:w-full md:h-44'
-        } flex items-center justify-center`}
+        className={`relative overflow-hidden bg-indigo/5 rounded-2xl shrink-0 ${featured ? 'w-24 h-32 sm:w-28 sm:h-36 md:w-full md:h-36' : 'w-24 h-32 sm:w-28 sm:h-36 md:w-full md:h-44'
+          } flex items-center justify-center`}
       >
         {!hasLoaded && <div className="absolute inset-0 bg-paper/10 animate-pulse" aria-hidden="true" />}
         {imgSrc ? (

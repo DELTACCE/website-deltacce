@@ -27,21 +27,24 @@ export default function Committee() {
   const { faculty, core, technical, media, content, events } = committeeData;
 
   return (
-    <div className="bg-paper px-6">
+    <div className="px-6">
       <div className="max-w-5xl mx-auto">
 
         {/* Header Section */}
-        <section className="min-h-[60vh] md:min-h-[110vh] flex flex-col justify-center border-b border-indigo/10 pt-10 pb-16 md:pb-20 mb-14 md:mb-24">
-          <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
-            {"// TEAM NETWORK"}
-          </span>
-          <h1 className="text-4xl md:text-6xl font-extrabold text-indigo uppercase leading-none tracking-tight mb-6 animate-fade-in">
-            Led by a vision,<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo to-teal">Driven by data.</span>
-          </h1>
-          <p className="font-body text-base md:text-lg text-ink/80 max-w-2xl leading-relaxed">
-            Meet the researchers, creators, developers, and administrators steering the Data Oriented Thinkers' Association at Christ College of Engineering.
-          </p>
+        <section className="relative min-h-[60vh] md:min-h-[110vh] flex flex-col justify-center border-b border-indigo/10 pt-10 pb-16 md:pb-20 mb-14 md:mb-24 overflow-hidden">
+
+          <div className="relative z-10">
+            <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
+              {"// TEAM NETWORK"}
+            </span>
+            <h1 className="text-4xl md:text-6xl font-extrabold text-indigo uppercase leading-none tracking-tight mb-6 animate-fade-in">
+              Led by a vision,<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo to-teal">Driven by data.</span>
+            </h1>
+            <p className="font-body text-base md:text-lg text-ink/80 max-w-2xl leading-relaxed">
+              Meet the researchers, creators, developers, and administrators steering the Data Oriented Thinkers' Association at Christ College of Engineering.
+            </p>
+          </div>
         </section>
 
         {/* 1. Faculty Coordinator Section */}

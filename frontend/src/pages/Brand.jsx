@@ -33,21 +33,24 @@ export default function Brand() {
   ];
 
   return (
-    <div className="bg-paper px-6">
+    <div className="px-6">
       <div className="max-w-5xl mx-auto">
 
         {/* Header Section */}
-        <section className="min-h-[60vh] md:min-h-[110vh] flex flex-col justify-center border-b border-indigo/10 pt-10 pb-14 md:pb-20 mb-14 md:mb-24">
-          <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
-            {"// VISUAL LANGUAGE"}
-          </span>
-          <h1 className="text-4xl md:text-6xl font-extrabold text-indigo uppercase leading-none tracking-tight mb-6">
-            Connecting dots.<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo to-teal">Creating delta.</span>
-          </h1>
-          <p className="font-body text-base md:text-lg text-ink/80 max-w-2xl leading-relaxed">
-            The brand identity of the Data Oriented Thinkers' Association bridges technical rigor with modern geometric layouts. Here is our official design specification.
-          </p>
+        <section className="relative min-h-[60vh] md:min-h-[110vh] flex flex-col justify-center border-b border-indigo/10 pt-10 pb-14 md:pb-20 mb-14 md:mb-24 overflow-hidden">
+
+          <div className="relative z-10">
+            <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
+              {"// VISUAL LANGUAGE"}
+            </span>
+            <h1 className="text-4xl md:text-6xl font-extrabold text-indigo uppercase leading-none tracking-tight mb-6">
+              Connecting dots.<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo to-teal">Creating delta.</span>
+            </h1>
+            <p className="font-body text-base md:text-lg text-ink/80 max-w-2xl leading-relaxed">
+              The brand identity of the Data Oriented Thinkers' Association bridges technical rigor with modern geometric layouts. Here is our official design specification.
+            </p>
+          </div>
         </section>
 
         {/* 1. Logo Configurations */}
@@ -128,7 +131,7 @@ export default function Brand() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-10">
 
             {/* Heading Spec */}
-            <div className="border border-indigo/10 p-8 bg-paper/40 rounded-3xl">
+            <div className="border border-indigo/15 p-8 bg-paper/65 backdrop-blur-md backdrop-saturate-150 shadow-[0_12px_32px_rgba(14,48,97,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] rounded-3xl">
               <span className="font-heading text-[10px] text-teal font-bold tracking-wider block mb-4 uppercase">
                 Primary Headings // BBH Bogle
               </span>
@@ -159,7 +162,7 @@ export default function Brand() {
             </div>
 
             {/* Body Spec */}
-            <div className="border border-indigo/10 p-8 bg-paper/40 rounded-3xl">
+            <div className="border border-indigo/15 p-8 bg-paper/65 backdrop-blur-md backdrop-saturate-150 shadow-[0_12px_32px_rgba(14,48,97,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] rounded-3xl">
               <span className="font-heading text-[10px] text-teal font-bold tracking-wider block mb-4 uppercase">
                 Body Copy // Lexend Exa
               </span>
@@ -208,7 +211,7 @@ export default function Brand() {
         </section>
 
         {/* 5. Downloads Placeholder */}
-        <section className="border border-indigo/10 bg-paper/20 p-8 md:p-12 text-center relative select-none rounded-3xl">
+        <section className="border border-indigo/15 bg-paper/65 backdrop-blur-md backdrop-saturate-150 p-8 md:p-12 text-center relative select-none rounded-3xl shadow-[0_12px_32px_rgba(14,48,97,0.06),inset_0_1px_0_rgba(255,255,255,0.9)]">
           <div className="absolute top-0 left-0 w-3.5 h-3.5 border-l border-t border-signal rounded-tl-3xl"></div>
           <div className="absolute bottom-0 right-0 w-3.5 h-3.5 border-r border-b border-signal rounded-br-3xl"></div>
 

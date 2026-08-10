@@ -4,7 +4,7 @@ import { Instagram, Linkedin, Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-indigo text-paper/80 pt-16 pb-8 px-6 border-t border-indigo/20">
+    <footer className="bg-indigo/90 dark:bg-[#071936] text-paper pt-16 pb-8 px-6 border-t border-teal/30 transition-colors duration-300">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
         {/* Brand narrative block */}
         <div className="md:col-span-2 flex flex-col justify-between">
@@ -12,7 +12,7 @@ export default function Footer() {
             <Link to="/" className="text-2xl font-bold font-heading text-paper flex items-center gap-2 mb-4 select-none">
               <span className="text-3xl text-signal font-extrabold">δ</span> DELTA
             </Link>
-            <p className="font-body text-sm max-w-sm leading-relaxed text-paper/70">
+            <p className="font-body text-sm max-w-sm leading-relaxed text-paper/80">
               Data Oriented Thinkers' Association. Linking academic discovery with technological innovation in Data Science, AI, and emerging computer fields at Christ College of Engineering.
             </p>
           </div>
@@ -50,22 +50,22 @@ export default function Footer() {
           <h4 className="font-heading text-sm text-paper tracking-wider uppercase mb-6">Quick Links</h4>
           <ul className="space-y-3 font-body text-sm">
             <li>
-              <Link to="/about" className="hover:text-signal transition-colors duration-300">
+              <Link to="/about" className="hover:text-signal transition-colors duration-300 text-paper/80">
                 About DELTA
               </Link>
             </li>
             <li>
-              <Link to="/committee" className="hover:text-signal transition-colors duration-300">
+              <Link to="/committee" className="hover:text-signal transition-colors duration-300 text-paper/80">
                 Executive Committee
               </Link>
             </li>
             <li>
-              <Link to="/brand" className="hover:text-signal transition-colors duration-300">
+              <Link to="/brand" className="hover:text-signal transition-colors duration-300 text-paper/80">
                 Brand Identity
               </Link>
             </li>
             <li>
-              <Link to="/contact" className="hover:text-signal transition-colors duration-300">
+              <Link to="/contact" className="hover:text-signal transition-colors duration-300 text-paper/80">
                 Contact Us
               </Link>
             </li>
@@ -78,7 +78,7 @@ export default function Footer() {
           <ul className="space-y-4 font-body text-sm">
             <li className="flex items-start gap-3">
               <MapPin strokeWidth={1.5} className="w-5 h-5 text-signal shrink-0 mt-0.5" />
-              <span>
+              <span className="text-paper/80">
                 Christ College of Engineering,
                 <br />
                 Irinjalakuda, Thrissur,
@@ -88,7 +88,7 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-3">
               <Mail strokeWidth={1.5} className="w-5 h-5 text-signal shrink-0" />
-              <a href="mailto:delta@cce.edu.in" className="hover:text-signal transition-colors duration-300">
+              <a href="mailto:delta@cce.edu.in" className="hover:text-signal transition-colors duration-300 text-paper/80">
                 delta@cce.edu.in
               </a>
             </li>
@@ -97,8 +97,8 @@ export default function Footer() {
       </div>
 
       {/* Footer Bottom */}
-      <div className="max-w-7xl mx-auto pt-8 border-t border-paper/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
-        <p className="font-heading text-paper/50">
+      <div className="max-w-7xl mx-auto pt-8 border-t border-paper/15 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+        <p className="font-heading text-paper/60">
           © 2026 DELTA — "Connecting the dots, driving the change."
         </p>
       </div>

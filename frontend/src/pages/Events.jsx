@@ -6,20 +6,23 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Events() {
   return (
-    <div className="bg-paper px-6">
+    <div className="px-6">
       <div className="max-w-5xl mx-auto">
-        <section className="min-h-[60vh] md:min-h-[90vh] flex flex-col justify-center border-b border-indigo/10 pt-10 pb-16 md:pb-20 mb-12 md:mb-20">
-          <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
-            {"// PROGRAMS & EXPERIENCES"}
-          </span>
-          <h1 className="text-4xl md:text-6xl font-extrabold text-indigo uppercase leading-none tracking-tight mb-6">
-            Moments that move
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo to-teal">the community forward.</span>
-          </h1>
-          <p className="font-body text-base md:text-lg text-ink/80 max-w-2xl leading-relaxed">
-            From launch events to hands-on sprints, every DELTA gathering is built to connect ideas, people, and opportunities.
-          </p>
+        <section className="relative min-h-[60vh] md:min-h-[90vh] flex flex-col justify-center border-b border-indigo/10 pt-10 pb-16 md:pb-20 mb-12 md:mb-20 overflow-hidden">
+
+          <div className="relative z-10">
+            <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
+              {"// PROGRAMS & EXPERIENCES"}
+            </span>
+            <h1 className="text-4xl md:text-6xl font-extrabold text-indigo uppercase leading-none tracking-tight mb-6">
+              Moments that move
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo to-teal">the community forward.</span>
+            </h1>
+            <p className="font-body text-base md:text-lg text-ink/80 max-w-2xl leading-relaxed">
+              From launch events to hands-on sprints, every DELTA gathering is built to connect ideas, people, and opportunities.
+            </p>
+          </div>
         </section>
 
         <section className="mb-12 md:mb-20">
@@ -29,7 +32,7 @@ export default function Events() {
               <Link
                 key={event.slug}
                 to={`/events/${event.slug}`}
-                className="group border border-indigo/10 bg-paper/40 rounded-3xl p-7 flex flex-col gap-4 hover:border-signal/30 hover:-translate-y-1.5 hover:shadow-[0_15px_35px_-10px_rgba(14,48,97,0.3)] transition-all duration-300"
+                className="group border border-indigo/15 bg-paper/65 backdrop-blur-md backdrop-saturate-150 rounded-3xl p-7 flex flex-col gap-4 hover:border-signal/40 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_-8px_rgba(254,87,42,0.18),inset_0_1px_0_rgba(255,255,255,1)] shadow-[0_12px_32px_rgba(14,48,97,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] transition-all duration-300"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-heading text-[10px] text-teal font-bold tracking-[0.25em] uppercase">
