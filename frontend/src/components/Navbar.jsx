@@ -28,6 +28,9 @@ const MORE_ITEMS = [
   { name: 'Gallery', path: '/gallery', icon: Images }
 ];
 
+// Mobile shows every destination in one flat list — no artificial "More" split.
+const MOBILE_ITEMS = [...NAV_ITEMS, ...MORE_ITEMS];
+
 const COLORS = {
   active: '#FF5500',
   brand: '#0E3061',
@@ -39,6 +42,10 @@ const MOTION = {
   item: { type: 'spring', stiffness: 420, damping: 34 },
   panel: { duration: 0.2, ease: [0.22, 1, 0.36, 1] },
 };
+
+// One elevation system shared by every mobile card so nothing reads as flat.
+const CARD_SHADOW = '0 6px 16px -12px rgba(14,48,97,0.28), inset 0 1px 0 rgba(255,255,255,0.7)';
+const FEATURED_SHADOW = '0 12px 26px -14px rgba(255,85,0,0.42), inset 0 1px 0 rgba(255,255,255,0.82)';
 
 function pathMatches(pathname, path) {
   if (path === '/') return pathname === '/';
@@ -155,16 +162,13 @@ function MoreButton({ open, active, onToggle }) {
 }
 
 function MobileMenuPanel({ open, pathname, onNavigate, onClose }) {
-  const activeMainPath = useMemo(() => getActiveMainPath(pathname), [pathname]);
-  const activeMorePath = useMemo(() => getActiveMorePath(pathname), [pathname]);
-
   return (
     <AnimatePresence>
       {open && (
         <>
           <motion.div
             aria-hidden
-            className="fixed inset-0 z-40 bg-paper/25 backdrop-blur-[2px] md:hidden"
+            className="fixed inset-0 z-40 bg-ink/30 backdrop-blur-[3px] md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -173,73 +177,86 @@ function MobileMenuPanel({ open, pathname, onNavigate, onClose }) {
           />
 
           <motion.div
-            initial={{ opacity: 0, y: -10, scale: 0.985 }}
+            id="mobile-navigation"
+            initial={{ opacity: 0, y: -12, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -14, scale: 0.985 }}
+            exit={{ opacity: 0, y: -12, scale: 0.97 }}
             transition={MOTION.panel}
             className="absolute left-0 right-0 top-full z-50 px-4 pb-4 pt-2 md:hidden"
           >
             <Surface className="mx-auto w-[min(100%,40rem)]">
-              <div className="border-b border-indigo/10 px-4 py-3">
-                <p className="font-heading text-[10px] font-bold uppercase tracking-[0.28em] text-teal">
-                  Navigation
+              <div className="flex items-center justify-between gap-3 border-b border-indigo/10 px-4 py-3">
+                <p className="font-heading text-[11px] font-bold uppercase tracking-[0.28em] text-teal">
+                  Menu
                 </p>
-                <p className="mt-1 text-sm text-ink/70">
-                  Browse the site
-                </p>
-              </div>
-
-              <div className="grid gap-1 p-3">
-                {NAV_ITEMS.map((item) => (
-                  <button
-                    key={item.path}
-                    type="button"
-                    onClick={() => onNavigate(item.path)}
-                    className="flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left text-sm font-medium transition-colors duration-200"
-                    style={{
-                      color: activeMainPath === item.path ? COLORS.active : COLORS.inactive,
-                      background: activeMainPath === item.path ? 'rgba(255,255,255,0.78)' : 'transparent',
-                    }}
-                  >
-                    <item.icon strokeWidth={2.1} className="h-4 w-4 shrink-0" />
-                    <span>{item.name}</span>
-                  </button>
-                ))}
-              </div>
-
-              <div className="border-t border-indigo/10 px-3 pb-3 pt-2">
-                <div className="px-1 pb-2 text-[10px] font-bold uppercase tracking-[0.28em] text-teal">
-                  More
-                </div>
-                <div className="grid gap-1">
-                  {MORE_ITEMS.map((item) => (
-                    <button
-                      key={item.path}
-                      type="button"
-                      onClick={() => onNavigate(item.path)}
-                      className="flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left text-sm font-medium transition-colors duration-200"
-                      style={{
-                        color: activeMorePath === item.path ? COLORS.active : COLORS.inactive,
-                        background: activeMorePath === item.path ? 'rgba(255,255,255,0.78)' : 'transparent',
-                      }}
-                    >
-                      <item.icon strokeWidth={2.1} className="h-4 w-4 shrink-0" />
-                      <span>{item.name}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="border-t border-indigo/10 px-4 py-3">
                 <button
                   type="button"
                   onClick={onClose}
-                  className="flex w-full items-center justify-center gap-2 rounded-full border border-indigo/10 bg-white/55 px-4 py-3 text-sm font-medium text-ink/70 transition-colors hover:bg-white/80"
+                  aria-label="Close navigation menu"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-200 active:scale-95"
+                  style={{
+                    borderColor: 'rgba(14,48,97,0.22)',
+                    background: 'rgba(255,255,255,0.92)',
+                    color: COLORS.brand,
+                    boxShadow: CARD_SHADOW,
+                  }}
                 >
-                  <X className="h-4 w-4" strokeWidth={2.2} />
-                  Close
+                  <X className="h-[1.15rem] w-[1.15rem]" strokeWidth={2.4} />
                 </button>
               </div>
+
+              <nav aria-label="Mobile" className="grid max-h-[70vh] grid-cols-2 gap-2.5 overflow-y-auto p-3">
+                {MOBILE_ITEMS.map((item, index) => {
+                  const active = pathMatches(pathname, item.path);
+                  const Icon = item.icon;
+                  // Bottom full-width item is the deliberately featured entry; accent color is reserved for it.
+                  const featured = index === MOBILE_ITEMS.length - 1 && MOBILE_ITEMS.length % 2 === 1;
+
+                  const cardStyle = featured
+                    ? {
+                        color: COLORS.active,
+                        borderColor: 'rgba(255,85,0,0.32)',
+                        background: 'linear-gradient(180deg, rgba(255,85,0,0.16), rgba(255,85,0,0.06))',
+                        boxShadow: FEATURED_SHADOW,
+                      }
+                    : {
+                        color: active ? COLORS.brand : COLORS.inactive,
+                        borderColor: active ? 'rgba(14,48,97,0.20)' : 'rgba(30,41,59,0.08)',
+                        background: active ? 'rgba(14,48,97,0.055)' : 'rgba(255,255,255,0.55)',
+                        boxShadow: CARD_SHADOW,
+                      };
+
+                  const badgeStyle = featured
+                    ? { borderColor: 'rgba(255,85,0,0.30)', background: 'rgba(255,255,255,0.92)' }
+                    : {
+                        borderColor: active ? 'rgba(14,48,97,0.20)' : 'rgba(30,41,59,0.08)',
+                        background: active ? 'rgba(255,255,255,0.92)' : 'rgba(255,255,255,0.7)',
+                      };
+
+                  return (
+                    <button
+                      key={item.path}
+                      type="button"
+                      aria-current={active ? 'page' : undefined}
+                      onClick={() => onNavigate(item.path)}
+                      className={`group flex items-center justify-center gap-3 rounded-2xl border px-4 py-4 text-center transition-all duration-200 active:scale-[0.97] ${
+                        featured ? 'col-span-2 flex-row' : 'flex-col'
+                      }`}
+                      style={cardStyle}
+                    >
+                      <span
+                        className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border transition-colors duration-200"
+                        style={badgeStyle}
+                      >
+                        <Icon strokeWidth={2.1} className="h-5 w-5" style={{ color: featured ? COLORS.active : 'inherit' }} />
+                      </span>
+                      <span className={`font-heading tracking-tight ${featured ? 'text-[0.95rem] font-semibold' : 'text-[0.9rem] font-medium'}`}>
+                        {item.name}
+                      </span>
+                    </button>
+                  );
+                })}
+              </nav>
             </Surface>
           </motion.div>
         </>
@@ -312,6 +329,15 @@ export default function Navbar() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
   }, [mobileMenuOpen]);
 
   useEffect(() => {

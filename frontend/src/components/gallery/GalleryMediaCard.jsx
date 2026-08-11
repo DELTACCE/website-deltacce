@@ -34,19 +34,15 @@ function GalleryMediaVideo({ media, label, scrollRootRef, canAutoplay }) {
       return undefined;
     }
 
-    // Touch devices never autoplay — tap to play (handled in handleClick).
-    // Observer only autoplays on hover devices in view; pauses everything out of view.
+    // No autoplay anywhere. Desktop plays on hover, touch plays on tap.
+    // Observer only pauses videos scrolled out of view.
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
         const shouldPlay = Boolean(entry?.isIntersecting && entry.intersectionRatio >= 0.65);
         isVisibleRef.current = shouldPlay;
 
-        if (shouldPlay) {
-          if (isHoverDevice()) {
-            video.play().catch(() => {});
-          }
-        } else {
+        if (!shouldPlay) {
           video.pause();
         }
       },
@@ -61,8 +57,6 @@ function GalleryMediaVideo({ media, label, scrollRootRef, canAutoplay }) {
     const handleVisibilityChange = () => {
       if (document.hidden) {
         video.pause();
-      } else if (isVisibleRef.current && isHoverDevice()) {
-        video.play().catch(() => {});
       }
     };
 
