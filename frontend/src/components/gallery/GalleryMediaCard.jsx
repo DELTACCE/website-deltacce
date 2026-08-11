@@ -6,7 +6,12 @@ function GalleryMediaVideo({ media, label, scrollRootRef, canAutoplay }) {
   const videoRef = React.useRef(null);
   const isVisibleRef = React.useRef(false);
   const [isLoaded, setIsLoaded] = React.useState(false);
+  const [isPlaying, setIsPlaying] = React.useState(false);
   const videoUrl = buildCloudinaryDeliveryUrl(media.url, 'f_auto,q_auto:eco');
+
+  const isHoverDevice = () =>
+    typeof window !== 'undefined' &&
+    window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   React.useEffect(() => {
     const video = videoRef.current;
@@ -29,6 +34,8 @@ function GalleryMediaVideo({ media, label, scrollRootRef, canAutoplay }) {
       return undefined;
     }
 
+    // Touch devices never autoplay — tap to play (handled in handleClick).
+    // Observer only autoplays on hover devices in view; pauses everything out of view.
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
@@ -36,7 +43,7 @@ function GalleryMediaVideo({ media, label, scrollRootRef, canAutoplay }) {
         isVisibleRef.current = shouldPlay;
 
         if (shouldPlay) {
-          if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+          if (isHoverDevice()) {
             video.play().catch(() => {});
           }
         } else {
@@ -54,7 +61,7 @@ function GalleryMediaVideo({ media, label, scrollRootRef, canAutoplay }) {
     const handleVisibilityChange = () => {
       if (document.hidden) {
         video.pause();
-      } else if (isVisibleRef.current && !window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      } else if (isVisibleRef.current && isHoverDevice()) {
         video.play().catch(() => {});
       }
     };
@@ -69,33 +76,67 @@ function GalleryMediaVideo({ media, label, scrollRootRef, canAutoplay }) {
   }, [canAutoplay, scrollRootRef]);
 
   const handleMouseEnter = () => {
-    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    if (isHoverDevice()) {
       videoRef.current?.play().catch(() => {});
     }
   };
 
   const handleMouseLeave = () => {
-    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    if (isHoverDevice()) {
       videoRef.current?.pause();
     }
   };
 
+  // Touch: tap toggles play/pause. Hover devices ignore (mouseenter handles it).
+  const handleClick = () => {
+    if (isHoverDevice()) {
+      return;
+    }
+    const video = videoRef.current;
+    if (!video) {
+      return;
+    }
+    if (video.paused) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  };
+
   return (
-    <video
-      ref={videoRef}
-      src={videoUrl}
-      muted
-      loop
-      playsInline
-      preload="metadata"
-      aria-label={label}
-      onLoadedData={() => setIsLoaded(true)}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className={`block h-full w-full object-contain motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-out motion-reduce:transition-none group-hover:scale-[1.03] ${
-        isLoaded ? 'opacity-100' : 'opacity-0'
-      }`}
-    />
+    <>
+      <video
+        ref={videoRef}
+        src={videoUrl}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-label={label}
+        onLoadedData={() => setIsLoaded(true)}
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onClick={handleClick}
+        className={`block h-full w-full object-contain cursor-pointer motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-out motion-reduce:transition-none group-hover:scale-[1.03] ${
+          isLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
+      />
+      {/* Play affordance — shown when paused. Hidden on hover devices via CSS. */}
+      {!isPlaying && (
+        <div
+          className="pointer-events-none absolute inset-0 flex items-center justify-center [@media(hover:hover)_and_(pointer:fine)]:hidden"
+          aria-hidden="true"
+        >
+          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-black/45 backdrop-blur-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#f4f0ea">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+        </div>
+      )}
+    </>
   );
 }
 
