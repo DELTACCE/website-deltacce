@@ -40,12 +40,13 @@ const COLORS = {
 
 const MOTION = {
   item: { type: 'spring', stiffness: 420, damping: 34 },
-  panel: { duration: 0.2, ease: [0.22, 1, 0.36, 1] },
+  // Lightweight opacity fade — no transform/spring on the hot mobile path.
+  panel: { duration: 0.18, ease: 'easeOut' },
 };
 
-// One elevation system shared by every mobile card so nothing reads as flat.
-const CARD_SHADOW = '0 6px 16px -12px rgba(14,48,97,0.28), inset 0 1px 0 rgba(255,255,255,0.7)';
-const FEATURED_SHADOW = '0 12px 26px -14px rgba(255,85,0,0.42), inset 0 1px 0 rgba(255,255,255,0.82)';
+// Border-based elevation: a thin single-layer shadow instead of stacked blurred layers.
+const CARD_SHADOW = '0 1px 2px rgba(14,48,97,0.10)';
+const FEATURED_SHADOW = '0 2px 8px -4px rgba(255,85,0,0.28)';
 
 function pathMatches(pathname, path) {
   if (path === '/') return pathname === '/';
@@ -70,11 +71,9 @@ function Surface({ children, className = '', style = {}, role, id, labelledBy })
       aria-labelledby={labelledBy}
       className={`overflow-hidden rounded-[1.75rem] border ${className}`}
       style={{
-        background: 'linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,255,255,0.66))',
-        backdropFilter: 'blur(12px) saturate(140%)',
-        WebkitBackdropFilter: 'blur(12px) saturate(140%)',
+        background: 'rgba(255,255,255,0.94)',
         borderColor: COLORS.border,
-        boxShadow: '0 16px 36px -24px rgba(15,23,42,0.28), 0 8px 18px -14px rgba(255,85,0,0.10), inset 0 1px 0 rgba(255,255,255,0.8)',
+        boxShadow: '0 4px 14px -8px rgba(15,23,42,0.22)',
         ...style,
       }}
     >
@@ -126,7 +125,7 @@ function DesktopNavItem({ item, active }) {
     <NavLink
       to={item.path}
       end={item.path === '/'}
-      className="inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium tracking-tighter transition-all duration-200 hover:bg-white/55"
+      className="group relative inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium tracking-tighter transition-colors duration-200 hover:bg-white/55"
       style={{
         color: active ? COLORS.active : COLORS.inactive,
         borderColor: active ? 'rgba(255,85,0,0.22)' : 'transparent',
@@ -135,6 +134,11 @@ function DesktopNavItem({ item, active }) {
     >
       <Icon strokeWidth={2.1} className="h-[0.95rem] w-[0.95rem] shrink-0" />
       <span>{item.name}</span>
+      <span
+        aria-hidden
+        className="pointer-events-none absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+        style={{ background: COLORS.active }}
+      />
     </NavLink>
   );
 }
@@ -147,7 +151,7 @@ function MoreButton({ open, active, onToggle }) {
       aria-expanded={open}
       aria-haspopup="menu"
       onClick={onToggle}
-      className="inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium tracking-tighter transition-all duration-200 hover:bg-white/55"
+      className="group relative inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium tracking-tighter transition-colors duration-200 hover:bg-white/55"
       style={{
         color: active ? COLORS.active : COLORS.inactive,
         borderColor: active ? 'rgba(255,85,0,0.22)' : 'transparent',
@@ -157,6 +161,11 @@ function MoreButton({ open, active, onToggle }) {
       <Ellipsis className="h-[0.95rem] w-[0.95rem]" strokeWidth={2.1} />
       <span>More</span>
       <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} strokeWidth={2} />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+        style={{ background: COLORS.active }}
+      />
     </button>
   );
 }
@@ -168,19 +177,19 @@ function MobileMenuPanel({ open, pathname, onNavigate, onClose }) {
         <>
           <motion.div
             aria-hidden
-            className="fixed inset-0 z-40 bg-ink/30 backdrop-blur-[3px] md:hidden"
+            className="fixed inset-0 z-40 bg-ink/30 md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.18 }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
             onClick={onClose}
           />
 
           <motion.div
             id="mobile-navigation"
-            initial={{ opacity: 0, y: -12, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -12, scale: 0.97 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={MOTION.panel}
             className="absolute left-0 right-0 top-full z-50 px-4 pb-4 pt-2 md:hidden"
           >
@@ -193,7 +202,7 @@ function MobileMenuPanel({ open, pathname, onNavigate, onClose }) {
                   type="button"
                   onClick={onClose}
                   aria-label="Close navigation menu"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-200 active:scale-95"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-200"
                   style={{
                     borderColor: 'rgba(14,48,97,0.22)',
                     background: 'rgba(255,255,255,0.92)',
@@ -216,7 +225,7 @@ function MobileMenuPanel({ open, pathname, onNavigate, onClose }) {
                     ? {
                         color: COLORS.active,
                         borderColor: 'rgba(255,85,0,0.32)',
-                        background: 'linear-gradient(180deg, rgba(255,85,0,0.16), rgba(255,85,0,0.06))',
+                        background: 'rgba(255,85,0,0.10)',
                         boxShadow: FEATURED_SHADOW,
                       }
                     : {
@@ -239,7 +248,7 @@ function MobileMenuPanel({ open, pathname, onNavigate, onClose }) {
                       type="button"
                       aria-current={active ? 'page' : undefined}
                       onClick={() => onNavigate(item.path)}
-                      className={`group flex items-center justify-center gap-3 rounded-2xl border px-4 py-4 text-center transition-all duration-200 active:scale-[0.97] ${
+                      className={`group flex items-center justify-center gap-3 rounded-2xl border px-4 py-4 text-center transition-colors duration-200 ${
                         featured ? 'col-span-2 flex-row' : 'flex-col'
                       }`}
                       style={cardStyle}
@@ -366,10 +375,8 @@ export default function Navbar() {
             className="relative flex items-center gap-1 rounded-full border px-2 py-1.5"
             style={{
               borderColor: COLORS.border,
-              background: 'linear-gradient(180deg, rgba(255,255,255,0.62), rgba(255,255,255,0.34))',
-              backdropFilter: 'blur(10px) saturate(140%)',
-              WebkitBackdropFilter: 'blur(10px) saturate(140%)',
-              boxShadow: '0 12px 28px -22px rgba(14,48,97,0.24), inset 0 1px 0 rgba(255,255,255,0.82)',
+              background: 'rgba(255,255,255,0.85)',
+              boxShadow: '0 2px 10px -6px rgba(14,48,97,0.20)',
             }}
           >
             {NAV_ITEMS.map((item) => (
@@ -392,9 +399,9 @@ export default function Navbar() {
               <AnimatePresence>
                 {desktopMoreOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: -8, scale: 0.98 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -10, scale: 0.98 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                     transition={MOTION.panel}
                     className="absolute right-0 top-full mt-3 w-56"
                   >
@@ -406,12 +413,17 @@ export default function Navbar() {
                             type="button"
                             role="menuitem"
                             onClick={() => handleMoreItemClick(item.path)}
-                            className="flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left text-sm font-medium transition-colors duration-200"
+                            className="group relative flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left text-sm font-medium transition-colors duration-200 hover:bg-white/55"
                             style={{
                               color: activeMorePath === item.path ? COLORS.active : COLORS.inactive,
                               background: activeMorePath === item.path ? 'rgba(255,255,255,0.78)' : 'transparent',
                             }}
                           >
+                            <span
+                              aria-hidden
+                              className="pointer-events-none absolute left-1 top-1/2 h-4 w-0.5 -translate-y-1/2 rounded-full opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                              style={{ background: COLORS.active }}
+                            />
                             <item.icon strokeWidth={2.1} className="h-4 w-4 shrink-0" />
                             <span>{item.name}</span>
                           </button>
