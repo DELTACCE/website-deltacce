@@ -53,7 +53,7 @@ export default function About() {
             <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
               {"// ABOUT US"}
             </span>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-indigo uppercase leading-none tracking-tight mb-8">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-indigo uppercase leading-none tracking-wide mb-8">
               Data Oriented.<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo to-teal">Innovation Driven.</span>
             </h1>

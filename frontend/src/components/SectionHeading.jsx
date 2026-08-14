@@ -9,7 +9,7 @@ export default function SectionHeading({ eyebrow, heading, className = '' }) {
           <span>{eyebrow}</span>
         </div>
       )}
-      <h2 className="text-2xl md:text-4xl font-extrabold text-indigo uppercase mt-2 tracking-tight">
+      <h2 className="text-2xl md:text-4xl font-extrabold text-indigo uppercase mt-2 tracking-wide">
         {heading}
       </h2>
       <div className="w-12 h-[3px] bg-signal mt-4"></div>

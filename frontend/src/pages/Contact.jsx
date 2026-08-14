@@ -44,7 +44,7 @@ export default function Contact() {
             <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
               {"// LINK SYSTEMS"}
             </span>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-indigo uppercase leading-none tracking-tight mb-6">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-indigo uppercase leading-none tracking-wide mb-6">
               Get in touch.<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo to-teal">Connect the dots.</span>
             </h1>

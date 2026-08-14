@@ -15,27 +15,6 @@ const INTERACTIVE_SELECTOR = [
   '[contenteditable="true"]',
 ].join(', ');
 
-function isOrangeColor(colorStr) {
-  if (!colorStr || colorStr === 'transparent' || colorStr === 'rgba(0, 0, 0, 0)') {
-    return false;
-  }
-  const match = colorStr.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
-  if (match) {
-    const r = parseInt(match[1], 10);
-    const g = parseInt(match[2], 10);
-    const b = parseInt(match[3], 10);
-    const a = match[4] !== undefined ? parseFloat(match[4]) : 1;
-
-    if (a < 0.1) return false;
-
-    // Detect signal orange hues (#fe572a is rgb(254, 87, 42))
-    if (r > 200 && g >= 20 && g <= 140 && b < 100 && (r - g > 70)) {
-      return true;
-    }
-  }
-  return false;
-}
-
 function hasOrangeBgClass(node) {
   if (!node || !(node instanceof Element)) return false;
 
@@ -68,13 +47,11 @@ function isNodeOrange(node) {
     return true;
   }
 
-  try {
-    const style = window.getComputedStyle(node);
-    if (isOrangeColor(style.backgroundColor)) {
+  if (node.style && node.style.backgroundColor) {
+    const bg = node.style.backgroundColor;
+    if (bg.includes('fe572a') || bg.includes('254, 87, 42') || bg.includes('var(--color-signal)')) {
       return true;
     }
-  } catch (e) {
-    // Ignore detached elements
   }
 
   return false;
@@ -100,7 +77,7 @@ function resolveCursorColor(eventTarget, x, y) {
 function resolveCursorMode(eventTarget) {
   let node = eventTarget instanceof Element ? eventTarget : null;
 
-  while (node) {
+  while (node && node !== document.body && node !== document.documentElement) {
     if (node.matches('input, textarea, [contenteditable="true"]') || node.isContentEditable) {
       return { rotate: true };
     }
@@ -115,27 +92,19 @@ function resolveCursorMode(eventTarget) {
   return { rotate: false };
 }
 
-function getNextCursorState(event) {
-  return {
-    x: event.clientX,
-    y: event.clientY,
-    visible: true,
-    color: resolveCursorColor(event.target, event.clientX, event.clientY),
-    ...resolveCursorMode(event.target),
-  };
-}
-
 export default function CustomCursor() {
   const [enabled, setEnabled] = useState(false);
-  const [cursor, setCursor] = useState({
-    x: 0,
-    y: 0,
+  const cursorRef = useRef(null);
+  const innerRef = useRef(null);
+  const posRef = useRef({ x: -100, y: -100 });
+  const targetPosRef = useRef({ x: -100, y: -100 });
+  const frameRef = useRef(null);
+
+  const visualStateRef = useRef({
     visible: false,
     rotate: false,
     color: 'var(--color-signal)',
   });
-  const latestStateRef = useRef(cursor);
-  const frameRef = useRef(null);
 
   useEffect(() => {
     const media = window.matchMedia('(hover: hover) and (pointer: fine)');
@@ -157,35 +126,54 @@ export default function CustomCursor() {
 
     document.body.classList.add('has-custom-cursor');
 
-    const scheduleUpdate = (nextState) => {
-      latestStateRef.current = nextState;
+    const updateDOM = () => {
+      const x = targetPosRef.current.x;
+      const y = targetPosRef.current.y;
+      posRef.current.x = x;
+      posRef.current.y = y;
 
-      if (frameRef.current !== null) return;
+      if (cursorRef.current) {
+        cursorRef.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      }
 
-      frameRef.current = window.requestAnimationFrame(() => {
-        frameRef.current = null;
-        setCursor(latestStateRef.current);
-      });
+      if (innerRef.current) {
+        const { visible, rotate, color } = visualStateRef.current;
+        innerRef.current.style.transform = `translate(-50%, -50%) rotate(${rotate ? 180 : 0}deg) scale(${visible ? 1 : 0.65})`;
+        innerRef.current.style.opacity = visible ? '1' : '0';
+        innerRef.current.style.color = color || 'var(--color-signal)';
+      }
+
+      frameRef.current = null;
+    };
+
+    const scheduleUpdate = () => {
+      if (frameRef.current === null) {
+        frameRef.current = window.requestAnimationFrame(updateDOM);
+      }
     };
 
     const handlePointerMove = (event) => {
-      scheduleUpdate(getNextCursorState(event));
+      targetPosRef.current = { x: event.clientX, y: event.clientY };
+      visualStateRef.current = {
+        visible: true,
+        rotate: resolveCursorMode(event.target).rotate,
+        color: resolveCursorColor(event.target, event.clientX, event.clientY),
+      };
+      scheduleUpdate();
     };
 
     const hideCursor = () => {
-      scheduleUpdate({
-        ...latestStateRef.current,
-        visible: false,
-      });
+      visualStateRef.current.visible = false;
+      scheduleUpdate();
     };
 
     const handleMouseOut = (event) => {
       if (!event.relatedTarget) hideCursor();
     };
 
-    window.addEventListener('pointermove', handlePointerMove);
-    window.addEventListener('pointerdown', handlePointerMove);
-    document.addEventListener('mouseout', handleMouseOut);
+    window.addEventListener('pointermove', handlePointerMove, { passive: true });
+    window.addEventListener('pointerdown', handlePointerMove, { passive: true });
+    document.addEventListener('mouseout', handleMouseOut, { passive: true });
     window.addEventListener('blur', hideCursor);
 
     return () => {
@@ -206,21 +194,28 @@ export default function CustomCursor() {
 
   return (
     <div
+      ref={cursorRef}
       aria-hidden="true"
-      className="fixed left-0 top-0 z-[999999] pointer-events-none select-none"
+      className="fixed left-0 top-0 z-[999999] pointer-events-none select-none will-change-transform"
       style={{
-        transform: `translate3d(${cursor.x}px, ${cursor.y}px, 0) translate(-50%, -50%) rotate(${cursor.rotate ? 180 : 0}deg) scale(${cursor.visible ? 1 : 0.65})`,
-        opacity: cursor.visible ? 1 : 0,
-        transition: 'opacity 120ms ease, transform 120ms ease-out, color 150ms ease',
-        willChange: 'transform, opacity',
-        color: cursor.color || 'var(--color-signal)',
-        fontFamily: 'inherit',
-        fontSize: '1.15rem',
-        fontWeight: 700,
-        lineHeight: 1,
+        transform: `translate3d(${posRef.current.x}px, ${posRef.current.y}px, 0)`,
       }}
     >
-      {'\u03B4'}
+      <div
+        ref={innerRef}
+        style={{
+          transform: `translate(-50%, -50%) rotate(${visualStateRef.current.rotate ? 180 : 0}deg) scale(${visualStateRef.current.visible ? 1 : 0.65})`,
+          opacity: visualStateRef.current.visible ? 1 : 0,
+          transition: 'opacity 120ms ease, transform 150ms ease-out, color 150ms ease',
+          color: visualStateRef.current.color || 'var(--color-signal)',
+          fontFamily: 'inherit',
+          fontSize: '1.15rem',
+          fontWeight: 700,
+          lineHeight: 1,
+        }}
+      >
+        {'\u03B4'}
+      </div>
     </div>
   );
 }

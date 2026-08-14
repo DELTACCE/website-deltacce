@@ -86,7 +86,7 @@ export default function IntroScreen({ onComplete }) {
                   animate={{ opacity: 1, x: 0, scale: 1, filter: 'blur(0px)' }}
                   exit={{ opacity: 0, x: -20, filter: 'blur(4px)' }}
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex items-center justify-center gap-[0.05em] text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-indigo leading-none tracking-tight"
+                  className="flex items-center justify-center gap-[0.16em] sm:gap-[0.2em] text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-indigo leading-none tracking-wider"
                   style={{ color: '#0e3061' }}
                 >
                   <svg viewBox="0 0 100 100" className="h-[0.82em] w-auto text-indigo shrink-0" fill="currentColor">

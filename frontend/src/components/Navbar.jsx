@@ -113,7 +113,7 @@ function BrandLink() {
       >
         {"\u03B4"}
       </span>
-      <span style={{ color: COLORS.brand }}>DELTA</span>
+      <span style={{ color: COLORS.brand, letterSpacing: '0.08em' }}>DELTA</span>
     </NavLink>
   );
 }
@@ -125,7 +125,7 @@ function DesktopNavItem({ item, active }) {
     <NavLink
       to={item.path}
       end={item.path === '/'}
-      className="group relative inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium tracking-tighter transition-colors duration-200 hover:bg-white/55"
+      className="group relative inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium tracking-wide transition-colors duration-200 hover:bg-white/55"
       style={{
         color: active ? COLORS.active : COLORS.inactive,
         borderColor: active ? 'rgba(255,85,0,0.22)' : 'transparent',
@@ -151,7 +151,7 @@ function MoreButton({ open, active, onToggle }) {
       aria-expanded={open}
       aria-haspopup="menu"
       onClick={onToggle}
-      className="group relative inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium tracking-tighter transition-colors duration-200 hover:bg-white/55"
+      className="group relative inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium tracking-wide transition-colors duration-200 hover:bg-white/55"
       style={{
         color: active ? COLORS.active : COLORS.inactive,
         borderColor: active ? 'rgba(255,85,0,0.22)' : 'transparent',
@@ -259,7 +259,7 @@ function MobileMenuPanel({ open, pathname, onNavigate, onClose }) {
                       >
                         <Icon strokeWidth={2.1} className="h-5 w-5" style={{ color: featured ? COLORS.active : 'inherit' }} />
                       </span>
-                      <span className={`font-heading tracking-tight ${featured ? 'text-[0.95rem] font-semibold' : 'text-[0.9rem] font-medium'}`}>
+                      <span className={`font-heading tracking-wide ${featured ? 'text-[0.95rem] font-semibold' : 'text-[0.9rem] font-medium'}`}>
                         {item.name}
                       </span>
                     </button>
@@ -641,7 +641,7 @@ export function BottomGlassNavbarLegacy() {
                           type="button"
                           role="menuitem"
                           onClick={() => handleMoreItemClick(item.path)}
-                          className="flex w-full items-center gap-2.5 rounded-[1.1rem] px-4 py-2.5 text-left text-sm tracking-tight transition-colors duration-200"
+                          className="flex w-full items-center gap-2.5 rounded-[1.1rem] px-4 py-2.5 text-left text-sm tracking-wide transition-colors duration-200"
                           style={{
                             color: activeMorePath === item.path ? COLORS.active : COLORS.inactive,
                             background: activeMorePath === item.path ? 'rgba(255,255,255,0.60)' : 'transparent',

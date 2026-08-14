@@ -37,7 +37,7 @@ export default function Committee() {
             <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
               {"// TEAM NETWORK"}
             </span>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-indigo uppercase leading-none tracking-tight mb-6 animate-fade-in">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-indigo uppercase leading-none tracking-wide mb-6 animate-fade-in">
               Led by a vision,<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo to-teal">Driven by data.</span>
             </h1>

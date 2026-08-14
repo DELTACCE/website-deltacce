@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "start": "npm --prefix frontend start"
+  },
+  "dependencies": {
+    "@supabase/server": "^1.4.1"
+  }
+}

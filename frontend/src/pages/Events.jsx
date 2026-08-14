@@ -14,7 +14,7 @@ export default function Events() {
             <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase block mb-4">
               {"// PROGRAMS & EXPERIENCES"}
             </span>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-indigo uppercase leading-none tracking-tight mb-6">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-indigo uppercase leading-none tracking-wide mb-6">
               Moments that move
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo to-teal">the community forward.</span>
@@ -36,7 +36,7 @@ export default function Events() {
               >
                 <div className="flex items-center justify-between">
                   <span className="font-heading text-[10px] text-teal font-bold tracking-[0.25em] uppercase">
-                    Upcoming
+                    {event.status || 'Completed'}
                   </span>
                   <span className="text-signal text-sm font-semibold">{event.date}</span>
                 </div>

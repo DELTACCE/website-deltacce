@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';
@@ -16,6 +16,9 @@ import Events from './pages/Events';
 import Gallery from './pages/gallery';
 import EventDetail from './pages/EventDetail';
 import EventDay from './pages/EventDay';
+import EventLogin from './pages/EventLogin';
+import TeamDashboard from './pages/TeamDashboard';
+import EventAdminDashboard from './pages/EventAdminDashboard';
 import Contact from './pages/Contact';
 
 function AppContent({ showIntro, setShowIntro }) {
@@ -38,8 +41,15 @@ function AppContent({ showIntro, setShowIntro }) {
             <Route path="/events" element={<Events />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/events/:slug" element={<EventDetail />} />
+            <Route path="/events/:slug/login" element={<EventLogin />} />
+            <Route path="/admin/login" element={<EventLogin defaultRole="admin" />} />
+            <Route path="/events/:slug/dashboard" element={<TeamDashboard />} />
+            <Route path="/events/:slug/admin" element={<EventAdminDashboard />} />
+            <Route path="/admin" element={<EventAdminDashboard />} />
             <Route path="/events/:slug/:daySlug" element={<EventDay />} />
             <Route path="/contact" element={<Contact />} />
+            {/* Catch all redirect for old mentor dashboard route */}
+            <Route path="/events/:slug/mentor-dashboard" element={<Navigate to="/events/agentic-ai-product-build-sprint/login" replace />} />
           </Routes>
         </main>
         <Footer />

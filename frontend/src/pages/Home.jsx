@@ -61,7 +61,7 @@ export default function Home() {
             </div>
 
             {/* Custom DELTA Logo Typography Logo (▶ELT▲) */}
-            <h1 className="flex items-center justify-center gap-[0.05em] text-7xl md:text-[8rem] lg:text-[10rem] font-bold text-indigo leading-none tracking-tight mb-8 w-full select-none">
+            <h1 className="flex items-center justify-center gap-[0.16em] sm:gap-[0.2em] text-7xl md:text-[8rem] lg:text-[10rem] font-bold text-indigo leading-none tracking-wider mb-8 w-full select-none">
               <svg viewBox="0 0 100 100" className="h-[0.82em] w-auto text-indigo shrink-0" fill="currentColor">
                 <path fillRule="evenodd" d="M 20 10 L 80 45 C 85 48, 85 52, 80 55 L 20 90 C 15 93, 10 90, 10 83 L 10 17 C 10 10, 15 7, 20 10 Z M 32 37 L 58 50 L 32 63 Z" />
               </svg>
@@ -73,7 +73,7 @@ export default function Home() {
               </svg>
             </h1>
 
-            <p className="font-body text-base md:text-lg text-ink/80 max-w-3xl leading-normal mb-10 mx-auto tracking-tight">
+            <p className="font-body text-base md:text-lg text-ink/80 max-w-3xl leading-normal mb-10 mx-auto tracking-normal">
               DELTA (Data Oriented Thinkers' Association) is the student-led Data Science and Emerging Technology association at Christ College of Engineering, Thrissur. We bridge standard curriculum with dynamic industrial engineering to create real-world impact.
             </p>
 
@@ -104,10 +104,10 @@ export default function Home() {
             <h3 className="font-heading text-xl font-bold text-indigo uppercase mb-6 tracking-wide leading-snug">
               Bridging academic limits with active technical creation.
             </h3>
-            <p className="font-body text-base text-ink/85 leading-relaxed mb-6 tracking-tight">
+            <p className="font-body text-base text-ink/85 leading-relaxed mb-6 tracking-normal">
               DELTA was formed in the Department of Computer Science & Engineering (Data Science) to foster a community of creators, analysts, and analytical thinkers. We emphasize research-informed coding and open collaboration.
             </p>
-            <p className="font-body text-base text-ink/70 leading-relaxed mb-8 tracking-tight">
+            <p className="font-body text-base text-ink/70 leading-relaxed mb-8 tracking-normal">
               Through peer mentorship, workshops, hackathons, and research projects, we invite students to develop the critical capacities required to navigate the future data landscape.
             </p>
           </div>
@@ -154,7 +154,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
             <SectionHeading eyebrow="03 / FOCUS" heading="What We Do" className="mb-0" />
-            <p className="font-body text-sm text-ink/75 max-w-md leading-relaxed tracking-tight">
+            <p className="font-body text-sm text-ink/75 max-w-md leading-relaxed tracking-normal">
               DELTA operates as an active hub, deploying programs that build technical competence and peer network resources.
             </p>
           </div>
@@ -214,10 +214,10 @@ export default function Home() {
           <span className="font-heading text-xs text-signal font-bold tracking-[0.25em] uppercase mb-4">
             {"// JOIN THE NETWORK"}
           </span>
-          <h2 className="text-3xl md:text-5xl font-extrabold uppercase tracking-tight mb-6 font-heading text-paper max-w-2xl leading-none">
+          <h2 className="text-3xl md:text-5xl font-extrabold uppercase tracking-wide mb-6 font-heading text-paper max-w-2xl leading-none">
             Ready to shape the future of technology?
           </h2>
-          <p className="font-body text-base md:text-lg text-paper/80 leading-relaxed mb-10 max-w-xl tracking-tight">
+          <p className="font-body text-base md:text-lg text-paper/80 leading-relaxed mb-10 max-w-xl tracking-normal">
             Become part of a growing community of innovators, developers, analysts, and creators shaping the future through data.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">

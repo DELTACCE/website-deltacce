@@ -1,297 +1,143 @@
 export const events = [
   {
-    slug: 'bridge-course-cum-project-expo',
-    title: 'BRIDGE COURSE CUM PROJECT EXPO',
-    subtitle: 'CSE (Data Science) Department',
-    date: 'To be scheduled',
-    location: 'Christ College of Engineering',
-    tagline: 'A structured bridge programme for first-year students to learn web development, collaborate in teams, and present projects confidently.',
-    blurb:
-      'The event brings together a workshop week, a mentor-led build sprint, and a final project expo for the incoming CSE (Data Science) batch.',
-    audience: 'Incoming first-year CSE (Data Science) students',
-    format: 'Workshop week, project sprint, and public expo',
-    overview: [
-      'A week-long learning experience designed to strengthen fundamentals in web development and practical problem solving.',
-      'Students will move from guided sessions to team-based project development and a final public showcase.'
+    slug: 'agentic-ai-product-build-sprint',
+    title: 'AGENTIC AI PRODUCT BUILD SPRINT',
+    subtitle: 'Department of Computer Science and Engineering (Data Science)',
+    status: 'Sprint Active',
+    date: '8 August 2026 – 17 August 2026',
+    submissionDeadline: '17 August 2026',
+    location: 'Christ College of Engineering (Autonomous), Irinjalakuda',
+    tagline: 'An immersive AI product-building journey that introduced participants to Agentic AI through an industry-led workshop, followed by a virtual product development sprint.',
+    blurb: 'The Agentic AI Product Build Sprint is the flagship technical event of the Department of Computer Science and Engineering (Data Science), designed as a complete product-building journey. The event combined an industry-led Agentic AI workshop with a virtual product build sprint, giving participants the opportunity to learn emerging AI concepts, identify real-world problems, develop AI-powered solutions, and submit their final project.',
+    audience: 'Students interested in Artificial Intelligence, Agentic AI, innovation, and product development',
+    format: 'Offline Industry Workshop + Virtual Product Build Sprint',
+
+    formatDetails: [
+      {
+        title: 'Industry Workshop (Phase 1)',
+        date: '8 August 2026',
+        description: 'An offline, full-day Agentic AI workshop led by industry expert Mr. Alosh Denny.'
+      },
+      {
+        title: 'Product Build Sprint (Phase 2)',
+        date: '10 August 2026 – 17 August 2026',
+        description: 'A virtual product development sprint where teams build AI-powered solutions. Schedule adjusted for S3/S5 series exams.'
+      },
+      {
+        title: 'Final Project Submission',
+        date: '17 August 2026',
+        description: 'Single final submission consisting of GitHub Repository URL and Project Presentation PPT/PPTX.'
+      }
     ],
+
+    overview: [
+      'The Agentic AI Product Build Sprint is the first flagship technical event of the Department of Computer Science and Engineering (Data Science), designed as a complete product-building journey.',
+      'The event combined an industry-led Agentic AI workshop with a virtual product build sprint, giving 12 participant teams the opportunity to learn emerging AI concepts, identify real-world problems, develop AI-powered solutions, and present their working software.'
+    ],
+
+    workshopSchedule: [
+      { time: '9:00 AM', title: 'Registration & Onboarding', description: 'Participant registration, check-in, and onboarding.' },
+      { time: '9:30 AM', title: 'Agentic AI Workshop Begins', description: 'Industry-led workshop covering Agentic AI concepts, practical applications, and AI-powered product development.' },
+      { time: '11:00 AM – 11:10 AM', title: 'Refreshment Break', description: 'Short break for networking and refreshments.' },
+      { time: '11:10 AM – 1:00 PM', title: 'Workshop Continues', description: 'Hands-on learning and exploration of Agentic AI and modern AI technologies.' },
+      { time: '1:15 PM', title: 'Lunch Break', description: 'Midday meal and informal discussion.' },
+      { time: '2:00 PM', title: 'Pre-Activities for Product Build Sprint', description: 'Team formation, Problem statement release, Event guidelines, and Product sprint flow.' },
+      { time: '3:30 PM', title: 'Workshop Day Concludes', description: 'Tea and snacks followed by the conclusion of the offline workshop.' }
+    ],
+
+    buildSprintInfo: {
+      date: '10 August – 17 August 2026',
+      description: 'Participants worked in teams to develop their AI products. The sprint timeline was updated from the original schedule to accommodate the series examination schedules of S3 and S5 participants, ensuring a smooth and focused working period leading to the final deadline on 17 August 2026.',
+      submissionRequirements: [
+        'GitHub Repository URL containing the full source code and documentation.',
+        'Project Presentation file (.ppt or .pptx format).'
+      ]
+    },
+
+    teamStructure: {
+      summary: 'The sprint consists of 12 teams (TEAM01 to TEAM12), with participants working collaboratively to solve real-world problems using Agentic AI frameworks.',
+      focusAreas: [
+        'Problem identification',
+        'Ideation & Architecture',
+        'Agentic AI integration',
+        'Software implementation',
+        'Final presentation & code submission'
+      ]
+    },
+
+    resourcePerson: {
+      name: 'Mr. Alosh Denny',
+      role: 'AI Consultant / AGI Developer',
+      image: '/assets/resource_person.jpg',
+      bio: 'Mr. Alosh Denny is an AI/AGI developer from Thrissur, Kerala, with expertise spanning Embedded IoT, Robotics, and Generative AI.',
+      highlights: [
+        'NVIDIA Certified Associate in AI Infrastructure & Operations with experience working with emerging AI technologies and large-scale AI models.',
+        'Contributed to open-source large models including Sarvam 30B and 105B, and has been involved in research with multiple publications.',
+        'Notable experience in robotics, securing World Rank 11 in the European Rover Challenge 2023 and 2024 in Kielce, Poland.',
+        'Served as the resource person for the offline Agentic AI Workshop, providing participants with practical insights and industry-oriented guidance on Agentic AI and AI-powered product development.'
+      ]
+    },
+
+    whyParticipate: [
+      'Learn directly from an industry expert',
+      'Gain hands-on exposure to Agentic AI',
+      'Build a portfolio-ready AI product',
+      'Work collaboratively in teams',
+      'Solve real-world problems',
+      'Experience an end-to-end product development journey'
+    ],
+
+    highlights: [
+      { label: 'Prize Pool', value: '₹5,000' },
+      { label: 'Registration Fee', value: '₹150 per participant' },
+      { label: 'Participants', value: '36' },
+      { label: 'Teams', value: '12' },
+      { label: 'Final Submission', value: '17 August 2026' }
+    ],
+
+    philosophy: 'Not Just a Hackathon. A Product Journey.',
+
     days: [
       {
-        slug: 'day-0-orientation',
-        label: 'Day 0',
-        title: 'Orientation and setup',
-        summary: 'A welcome session to introduce the programme, explain expectations, and prepare students for the days ahead.',
+        slug: 'workshop-day',
+        label: 'Phase 1',
+        title: 'Offline Industry Workshop',
+        summary: 'Full-day offline Agentic AI workshop led by industry expert Mr. Alosh Denny at Christ College of Engineering on 8 August 2026.',
         sections: [
           {
-            title: 'Objectives',
-            type: 'checklist',
-            items: [
-              'Introduce the purpose of the bridge programme.',
-              'Walk students through the schedule and event flow.',
-              'Build confidence through senior-student guidance and setup support.'
-            ]
-          },
-          {
-            title: 'Key topics',
+            title: 'Schedule & Flow',
             type: 'list',
             items: [
-              'Orientation and schedule walkthrough',
-              'Senior-student confidence-building session',
-              'Laptop setup and prerequisite checks'
+              '9:00 AM – Registration & Onboarding',
+              '9:30 AM – Agentic AI Workshop Begins',
+              '11:00 AM – Refreshment Break',
+              '11:10 AM – Workshop Continues',
+              '1:15 PM – Lunch Break',
+              '2:00 PM – Pre-Activities for Product Build Sprint',
+              '3:30 PM – Workshop Day Concludes'
             ]
           },
           {
-            title: 'Resources',
-            type: 'cards',
-            items: [
-              'Session briefing notes',
-              'Software installation checklist',
-              'Mentor guide for student confidence and support'
-            ]
-          },
-          {
-            title: 'Outcome',
+            title: 'Resource Person',
             type: 'paragraph',
-            content: 'Students arrive prepared, informed, and ready to begin the workshop track.'
+            content: 'Mr. Alosh Denny (AI Consultant / AGI Developer, NVIDIA Certified Associate, World Rank 11 in European Rover Challenge).'
           }
         ]
       },
       {
-        slug: 'day-1-frontend',
-        label: 'Day 1',
-        title: 'Frontend fundamentals',
-        summary: 'Students begin with the basics of building web pages using HTML, CSS, and JavaScript.',
+        slug: 'product-build-sprint',
+        label: 'Phase 2',
+        title: 'Virtual Product Build Sprint',
+        summary: 'A virtual build sprint where 12 teams develop AI-powered products from 10 to 17 August 2026, leading to final submission on 17 August 2026.',
         sections: [
           {
-            title: 'Objectives',
+            title: 'Sprint Highlights',
             type: 'checklist',
             items: [
-              'Explain the structure of a basic web page.',
-              'Introduce layout and styling concepts.',
-              'Help students build a simple front-end page from scratch.'
+              'Team-based software development with Agentic AI integration.',
+              'Timeline adjusted to accommodate S3 & S5 series examinations.',
+              'Single final project submission (GitHub Repo + Presentation PPT) on 17 August 2026.'
             ]
-          },
-          {
-            title: 'Key topics',
-            type: 'list',
-            items: [
-              'HTML structure and semantics',
-              'CSS styling and page layout',
-              'JavaScript basics for interaction'
-            ]
-          },
-          {
-            title: 'Resources',
-            type: 'cards',
-            items: [
-              'Frontend notes and starter templates',
-              'Practice exercises for layout and styling',
-              'Reference examples for simple UI components'
-            ]
-          },
-          {
-            title: 'Outcome',
-            type: 'paragraph',
-            content: 'Students gain confidence in creating basic front-end pages and understanding the structure of web interfaces.'
-          }
-        ]
-      },
-      {
-        slug: 'day-3-python-and-backend',
-        label: 'Day 3',
-        title: 'Python and backend basics',
-        summary: 'The session shifts toward programming logic, backend structure, and how applications connect to data.',
-        sections: [
-          {
-            title: 'Objectives',
-            type: 'checklist',
-            items: [
-              'Introduce Python programming basics.',
-              'Explain the role of backend logic in a web app.',
-              'Set up a simple Flask-based application structure.'
-            ]
-          },
-          {
-            title: 'Key topics',
-            type: 'list',
-            items: [
-              'Python basics and development flow',
-              'Flask project structure and routing',
-              'Environment setup and development workflow'
-            ]
-          },
-          {
-            title: 'Resources',
-            type: 'cards',
-            items: [
-              'Python handout and examples',
-              'Flask starter project',
-              'Environment setup checklist'
-            ]
-          },
-          {
-            title: 'Outcome',
-            type: 'paragraph',
-            content: 'Students understand how frontend and backend pieces connect in a simple web application.'
-          }
-        ]
-      },
-      {
-        slug: 'day-4-git-and-tools',
-        label: 'Day 4',
-        title: 'Git, GitHub, and practical tools',
-        summary: 'Students learn how to manage code, collaborate with others, and work with everyday development tools.',
-        sections: [
-          {
-            title: 'Objectives',
-            type: 'checklist',
-            items: [
-              'Introduce version control with Git.',
-              'Explain GitHub workflows for sharing and collaboration.',
-              'Familiarise students with Linux and command-line basics.'
-            ]
-          },
-          {
-            title: 'Key topics',
-            type: 'list',
-            items: [
-              'Git setup and command basics',
-              'GitHub repository workflow',
-              'Linux basics and local environment usage'
-            ]
-          },
-          {
-            title: 'Resources',
-            type: 'cards',
-            items: [
-              'Git cheat sheet',
-              'GitHub repository guide',
-              'Command-line practice sheet'
-            ]
-          },
-          {
-            title: 'Outcome',
-            type: 'paragraph',
-            content: 'Students can manage their codebase and collaborate with peers using industry-style tools.'
-          }
-        ]
-      },
-      {
-        slug: 'day-5-ideation',
-        label: 'Day 5',
-        title: 'Problem solving and ideation',
-        summary: 'The week moves from learning to application as students begin defining a project idea and working in teams.',
-        sections: [
-          {
-            title: 'Objectives',
-            type: 'checklist',
-            items: [
-              'Help students identify real problems worth solving.',
-              'Guide them in forming project teams.',
-              'Introduce coordination tools such as Discord.'
-            ]
-          },
-          {
-            title: 'Key topics',
-            type: 'list',
-            items: [
-              'Problem framing and ideation',
-              'Team formation and role planning',
-              'Discord onboarding and group coordination'
-            ]
-          },
-          {
-            title: 'Resources',
-            type: 'cards',
-            items: [
-              'Problem statement worksheet',
-              'Team planning template',
-              'Discord setup guide'
-            ]
-          },
-          {
-            title: 'Outcome',
-            type: 'paragraph',
-            content: 'Each team leaves with a clear idea, structure, and communication plan for the build sprint.'
-          }
-        ]
-      },
-      {
-        slug: 'day-6-7-build-sprint',
-        label: 'Days 6–7',
-        title: 'Project development sprint',
-        summary: 'Teams spend two days building their projects with support from mentors and peer collaborators.',
-        sections: [
-          {
-            title: 'Objectives',
-            type: 'checklist',
-            items: [
-              'Turn concepts into working prototypes.',
-              'Encourage teamwork, iteration, and practical problem solving.',
-              'Provide mentor support for technical and project decisions.'
-            ]
-          },
-          {
-            title: 'Key topics',
-            type: 'list',
-            items: [
-              'Feature planning and implementation',
-              'Mentor support and debugging',
-              'Project refinement and presentation preparation'
-            ]
-          },
-          {
-            title: 'Resources',
-            type: 'cards',
-            items: [
-              'Mentor support schedule',
-              'Project checklist',
-              'Presentation and demo guide'
-            ]
-          },
-          {
-            title: 'Outcome',
-            type: 'paragraph',
-            content: 'Teams complete a working project prototype ready for the final expo.'
-          }
-        ]
-      },
-      {
-        slug: 'day-8-expo',
-        label: 'Day 8',
-        title: 'Project expo and launch',
-        summary: 'The event concludes with project presentations, official launch moments, and recognition for the best work.',
-        sections: [
-          {
-            title: 'Objectives',
-            type: 'checklist',
-            items: [
-              'Showcase student projects to the wider department.',
-              'Introduce the DELTA association and its purpose.',
-              'Recognise strong effort and innovation through awards.'
-            ]
-          },
-          {
-            title: 'Key topics',
-            type: 'list',
-            items: [
-              'Project exhibition and judging',
-              'Association launch and welcome',
-              'Prize distribution and feedback collection'
-            ]
-          },
-          {
-            title: 'Resources',
-            type: 'cards',
-            items: [
-              'Expo checklist',
-              'Feedback form template',
-              'Prize distribution plan'
-            ]
-          },
-          {
-            title: 'Outcome',
-            type: 'paragraph',
-            content: 'Students leave with a visible milestone, feedback, and a stronger sense of belonging in the department community.'
           }
         ]
       }
