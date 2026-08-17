@@ -198,6 +198,67 @@ export async function uploadPresentationFile(teamCode, file) {
   };
 }
 
+const SUBMISSIONS_BUCKET = 'agentic-ai-submissions';
+
+/**
+ * Build the list of candidate storage folder names for a team.
+ * Uploads use teamCode.toUpperCase() (e.g. TEAM01), but we also check the
+ * alternate code formats (AIPS-T01) in case files were stored under those.
+ */
+function getFolderCandidates(teamCode) {
+  const cleanCode = teamCode.trim().toUpperCase();
+  const num = parseInt(cleanCode.replace(/\D/g, ''), 10);
+  const candidates = [cleanCode];
+  if (num) {
+    candidates.push(`TEAM${String(num).padStart(2, '0')}`);
+    candidates.push(`AIPS-T${String(num).padStart(2, '0')}`);
+  }
+  return [...new Set(candidates)];
+}
+
+/**
+ * List all presentation (.ppt/.pptx) files stored for a team directly from the
+ * Supabase Storage bucket, keyed by the team-code folder name. This works even
+ * when the `submissions` table has no matching row.
+ * Returns newest-first array of { name, path, url, size, updatedAt }.
+ */
+export async function listTeamPresentations(teamCode) {
+  if (!supabase || !teamCode) return [];
+
+  const results = [];
+  for (const folder of getFolderCandidates(teamCode)) {
+    try {
+      const { data, error } = await supabase.storage
+        .from(SUBMISSIONS_BUCKET)
+        .list(folder, { limit: 100, sortBy: { column: 'created_at', order: 'desc' } });
+
+      if (error || !data) continue;
+
+      data.forEach(f => {
+        // Skip folder placeholders (id === null) and non-presentation files
+        if (!f.name || f.id === null) return;
+        const ext = f.name.split('.').pop().toLowerCase();
+        if (!['ppt', 'pptx'].includes(ext)) return;
+
+        const path = `${folder}/${f.name}`;
+        const { data: pub } = supabase.storage.from(SUBMISSIONS_BUCKET).getPublicUrl(path);
+        results.push({
+          name: f.name,
+          path,
+          url: pub?.publicUrl || '',
+          size: f.metadata?.size ?? null,
+          updatedAt: f.updated_at || f.created_at || null
+        });
+      });
+    } catch (e) {
+      // ignore per-folder listing errors
+    }
+  }
+
+  results.sort((a, b) => new Date(b.updatedAt || 0) - new Date(a.updatedAt || 0));
+  return results;
+}
+
 /**
  * Helper to resolve team record from Supabase by teamCode, team_number, or alternate code formats (e.g. TEAM01 vs AIPS-T01)
  */
@@ -468,11 +529,25 @@ export async function getAdminDashboardData() {
     return {
       teamNumber: t.teamNumber,
       teamCode: t.teamCode,
+      teamName: t.teamName || '',
+      mentor: t.mentor || '',
+      problemStatement: t.problemStatement || '',
       members: t.members,
       isSubmitted: !!submission,
-      submission
+      submission,
+      presentations: []
     };
   });
+
+  // Pull presentation files directly from Storage (team-code folders), so PPTs
+  // show up even when the submissions table has no row for a team.
+  if (supabase) {
+    await Promise.all(teamsWithStatus.map(async (t) => {
+      const files = await listTeamPresentations(t.teamCode);
+      t.presentations = files;
+      if (files.length > 0) t.isSubmitted = true;
+    }));
+  }
 
   const totalTeams = teamsWithStatus.length;
   const submittedCount = teamsWithStatus.filter(t => t.isSubmitted).length;

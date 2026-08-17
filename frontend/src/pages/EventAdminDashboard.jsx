@@ -281,7 +281,38 @@ export default function EventAdminDashboard() {
                           )}
                         </td>
                         <td className="py-4 px-4">
-                          {sub && (sub.pptFileUrl || sub.pptFileName) ? (
+                          {t.presentations && t.presentations.length > 0 ? (
+                            <div className="flex flex-col gap-2">
+                              {t.presentations.map((p) => (
+                                <div key={p.path} className="flex items-center gap-2">
+                                  <a
+                                    href={`https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(p.url)}`}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    title={`View ${p.name}`}
+                                    className="inline-flex items-center gap-1.5 border border-teal/30 bg-teal/10 hover:bg-teal text-teal hover:text-white font-heading text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg transition-colors"
+                                  >
+                                    <FileCode className="w-3 h-3" /> View
+                                  </a>
+                                  <a
+                                    href={p.url}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    download
+                                    title={`Download ${p.name}`}
+                                    className="inline-flex items-center gap-1 text-signal hover:underline font-heading text-[10px] font-bold uppercase tracking-wider"
+                                  >
+                                    <Download className="w-3 h-3" /> Download
+                                  </a>
+                                </div>
+                              ))}
+                              {t.presentations.length > 1 && (
+                                <span className="text-[9px] text-ink/50 font-body">
+                                  {t.presentations.length} files in folder
+                                </span>
+                              )}
+                            </div>
+                          ) : sub && (sub.pptFileUrl || sub.pptFileName) ? (
                             sub.pptFileUrl ? (
                               <a
                                 href={sub.pptFileUrl}
