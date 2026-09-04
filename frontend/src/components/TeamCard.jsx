@@ -134,7 +134,7 @@ export default function TeamCard({ member, featured = false }) {
             loading={featured ? 'eager' : 'lazy'}
             decoding="async"
             fetchPriority={featured ? 'high' : 'low'}
-            className="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out scale-100 group-hover:scale-105"
+            className={`w-full h-full object-cover ${member.objectPos || (featured ? 'object-top' : 'object-center')} filter grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out scale-100 group-hover:scale-105`}
           />
         ) : null}
         <div className="absolute inset-0 bg-indigo/5 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
