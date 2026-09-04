@@ -64,7 +64,7 @@ export const committeeData = {
       name: "George",
       role: "Treasurer",
       batch: "S3 CSDS",
-      driveId: "",
+      driveId: "/assets/george.png",
       socials: {
         linkedin: "https://linkedin.com",
         instagram: "https://instagram.com"
