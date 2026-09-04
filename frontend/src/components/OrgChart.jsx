@@ -15,7 +15,7 @@ export default function OrgChart() {
         {/* Level 1: Faculty Coordinator */}
         <div className="relative z-10 border border-indigo/30 bg-paper px-6 py-3 min-w-[220px] shadow-sm rounded-2xl">
           <span className="text-[9px] text-teal font-bold uppercase tracking-wider block mb-0.5">Level 01</span>
-          <span className="text-xs md:text-sm font-extrabold text-indigo uppercase">Faculty Coordinator</span>
+          <span className="text-xs md:text-sm font-extrabold text-indigo uppercase">Faculty Leadership</span>
         </div>
 
         {/* Vertical Line 1: L1 -> L2 */}

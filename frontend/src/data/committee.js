@@ -1,16 +1,30 @@
 export const committeeData = {
-  faculty: {
-    id: "faculty-lead",
-    name: "Ms. Rinsu Aravind",
-    role: "Faculty Lead",
-    department: "Data Science & Computer Engineering",
-    driveId: "", // Google Drive File ID can be added here
-    bio: "Guiding DELTA's operations and bridging student innovations with department milestones.",
-    socials: {
-      linkedin: "https://linkedin.com",
-      email: "mailto:rinsu.aravind@cce.edu.in"
+  faculty: [
+    {
+      id: "hod-ds",
+      name: "Ms. Rinsu Aravind",
+      role: "HOD, Data Science Department",
+      department: "Data Science & Computer Engineering",
+      driveId: "/assets/rinsu_aravind.png",
+      bio: "Head of Data Science Department, guiding DELTA's operations and bridging student innovations with department milestones.",
+      socials: {
+        linkedin: "https://linkedin.com",
+        email: "mailto:rinsu.aravind@cce.edu.in"
+      }
+    },
+    {
+      id: "faculty-coordinator",
+      name: "Ms. Noufala T S",
+      role: "Faculty Coordinator",
+      department: "Data Science & Computer Engineering",
+      driveId: "/assets/noufala_ts.png",
+      bio: "Faculty Coordinator, guiding DELTA's events, student mentoring, and executive execution.",
+      socials: {
+        linkedin: "https://linkedin.com",
+        email: "mailto:noufala.ts@cce.edu.in"
+      }
     }
-  },
+  ],
   core: [
     {
       id: "chairperson",

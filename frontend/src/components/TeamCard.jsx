@@ -110,13 +110,19 @@ export default function TeamCard({ member, featured = false }) {
   return (
     <div
       ref={containerRef}
-      className={`group relative h-full bg-indigo border border-indigo/20 rounded-3xl transition-all duration-300 hover:border-signal/40 hover:-translate-y-1.5 hover:shadow-[0_15px_35px_-10px_rgba(14,48,97,0.3)] select-none ${featured ? 'p-4 sm:p-5 md:flex md:gap-6 md:items-center md:col-span-2' : 'p-4 sm:p-5 md:p-5'
-        } flex flex-row md:flex-col md:justify-start gap-4 md:gap-0`}
+      className={`group relative h-full bg-indigo border border-indigo/20 rounded-3xl transition-all duration-300 hover:border-signal/40 hover:-translate-y-1.5 hover:shadow-[0_15px_35px_-10px_rgba(14,48,97,0.3)] select-none ${
+        featured
+          ? 'p-5 sm:p-6 flex flex-row items-center gap-5 sm:gap-6 md:col-span-2'
+          : 'p-4 sm:p-5 flex flex-row md:flex-col md:justify-start gap-4 md:gap-0'
+      }`}
     >
       {/* Image container */}
       <div
-        className={`relative overflow-hidden bg-indigo/5 rounded-2xl shrink-0 ${featured ? 'w-24 h-32 sm:w-28 sm:h-36 md:w-full md:h-36' : 'w-24 h-32 sm:w-28 sm:h-36 md:w-full md:h-44'
-          } flex items-center justify-center`}
+        className={`relative overflow-hidden bg-indigo/5 rounded-2xl shrink-0 ${
+          featured
+            ? 'w-28 h-36 sm:w-36 sm:h-44 md:w-40 md:h-48'
+            : 'w-24 h-32 sm:w-28 sm:h-36 md:w-full md:h-48'
+        } flex items-center justify-center`}
       >
         {!hasLoaded && <div className="absolute inset-0 bg-paper/10 animate-pulse" aria-hidden="true" />}
         {imgSrc ? (
@@ -128,14 +134,14 @@ export default function TeamCard({ member, featured = false }) {
             loading={featured ? 'eager' : 'lazy'}
             decoding="async"
             fetchPriority={featured ? 'high' : 'low'}
-            className="w-full h-full object-cover md:object-cover object-center filter grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out scale-100 group-hover:scale-105"
+            className="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out scale-100 group-hover:scale-105"
           />
         ) : null}
         <div className="absolute inset-0 bg-indigo/5 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
 
       {/* Details */}
-      <div className="flex-grow min-w-0 flex flex-col justify-center pt-1 md:pt-0">
+      <div className={`flex-grow min-w-0 flex flex-col justify-center ${featured ? '' : 'pt-1 md:pt-0'}`}>
         <div>
           <span className="font-heading text-[10px] md:text-xs text-signal font-bold uppercase tracking-wider block mb-1 leading-tight">
             {member.role} {member.batch && `// ${member.batch}`}

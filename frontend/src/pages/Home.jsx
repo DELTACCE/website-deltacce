@@ -10,7 +10,7 @@ import ScrollReveal from '../components/ScrollReveal';
 
 export default function Home() {
   // Get featured members for preview (Faculty Coordinator + featured students)
-  const facultyMember = committeeData.faculty;
+  const facultyMembers = Array.isArray(committeeData.faculty) ? committeeData.faculty : [committeeData.faculty];
   const featuredStudents = committeeData.core || [];
 
   const whatWeDoList = [
@@ -187,13 +187,15 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
             {/* Featured Faculty */}
-            <ScrollReveal className="md:col-span-2" delay={0.1}>
-              <TeamCard member={facultyMember} featured={true} />
-            </ScrollReveal>
+            {facultyMembers.map((fac, idx) => (
+              <ScrollReveal key={fac.id} className="md:col-span-2" delay={0.1 * (idx + 1)}>
+                <TeamCard member={fac} featured={true} />
+              </ScrollReveal>
+            ))}
 
             {/* Featured Students */}
             {featuredStudents.slice(0, 2).map((student, idx) => (
-              <ScrollReveal key={student.id} delay={0.2 + idx * 0.1}>
+              <ScrollReveal key={student.id} delay={0.3 + idx * 0.1}>
                 <TeamCard member={student} />
               </ScrollReveal>
             ))}

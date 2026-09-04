@@ -49,9 +49,15 @@ export default function Committee() {
 
         {/* 1. Faculty Coordinator Section */}
         <section className="mb-14 md:mb-24">
-          <SectionHeading eyebrow="01 / ADVISOR" heading="Faculty Lead" />
-          <div className="max-w-3xl mt-10">
-            <TeamCard member={faculty} featured={true} />
+          <SectionHeading eyebrow="01 / ADVISORS" heading="Faculty Leadership" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+            {Array.isArray(faculty) ? (
+              faculty.map((member) => (
+                <TeamCard key={member.id} member={member} featured={true} />
+              ))
+            ) : (
+              <TeamCard member={faculty} featured={true} />
+            )}
           </div>
         </section>
 

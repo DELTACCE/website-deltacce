@@ -490,7 +490,7 @@ export async function getAdminDashboardData() {
               downloadUrl = pubData?.publicUrl || '';
             }
 
-            dbSubmissionsMap[code] = {
+            const subObj = {
               id: s.id,
               teamCode: code,
               githubUrl: s.github_url || '',
@@ -501,6 +501,17 @@ export async function getAdminDashboardData() {
               submittedAt: s.submitted_at,
               updatedAt: s.updated_at
             };
+
+            dbSubmissionsMap[code] = subObj;
+
+            // Map alternate team code formats (e.g., AIPS-T01 <-> TEAM01)
+            const num = parseInt(code.replace(/\D/g, ''), 10);
+            if (num) {
+              const code1 = `TEAM${String(num).padStart(2, '0')}`;
+              const code2 = `AIPS-T${String(num).padStart(2, '0')}`;
+              dbSubmissionsMap[code1] = subObj;
+              dbSubmissionsMap[code2] = subObj;
+            }
           }
         });
 
